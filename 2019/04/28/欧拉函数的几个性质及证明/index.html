@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>欧拉函数的几个性质及证明 | henry_y&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Note这篇文章涉及几个欧拉函数的性质 暂时没有证明，大概寒假的时候会补一下证明 完结撒花！我居然在寒假第一天就把这证明补完了… 如果下方的证明有哪里有问题的话，请在下方评论区指出，以提醒作者修改。">
+<meta name="keywords" content="欧拉函数,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欧拉函数的几个性质及证明">
+<meta property="og:url" content="http://henry-y.github.io/2019/04/28/欧拉函数的几个性质及证明/index.html">
+<meta property="og:site_name" content="henry_y&#39;s blog">
+<meta property="og:description" content="Note这篇文章涉及几个欧拉函数的性质 暂时没有证明，大概寒假的时候会补一下证明 完结撒花！我居然在寒假第一天就把这证明补完了… 如果下方的证明有哪里有问题的话，请在下方评论区指出，以提醒作者修改。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-28T02:22:43.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="欧拉函数的几个性质及证明">
+<meta name="twitter:description" content="Note这篇文章涉及几个欧拉函数的性质 暂时没有证明，大概寒假的时候会补一下证明 完结撒花！我居然在寒假第一天就把这证明补完了… 如果下方的证明有哪里有问题的话，请在下方评论区指出，以提醒作者修改。">
+  
+    <link rel="alternate" href="/atom.xml" title="henry_y&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>2</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>2</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-欧拉函数的几个性质及证明" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/28/欧拉函数的几个性质及证明/" class="article-date">
+  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      欧拉函数的几个性质及证明
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>这篇文章涉及几个欧拉函数的性质</p>
+<p><del>暂时没有证明，大概寒假的时候会补一下证明</del></p>
+<p>完结撒花！我居然在寒假第一天就把这证明补完了…</p>
+<p>如果下方的证明有哪里有问题的话，请在下方评论区指出，以提醒作者修改。</p>
+<a id="more"></a>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>$\phi(n)$表示在1~n中与n互质的数</p>
+<h2 id="计算式及计算方法"><a href="#计算式及计算方法" class="headerlink" title="计算式及计算方法"></a>计算式及计算方法</h2><script type="math/tex; mode=display">
+\begin{aligned}
+&若n根据算术基本定理分解为n=p_1^{c_1}p_2^{c_2}...p_m^{c_m}\\
+&则\phi(n)=n\prod_{i=1}^{m}\left(1-\frac{1}{p}\right)\\
+&也可以变式为\phi(n)=n\prod_{i=1}^m\left(\frac{p-1}{p}\right)\\
+&本质是一样的
+\end{aligned}</script><h3 id="upd-：-O-frac-sqrt-n-log-n-计算一个数的欧拉函数"><a href="#upd-：-O-frac-sqrt-n-log-n-计算一个数的欧拉函数" class="headerlink" title="$upd$：$O(\frac{\sqrt{n}}{\log n})$计算一个数的欧拉函数"></a>$upd$：$O(\frac{\sqrt{n}}{\log n})$计算一个数的欧拉函数</h3><p>分解质因数，由性质4可以顺便算出每个$\varphi(p^k)$，然后因为$\varphi$是个积性函数，所以直接把每个值相乘即得到该数的$\varphi$。<br>直接分解质因数是$O(\sqrt{n})$的，但是只要预处理出根号内的质数就可以$O(\frac{\sqrt{n}}{\log n})$计算一个数的欧拉函数了。</p>
+<h2 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h2><script type="math/tex; mode=display">
+\begin{aligned}
+&\phi是积性函数，但不是完全积性函数\\
+&当n,m互质时，满足:\\
+&\phi(nm)=\phi(n)*\phi(m)\\
+&那么显然，当n根据算术基本定理分解为n=p_1^{c_1}p_2^{c_2}...p_m^{c_m}时\\
+&\phi(n)=\prod_{i=1}^m{\phi(p_i^{c_i})}
+\end{aligned}</script><h3 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h3><script type="math/tex; mode=display">
+\begin{aligned}
+&若n与m互质，则n与m没有相同的质因子\\
+&设n的质因子个数为cnt_n,m的质因子个数为cnt_m，则\\
+&\phi(n)*\phi(m)\\
+&=n*\prod_{i=1}^{cnt_n}(1-p_i)*m*\prod_{i=1}^{cnt_m}(1-p_i)\\
+&=n*m*\prod_{i=1}^{cnt_n+cnt_m}(1-p_i)\\
+&=\phi(nm)
+\end{aligned}</script><p>证毕。</p>
+<h2 id="性质2"><a href="#性质2" class="headerlink" title="性质2"></a>性质2</h2><p>对于质数$p$，它的欧拉函数值$\phi(p)=p-1$</p>
+<h3 id="证明：-1"><a href="#证明：-1" class="headerlink" title="证明："></a>证明：</h3><p>因为$p$为质数，所以比它小的数都和它互质，即在1~p中共有p-1个数和它互质。<br>证毕。</p>
+<h2 id="性质3"><a href="#性质3" class="headerlink" title="性质3"></a>性质3</h2><script type="math/tex; mode=display">
+当n为奇数时,\phi(2*n)=\phi(n)</script><h3 id="证明：-2"><a href="#证明：-2" class="headerlink" title="证明："></a>证明：</h3><script type="math/tex; mode=display">
+\begin{aligned}
+&当n为奇数时，n与2互质\\
+&由欧拉函数是积性函数可知，n与2互质时，\phi(2n)=\phi(2)*\phi(n)\\
+&又因为\phi(2)=1\\
+&所以\phi(2n)=\phi(n)
+\end{aligned}</script><p>证毕。</p>
+<h2 id="性质4"><a href="#性质4" class="headerlink" title="性质4"></a>性质4</h2><script type="math/tex; mode=display">
+当n=p^k时，\phi(n)=p^k-p^{k-1}</script><h3 id="证明：-3"><a href="#证明：-3" class="headerlink" title="证明："></a>证明：</h3><script type="math/tex; mode=display">
+因为n=p^k，所以n只有p一个质因数，则由欧拉函数的计算式可得\\
+\phi(n)=p^k*(1-\frac{1}{p})=p^k-p^{k-1}</script><h2 id="性质5"><a href="#性质5" class="headerlink" title="性质5"></a>性质5</h2><script type="math/tex; mode=display">
+\begin{aligned}
+&n中与n互质的数的和为\phi(n)/2*n(n>1)\\
+&\phi(n)(n>2)为偶数
+\end{aligned}</script><h3 id="证明：-4"><a href="#证明：-4" class="headerlink" title="证明："></a>证明：</h3><p>需要知道的一个基本事实是$gcd(n,x)=gcd(n,n-x)(n&gt;x)$</p>
+<p>关于这个，可以了解一下<a href="https://baike.baidu.com/item/%E6%9B%B4%E7%9B%B8%E5%87%8F%E6%8D%9F%E6%9C%AF/449183?fr=aladdin" target="_blank" rel="noopener">更相减损术</a></p>
+<p>因为$gcd(n,x)=gcd(n,n-x)(n&gt;x)$，所以<strong>与n互质的数都是成对出现的</strong></p>
+<p>每一对的和都为$n$。所以他们的和为$\phi(n)/2*n$。</p>
+<p>至于$\phi(n)(n&gt;2)$为偶数。因为与n互质的数都是成对出现的，所以显然与n互质的数为偶数，即$\phi(n)$为偶数。<br>证毕。</p>
+<h2 id="性质6"><a href="#性质6" class="headerlink" title="性质6"></a>性质6</h2><script type="math/tex; mode=display">
+\begin{aligned}
+&若p|n且p^2|n，则\phi(n)=\phi(\frac{n}{p})*p\\
+&若p|n且p^2\not|\space\space n,则\phi(n)=\phi(\frac{n}{p})*(p-1)
+\end{aligned}</script><h3 id="证明：-5"><a href="#证明：-5" class="headerlink" title="证明："></a>证明：</h3><p>对于第一点</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&若p|n且p^2|n，则证明n和\frac{n}{p}有相同的质因子，只是p这一项的指数不同\\
+&那么我们可以将其按照欧拉函数的计算式展开，并相除，可得：\\
+&\frac{n\prod_{i=1}^m(1-\frac{1}{p_i})}{\frac{n}{p}\prod_{i=1}^{m}(1-\frac{1}{p_i})}=\frac{n}{\frac{n}{p}}=p\\
+\end{aligned}</script><p>对于第二点</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&若p|n且p^2\not|\space\space n，则说明p与\frac{n}{p}互质（因为p为素数）\\
+&那么根据欧拉函数为积性函数的这个性质即可证得\phi(n)=\phi(\frac{n}{p})*\phi(p)=\phi(\frac{n}{p})*(p-1)
+\end{aligned}</script><p>证毕。</p>
+<p>这个性质广泛用于递推求欧拉函数</p>
+<h2 id="性质7"><a href="#性质7" class="headerlink" title="性质7"></a>性质7</h2><script type="math/tex; mode=display">
+\sum_{d|n}\phi(d)=n</script><p>证明：</p>
+<script type="math/tex; mode=display">
+设f(n)=\sum_{d|n}\phi(d)\\</script><p>则f(n)为一个积性函数（当n，m互质时）</p>
+<h3 id="证明：-6"><a href="#证明：-6" class="headerlink" title="证明："></a>证明：</h3><p>（设n,m互质）</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&f(n)*f(m)\\
+&=\sum_{i|n}\phi(i)*\sum_{j|m}\phi(m)\\
+&=\sum_{i|n}\sum_{j|m}\phi(i)*\phi(j)\\
+&=\sum_{i|n}\sum_{j|m}\phi(i*j)\\
+&=\sum_{d|nm}\phi(d)\\
+&=f(nm)
+\end{aligned}\\
+\begin{aligned}
+&可以发现的是\sum_{i|n}\sum_{j|m}\phi(i*j)涵盖了所有nm的因数的欧拉函数，即为f(n)*f(m)\\
+&所以f是一个积性函数
+\end{aligned}</script><p>那么则有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&若n根据算数基本定理可以分解为p_1^{c_1}p_2^{c_2}...p_k^{c_k}\\
+&则由f是一个积性函数可知，f(n)=f(p_1^{c_1})*f(p_2^{c_2})*...*f(p_k^{c_k})\\
+&所以f(p^c)=\phi(1)+\phi(p)+\phi(p^2)+...+\phi(p^k)=1+(p-1)+(p^2-p)+...+(p^k-p^{k-1})=p^k\\
+&则f(n)=f(p_1^{c_1})*f(p_2^{c_2})*...*f(p_k^{c_k})=p_1^{c_1}*p_2^{c_2}*...*p_k^{c_k}=n\\
+&即\sum_{d|n}\phi(d)=n
+\end{aligned}</script><p>证毕。</p>
+<h2 id="性质8"><a href="#性质8" class="headerlink" title="性质8"></a>性质8</h2><script type="math/tex; mode=display">
+\phi(n)=\sum_{d|n}\frac{\mu(d)}{d}</script><h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>我们将性质7用狄利克雷卷积形式表示出来</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\phi*1=id\\
+&两边卷上\mu\\
+&\phi*1*\mu=id*\mu\\
+&\phi*(1*\mu)=id*\mu\\
+&\phi*e=id*\mu
+\end{aligned}</script><p>最后一个式子写出来就是</p>
+<script type="math/tex; mode=display">
+\phi(n)=\sum_{d|n}\frac{\mu(d)}{d}</script><p>证毕。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/2019/04/28/欧拉函数的几个性质及证明/" data-id="cjv0b8j9n0002ekw5goangnjz" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/欧拉函数/">欧拉函数</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Hello the world</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">henry_y&#39;s blog</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>2</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>2</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/henry-y" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2018 - 2019 henry-y<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title class="menuItem">首页</a>
+          
+            <a href="/tags" title class="menuItem">标签</a>
+          
+            <a href="/categories" title class="menuItem">分类</a>
+          
+            <a href="/archives" title class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>
