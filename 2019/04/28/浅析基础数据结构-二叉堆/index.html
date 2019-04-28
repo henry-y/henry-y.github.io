@@ -105,6 +105,13 @@
           
           
               
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2019/04/28/浅析基础数据结构-二叉堆/" class="leancloud_visitors" data-flag-title="浅析基础数据结构-二叉堆">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
 
           
         </div>
@@ -233,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/2019/04/28/浅析基础数据结构-二叉堆/" data-id="cjv0c1ouv000p4sw5ub61tpxq" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/2019/04/28/浅析基础数据结构-二叉堆/" data-id="cjv0cvnq5000rrow5jvyep7z7" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉堆/">二叉堆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
@@ -244,19 +251,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/04/28/点分治小结/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/28/分块入门/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          点分治小结
+          分块入门
         
       </div>
     </a>
   
   
-    <a href="/2019/04/28/分块入门/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">分块入门</div>
+      <div class="article-nav-title">Hello the world</div>
     </a>
   
 </nav>
@@ -323,7 +330,7 @@
     <div class="friend-link">
       <h2>友情链接</h2>
       
-        <a class="hvr-bounce-in" href="https://cnblogs.com/henry-1202" target="_blank" title="henry_y">
+        <a class="hvr-bounce-in" href="https://cnblogs.com/henry-1202&lt;br&gt;" target="_blank" title="henry_y">
           henry_y
         </a>
       
@@ -366,45 +373,6 @@ new WOW().init();
 
 
 
-  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
-  <script src="/plugin/galmenu/GalMenu.js"></script>
-  <div class="GalMenu GalDropDown">
-      <div class="circle" id="gal">
-        <div class="ring">
-          
-            <a href="/" title class="menuItem">首页</a>
-          
-            <a href="/tags" title class="menuItem">标签</a>
-          
-            <a href="/categories" title class="menuItem">分类</a>
-          
-            <a href="/archives" title class="menuItem">归档</a>
-          
-            <a href="/xxxxxxxxx" title class="menuItem">xxx</a>
-          
-            <a href="/xxxxxxx" title class="menuItem">xxxx</a>
-          
-        </div>
-        
-          <audio id="audio" src="#"></audio>
-        
-      </div> 
-</div>
-<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
-  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
-    for (var i = 0,
-    l = items.length; i < l; i++) {
-      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
-      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
-    }</script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('body').GalMenu({
-      'menu': 'GalDropDown'
-    })
-  });
-</script>
-
   <section class="hidden-xs"> 
   <ul class="cb-slideshow"> 
     <li><span>苟利</span></li> 
@@ -416,6 +384,115 @@ new WOW().init();
   </ul>
 </section>
 <script src="/js/script.js"></script>
+
+
+
+
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.article-title').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
 
 
