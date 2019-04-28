@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>动态主席树学习理解 | henry_y&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目地址题目链接 题解动态主席树的板子题。动态主席树其实和静态的有很大差别，虽然同样是n个根，但是节点并不能共用，每个根节点表示bit上的一段区间。所以其实是个树套树的东西来着，外层是bit，内层是主席树。">
+<meta name="keywords" content="学习笔记,主席树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态主席树学习理解">
+<meta property="og:url" content="http://henry-y.github.io/2019/04/28/动态主席树学习理解/index.html">
+<meta property="og:site_name" content="henry_y&#39;s blog">
+<meta property="og:description" content="题目地址题目链接 题解动态主席树的板子题。动态主席树其实和静态的有很大差别，虽然同样是n个根，但是节点并不能共用，每个根节点表示bit上的一段区间。所以其实是个树套树的东西来着，外层是bit，内层是主席树。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1113423/201904/1113423-20190410170053886-1759738281.png">
+<meta property="og:updated_time" content="2019-04-28T02:46:28.607Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态主席树学习理解">
+<meta name="twitter:description" content="题目地址题目链接 题解动态主席树的板子题。动态主席树其实和静态的有很大差别，虽然同样是n个根，但是节点并不能共用，每个根节点表示bit上的一段区间。所以其实是个树套树的东西来着，外层是bit，内层是主席树。">
+<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/1113423/201904/1113423-20190410170053886-1759738281.png">
+  
+    <link rel="alternate" href="/atom.xml" title="henry_y&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>8</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-动态主席树学习理解" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/28/动态主席树学习理解/" class="article-date">
+  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      动态主席树学习理解
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目地址"><a href="#题目地址" class="headerlink" title="题目地址"></a>题目地址</h2><p><a href="https://www.luogu.org/problemnew/show/P2617" target="_blank" rel="noopener">题目链接</a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态主席树的板子题。动态主席树其实和静态的有很大差别，虽然同样是n个根，但是节点并不能共用，每个根节点表示bit上的一段区间。<br>所以其实是个树套树的东西来着，外层是bit，内层是主席树。</p>
+<a id="more"></a>
+<p>然后将所有数离散（包括读入进来的修改的数，所以动态主席树其实是离线的），那么就映射成了一段连续区间，用主席树维护这段区间。<br>每次修改就把x-&gt;n(+=lowbit(x))的所有节点的数v的那条链加上v，<strong>注意动态开点，不然空间爆炸</strong>。这样子 空间就是 $nlog^2n$的（每次修改只会动到一条链，一共动log条，所以是$log^2$的）。可以看一下下面这个图，很形象。<br><img src="https://img2018.cnblogs.com/blog/1113423/201904/1113423-20190410170053886-1759738281.png" alt><br>（图片来源于<a href="https://www.cnblogs.com/flashhu/" target="_blank" rel="noopener">Flash_Hu</a>）<br>每次查询将l-1和r两个点的前缀和在bit上面对应的节点找出来（log个），然后在主席树上向下走，<strong>一次同时减l-1对应的log个主席树，同时加r对应的log个主席树</strong>。<br>这样子时间复杂度是$O(nlog^2n)$。<br>大概就是这样…然后查询可以写成类似二分的写法，就可以非递归找了。但是修改还是写成递归的靠谱一点（非递归要写指针，指针容易写挂..）。还有注意每次修改要修改的是离散化后的值，但是输出要输出离散前的。<br>再看个代码意会一下应该就没问题了…</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200100</span>, M = <span class="number">40000100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N], b[N], len;</span><br><span class="line"><span class="keyword">int</span> l[N], r[N], op[N], d[N];</span><br><span class="line"><span class="keyword">int</span> n, m, root[N], rootl[<span class="number">30</span>], rootr[<span class="number">30</span>], tot;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tree</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> lc, rc, sum;</span><br><span class="line">&#125;t[M];</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(i) (i&amp;(-i))</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upd_tree</span><span class="params">(<span class="keyword">int</span> &amp;rt, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> pos, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!rt) rt = ++tot; t[rt].sum += v;</span><br><span class="line">	<span class="keyword">if</span>(l == r) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(pos &lt;= mid) upd_tree(t[rt].lc, l, mid, pos, v);</span><br><span class="line">	<span class="keyword">else</span> upd_tree(t[rt].rc, mid + <span class="number">1</span>, r, pos, v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> pos, <span class="keyword">int</span> k, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = pos; i &lt;= n; i += lowbit(i)) &#123;</span><br><span class="line">		upd_tree(root[i], <span class="number">1</span>, len, k, v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lc(i) (t[i].lc)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rc(i) (t[i].rc)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>, cur_l = <span class="number">0</span>, cur_r = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = L - <span class="number">1</span>; i; i -= lowbit(i)) rootl[++cur_l] = root[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = R; i; i -= lowbit(i)) rootr[++cur_r] = root[i];</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">1</span>, r = len;</span><br><span class="line">	<span class="keyword">while</span>(l != r) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>; sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cur_r; ++i) sum += t[lc(rootr[i])].sum;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cur_l; ++i) sum -= t[lc(rootl[i])].sum;</span><br><span class="line">		<span class="keyword">if</span>(k &lt;= sum) &#123;</span><br><span class="line">			r = mid;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cur_l; ++i) rootl[i] = lc(rootl[i]);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cur_r; ++i) rootr[i] = lc(rootr[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			l = mid + <span class="number">1</span>, k -= sum;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cur_l; ++i) rootl[i] = rc(rootl[i]);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cur_r; ++i) rootr[i] = rc(rootr[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> b[l];</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">undef</span> lc</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">undef</span> rc</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]), b[++len] = a[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">		<span class="keyword">char</span> ch[<span class="number">5</span>];</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s%d%d"</span>, ch, &amp;l[i], &amp;r[i]);</span><br><span class="line">		op[i] = ch[<span class="number">0</span>] == <span class="string">'Q'</span>;</span><br><span class="line">		<span class="keyword">if</span>(op[i]) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;d[i]);</span><br><span class="line">		<span class="keyword">else</span> b[++len] = r[i];</span><br><span class="line">	&#125;</span><br><span class="line">	sort(b+<span class="number">1</span>,b+len+<span class="number">1</span>); len = unique(b+<span class="number">1</span>,b+len+<span class="number">1</span>)-b<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) a[i] = lower_bound(b+<span class="number">1</span>,b+len+<span class="number">1</span>,a[i])-b;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) upd(i, a[i], <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!op[i]) &#123;</span><br><span class="line">			upd(l[i], a[l[i]], <span class="number">-1</span>);</span><br><span class="line">			a[l[i]] = lower_bound(b+<span class="number">1</span>,b+len+<span class="number">1</span>,r[i])-b;</span><br><span class="line">			upd(l[i], a[l[i]], <span class="number">1</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query(l[i], r[i], d[i]));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/2019/04/28/动态主席树学习理解/" data-id="cjv0c1otx00064sw584ausbh4" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主席树/">主席树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/28/数论分块/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          数论分块
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/28/欧拉函数的几个性质及证明/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">欧拉函数的几个性质及证明</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">henry_y&#39;s blog</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>8</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/henry-y" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://cnblogs.com/henry-1202" target="_blank" title="henry_y">
+          henry_y
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://zcmimi.tk" target="_blank" title="zcmimi">
+          zcmimi
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2018 - 2019 henry-y<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title class="menuItem">首页</a>
+          
+            <a href="/tags" title class="menuItem">标签</a>
+          
+            <a href="/categories" title class="menuItem">分类</a>
+          
+            <a href="/archives" title class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>

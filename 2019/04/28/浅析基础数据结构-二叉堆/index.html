@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>浅析基础数据结构-二叉堆 | henry_y&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="二叉堆是一种基础数据结构，主要应用于求出一组数据中的最大最小值。C++ 的STL中的优先队列就是使用二叉堆。不过初赛经常考二叉堆的原理。 事实上支持的操作也是挺有限的（相对于其他数据结构而言），也就插入，查询，删除这一类 对了这篇文章中讲到的堆都是二叉堆，而不是斜堆，左偏树，斐波那契堆什么的我都不会啊">
+<meta name="keywords" content="学习笔记,二叉堆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅析基础数据结构-二叉堆">
+<meta property="og:url" content="http://henry-y.github.io/2019/04/28/浅析基础数据结构-二叉堆/index.html">
+<meta property="og:site_name" content="henry_y&#39;s blog">
+<meta property="og:description" content="二叉堆是一种基础数据结构，主要应用于求出一组数据中的最大最小值。C++ 的STL中的优先队列就是使用二叉堆。不过初赛经常考二叉堆的原理。 事实上支持的操作也是挺有限的（相对于其他数据结构而言），也就插入，查询，删除这一类 对了这篇文章中讲到的堆都是二叉堆，而不是斜堆，左偏树，斐波那契堆什么的我都不会啊">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bcc426d83.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bd1106211.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bd7c385b4.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bd5579ff1.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bdc07f3bc.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bdc07f3bc.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bd5579ff1.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bd7c385b4.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bd1106211.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/13/5b48bcc426d83.png">
+<meta property="og:updated_time" content="2019-04-28T02:45:05.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅析基础数据结构-二叉堆">
+<meta name="twitter:description" content="二叉堆是一种基础数据结构，主要应用于求出一组数据中的最大最小值。C++ 的STL中的优先队列就是使用二叉堆。不过初赛经常考二叉堆的原理。 事实上支持的操作也是挺有限的（相对于其他数据结构而言），也就插入，查询，删除这一类 对了这篇文章中讲到的堆都是二叉堆，而不是斜堆，左偏树，斐波那契堆什么的我都不会啊">
+<meta name="twitter:image" content="https://i.loli.net/2018/07/13/5b48bcc426d83.png">
+  
+    <link rel="alternate" href="/atom.xml" title="henry_y&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>8</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-浅析基础数据结构-二叉堆" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/28/浅析基础数据结构-二叉堆/" class="article-date">
+  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      浅析基础数据结构-二叉堆
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>二叉堆是一种基础数据结构，主要应用于求出一组数据中的最大最小值。C++ 的STL中的优先队列就是使用二叉堆。不过初赛经常考二叉堆的原理。</p>
+<p>事实上支持的操作也是挺有限的（相对于其他数据结构而言），也就插入，查询，删除这一类</p>
+<p><strong>对了这篇文章中讲到的堆都是二叉堆，而不是斜堆，左偏树，斐波那契堆什么的<del>我都不会啊</del></strong></p>
+<a id="more"></a>
+<hr>
+<p>更新概要：</p>
+<p><del>无良博主终于想起来要更新辣</del></p>
+<p><strong>upd1:更新5.2.2-对于该子目所阐述的操作“用两个堆来维护一些查询第k小/大的操作”更新了一道例题-该操作对于中位数题目的求解</strong></p>
+<p><strong>upd2：更新5.3-利用堆来维护可以“反悔的贪心”</strong></p>
+<p>continue…</p>
+<hr>
+<h1 id="一-堆的性质"><a href="#一-堆的性质" class="headerlink" title="一.堆的性质"></a>一.堆的性质</h1><p><strong>1.堆是一颗完全二叉树</strong></p>
+<p><strong>2.堆的顶端一定是“最大”，最小”的，但是要注意一个点，这里的大和小并不是传统意义下的大和小，它是相对于优先级而言的，当然你也可以把优先级定为传统意义下的大小，但一定要牢记这一点，初学者容易把堆的“大小”直接定义为传统意义下的大小，某些题就不是按数字的大小为优先级来进行堆的操作的</strong></p>
+<p>（但是为了讲解方便，下文直接把堆的优先级定为传统意义下的大小，<del>所以上面跟没讲有什么区别？</del>）</p>
+<p><strong>3.堆一般有两种样子，小根堆和大根堆，分别对应第二个性质中的“堆顶最大”“堆顶最小”，对于大根堆而言，任何一个非根节点，它的优先级都小于堆顶，对于小根堆而言，任何一个非根节点，它的优先级都大于堆顶（这里的根就是堆顶啦qwq）</strong></p>
+<p>来一张图了解一下堆（这里是小根堆）（原谅我丑陋无比的图）</p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bcc426d83.png" alt></p>
+<p>不难看出，<strong>对于堆的每个子树，它同样也是一个堆</strong>（因为是完全二叉树嘛）</p>
+<h1 id="二-堆的操作"><a href="#二-堆的操作" class="headerlink" title="二.堆的操作"></a>二.堆的操作</h1><h2 id="1-插入"><a href="#1-插入" class="headerlink" title="1.插入"></a>1.插入</h2><p>假设你已经有一个堆了，就是上面那个</p>
+<p>这个时候你如果想要给它加入一个节点怎么办，比如说0？</p>
+<p>先插到堆底（严格意义上来说其实0是在5的左儿子的，图没画好放不下去，不过也不影响）</p>
+<p>然后你会发现它比它的父亲小啊，那怎么办？不符合小根堆的性质了啊，那就交换一下他们的位置</p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bd1106211.png" alt></p>
+<p>交换之后还是发现不符合小根堆的性质，那么再换</p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bd7c385b4.png" alt="上浮2.png"></p>
+<p>还是不行，再换</p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bd5579ff1.png" alt="上浮3.png"></p>
+<p>好了，这下就符合小根堆的性质了，是不是顺眼很多了？<del>（假的，图越来越丑，原谅我不想再画）</del></p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bdc07f3bc.png" alt="上浮4.png"></p>
+<p>事实上堆的插入就是把新的元素放到堆底，然后检查它是否符合堆的性质，如果符合就丢在那里了，如果不符合，那就和它的父亲交换一下，一直交换交换交换，直到符合堆的性质，那么就插入完成了</p>
+<p>Code：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span></span>&#123;<span class="keyword">int</span> t=x;x=y;y=t;&#125;<span class="comment">//交换函数 </span></span><br><span class="line"><span class="keyword">int</span> heap[N];<span class="comment">//定义一个数组来存堆</span></span><br><span class="line"><span class="keyword">int</span> siz;<span class="comment">//堆的大小 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="comment">//要插入的数 </span></span><br><span class="line">	heap[++siz]=x;</span><br><span class="line">	now=siz;</span><br><span class="line">	<span class="comment">//插入到堆底 </span></span><br><span class="line">	<span class="keyword">while</span>(now)&#123;<span class="comment">//还没到根节点，还能交换 </span></span><br><span class="line">		ll nxt=now&gt;&gt;<span class="number">1</span>;<span class="comment">//找到它的父亲 </span></span><br><span class="line">		<span class="keyword">if</span>(heap[nxt]&gt;heap[now])swap(heap[nxt],heap[now]);<span class="comment">//父亲比它大，那就交换 </span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">break</span>;<span class="comment">//如果比它父亲小，那就代表着插入完成了 </span></span><br><span class="line">		now=nxt;<span class="comment">//交换 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-删除"><a href="#2-删除" class="headerlink" title="2.删除"></a>2.删除</h2><p>把0插入完以后，忽然你看这个0不爽了，本来都是正整数，怎么就混进来你这个0？</p>
+<p>于是这时候你就想把它删除掉</p>
+<p>怎么删除？在删除的过程中还是要维护小根堆的性质</p>
+<p>如果你直接删掉了，那就没有堆顶了，这个堆就直接乱了，所以我们要保证删除后这一整个堆还是个完好的小根堆</p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bdc07f3bc.png" alt="上浮4.png"></p>
+<p>首先在它的两个儿子里面，找一个比较小的，和它交换一下，但是还是没法删除，因为下方还有节点，那就继续交换</p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bd5579ff1.png" alt="上浮3.png"></p>
+<p>还是不行，再换</p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bd7c385b4.png" alt="上浮2.png"></p>
+<p>再换</p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bd1106211.png" alt></p>
+<p>好了，这个碍眼的东西终于的下面终于没有节点了，这时候直接把它扔掉就好了</p>
+<p><img src="https://i.loli.net/2018/07/13/5b48bcc426d83.png" alt></p>
+<p>这样我们就完成了删除操作，但是在实际的代码操作中，并不是这样进行删除操作的，有一定的微调，代码中是直接把堆顶和堆底交换一下，然后把交换后的堆顶不断与它的子节点交换，直到这个堆重新符合堆性质<del>（但是上面的方式好理解啊）</del></p>
+<p>手写堆的删除支持任意一个节点的删除，不过STL只支持堆顶删除，STL的我们后面再讲</p>
+<p>Code：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span>&#123;</span><br><span class="line">	swap(heap[siz],heap[<span class="number">1</span>]);siz--;<span class="comment">//交换堆顶和堆底，然后直接弹掉堆底 </span></span><br><span class="line">	<span class="keyword">int</span> now=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>((now&lt;&lt;<span class="number">1</span>)&lt;=siz)&#123;<span class="comment">//对该节点进行向下交换的操作 </span></span><br><span class="line">    	<span class="keyword">int</span> nxt=now&lt;&lt;<span class="number">1</span>;<span class="comment">//找出当前节点的左儿子 </span></span><br><span class="line">        <span class="keyword">if</span>(nxt+<span class="number">1</span>&lt;=siz&amp;&amp;heap[nxt+<span class="number">1</span>]&lt;heap[nxt])nxt++;<span class="comment">//看看是要左儿子还是右儿子跟它换 </span></span><br><span class="line">        <span class="keyword">if</span>(heap[nxt]&lt;heap[now])swap(heap[now],heap[nxt]);<span class="comment">//如果不符合堆性质就换 </span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">break</span>;<span class="comment">//否则就完成了 </span></span><br><span class="line">        now=nxt;<span class="comment">//往下一层继续向下交换 </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-查询"><a href="#3-查询" class="headerlink" title="3.查询"></a>3.查询</h2><p>因为我们一直维护着这个堆使它满足堆性质，而堆最简单的查询就是查询优先级最低/最高的元素，对于我们维护的这个堆heap，它的优先级最低/最高的元素就是堆顶，所以查询之后输出heap[1]就好了</p>
+<p>一般的题目里面查询操作是和删除操作捆绑的，查询完后顺便就删掉了，这个主要因题而异</p>
+<h1 id="三-堆的STL实现"><a href="#三-堆的STL实现" class="headerlink" title="三.堆的STL实现"></a>三.堆的STL实现</h1><p>这年头真的没几个人写手写堆<del>（可能有情怀党？）</del></p>
+<p>一是手写堆容易写错代码又多，二是STL    直接给我们提供了一个实现堆的简单方式：优先队列</p>
+<p>手写堆和STL的优先队列有什么    区别？<del>没有区别</del></p>
+<p>速度方面，手写堆会偏快一点，但是如果开了O2优化优先队列可能会更快；</p>
+<p>代码实现难度方面：优先队列完爆手写堆</p>
+<p>这两方面综合起来，一般都是用STL的优先队列来实现堆，<del>省选开O2啊</del></p>
+<p>至于为什么前面讲堆的操作时用手写堆，好理解嘛，最好先根据上面的代码和图理解一下堆是怎么实现那些操作的，再来看一下下面的STL的操作</p>
+<p>定义一个优先队列：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">首先你需要一个头文件：<span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line">priority_queue&lt;<span class="keyword">int</span>&gt; q;<span class="comment">//这是一个大根堆q</span></span><br><span class="line">priority_queue&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt; &gt;q;<span class="comment">//这是一个小根堆q</span></span><br><span class="line"><span class="comment">//注意某些编译器在定义一个小根堆的时候greater&lt;int&gt;和后面的&gt;要隔一个空格，不然会被编译器识别成位运算符号&gt;&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>优先队列的操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">q.top()//取得堆顶元素，并不会弹出</span><br><span class="line">q.pop()//弹出堆顶元素</span><br><span class="line">q.push()//往堆里面插入一个元素</span><br><span class="line">q.empty()//查询堆是否为空，为空则返回1否则返回0</span><br><span class="line">q.size()//查询堆内元素数量</span><br></pre></td></tr></table></figure></p>
+<p>常用也就这些，貌似还有其他，不过基本也用不到，知道上面那几个也就可以了</p>
+<p>不过有个小问题就是STL只支持删除堆顶，而不支持删除其他元素</p>
+<p>但是问题不大，开一个数组del，在要删除其他元素的时候直接就标记一下del[i]=1，这里的下标是元素的值，然后在查询的时候碰到这个元素被标记了直接弹出然后继续查询就可以了<br>（前两天刚从学长处get这个姿势）</p>
+<p>另外因为STL好写，下面堆的应用全部都会采用STL的代码实现<del>（懒啊，如果有放代码的话）</del></p>
+<p>这里补一下重载运算符在STL的优先队列中应用到的知识</p>
+<p><strong>重载运算符是什么？</strong></p>
+<p><strong>把一种运算符变成另外一种运算符（注意，都必须是原有的运算符）</strong>，比如把&lt;号重载成&gt;号，这个东西学过STL中的sort的同学应该会比较熟悉</p>
+<p>这个在优先队列中有什么用处呢？</p>
+<p>之前我们就讲到了，大根堆，小根堆的“大”和“小”都不是传统意义下的“大”和“小”，重载运算符在STL的优先队列中就是用来解决这种“非传统意义的‘大’和‘小’”的</p>
+<p>现在你有一个数列，它有权值和优先级两种属性，权值即该数的大小，优先级是给定的，现在要你按照优先级的大小从小到大输出这个数列</p>
+<p><del>这不是Treap吗？这不是sort吗？</del></p>
+<p>以上两个东西都可以用来实现这道题（逃，而且就实用性而言，sort用来解决这道题是最方便的，但是我们现在要讲的做法是使用<strong>堆排序</strong>的方式来解决这道题（堆排序是什么？下文堆的应用中有提到）</p>
+<p>首先应该想得到结构体，我们定义一个结构体<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val,rnd;</span><br><span class="line">&#125;a[<span class="number">100</span>];</span><br></pre></td></tr></table></figure></p>
+<p>但是使用传统做法是行不通的，在小根堆中是通过比较数的大小来确定各个元素在堆中的位置的，但是对于这个a数组，你是要对比权值val的值，还是要对比优先级rnd的值？</p>
+<p>这时候<strong>重载运算符</strong>就派上用场了</p>
+<p>我们在结构体里面再加3行东西</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct node&#123;</span><br><span class="line">	int val,rnd;</span><br><span class="line">    bool operator &lt; (const node&amp;x) const &#123;</span><br><span class="line">		return rnd&lt;x.rnd;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;a[100];</span><br></pre></td></tr></table></figure>
+<p>这个玩意为什么要这么写呢？</p>
+<p>首先这个玩意是bool类型的，因为你只需要判断这两个是大，还是小；然后，要重载运算符就必须加一个operator这个玩意，不然计算机怎么知道你要干嘛？后面接一个你要重载的运算符，这里是“&lt;”，再后面的括号里面的东西则是你要比较的数据类型，这里是数据类型为node，并且加了一个指针&amp;，将对这个x的修改同步到你实际上要修改的数据那里。然后就是记得加那两个const</p>
+<p>然后两个大括号里面就是你重载的内容了，这里是把比较数的大小的小于号，重载成比较node这个数据类型里面的优先级的大小</p>
+<p>这个玩意讲的比较多，主要是因为是一个很难懂的东西<del>（对我来说？反正当时学的时候就是感觉很晦涩难懂，这里就尽量写详细一点，给和当初的我一样的萌新看一下）</del></p>
+<p>而且在实际中，这个东西的用处也很大，就说在堆里面的应用，在NOIP提高，省选的那个级别，就绝对不可能考裸的堆的，往往你要比较的东西就不是数的大小了，而是按照题目要求灵活更改，这时候重载运算符就帮得上很大忙了</p>
+<p><strong>这也就是为什么我在前面反复强调，堆里面的大小，并非传统意义下的大小</strong></p>
+<h1 id="四-堆的复杂度"><a href="#四-堆的复杂度" class="headerlink" title="四.堆的复杂度"></a>四.堆的复杂度</h1><p>因为堆是一棵完全二叉树，所以对于一个节点数为n的堆，它的高度不会超过log2n</p>
+<p>所以对于插入，删除操作复杂度为O(log2n)</p>
+<p>查询堆顶操作的复杂度为O(1)</p>
+<h1 id="五-堆的应用"><a href="#五-堆的应用" class="headerlink" title="五.堆的应用"></a>五.堆的应用</h1><h2 id="1-堆排序"><a href="#1-堆排序" class="headerlink" title="1.堆排序"></a>1.堆排序</h2><p>其实就是用要排序的元素建一个堆（视情况而定是大根堆还是小根堆），然后依次弹出堆顶元素，最后得到的就是排序后的结果了</p>
+<p>但是裸的并没有什么用，我们有sort而且sort还比堆排快，所以堆排一般都没有这种模板题，一般是利用堆排的思想，然后来搞一些奇奇怪怪的操作，第2个应用就有涉及到一点堆排的思想</p>
+<h2 id="2-用两个堆来维护一些查询第k小-大的操作"><a href="#2-用两个堆来维护一些查询第k小-大的操作" class="headerlink" title="2.用两个堆来维护一些查询第k小/大的操作"></a>2.用两个堆来维护一些查询第k小/大的操作</h2><ul>
+<li><a href="https://www.luogu.org/problemnew/show/P1801" target="_blank" rel="noopener">洛谷P1801 黑匣子</a>  </li>
+</ul>
+<p>利用一个大根堆一个小根堆来维护第k小，并没有强制在线<br>不强制在线，所以我们直接读入所有元素，枚举询问，因为要询问第k小，所以把前面的第k个元素都放进大根堆里面，然后如果元素数量大于k，就把堆顶弹掉放到小根堆里面，使大根堆的元素严格等于k，这样这次询问的结果就是小根堆的堆顶了（前面k-1小的元素都在大根堆里面了）。记得在完成这次询问后重新把小根堆的堆顶放到大根堆里面就好。</p>
+<ul>
+<li><a href="https://www.luogu.org/problemnew/show/P1090" target="_blank" rel="noopener">洛谷P1090 合并果子</a>  </li>
+</ul>
+<p>直接从所有果子中找到最小堆最小的果子，合并之后再放入堆中。</p>
+<ul>
+<li><a href="https://www.luogu.org/problemnew/show/P1168" target="_blank" rel="noopener">洛谷P1168 中位数</a></li>
+</ul>
+<p>中位数也是这种操作可以解决的一种经典问题，但是实际应用不大（这种操作的复杂度为$O(nlogn)$，然而求解中位数有$O(n)$做法）</p>
+<p>Luogu中也有此类例题，题解内也讲的比较清楚了，此处不再赘述，读者可当做拓展练习进行食用</p>
+<p>提示：设序列长度为$N$，则中位数其实等价于序列中$N/2$大的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">#define inf 1&lt;&lt;30</span><br><span class="line">#define il inline </span><br><span class="line">#define in1(a) read(a)</span><br><span class="line">#define in2(a,b) in1(a),in1(b)</span><br><span class="line">#define in3(a,b,c) in2(a,b),in1(c)</span><br><span class="line">#define in4(a,b,c,d) in2(a,b),in2(c,d)</span><br><span class="line">il int max(int x,int y)&#123;return x&gt;y?x:y;&#125;</span><br><span class="line">il int min(int x,int y)&#123;return x&lt;y?x:y;&#125;</span><br><span class="line">il int abs(int x)&#123;return x&gt;0?x:-x;&#125;</span><br><span class="line">il void swap(int &amp;x,int &amp;y)&#123;int t=x;x=y;y=t;&#125;</span><br><span class="line">il void readl(ll &amp;x)&#123;</span><br><span class="line">    x=0;ll f=1;char c=getchar();</span><br><span class="line">    while(c&lt;&apos;0&apos;||c&gt;&apos;9&apos;)&#123;if(c==&apos;-&apos;)f=-f;c=getchar();&#125;</span><br><span class="line">    while(c&gt;=&apos;0&apos;&amp;&amp;c&lt;=&apos;9&apos;)&#123;x=x*10+c-&apos;0&apos;;c=getchar();&#125;</span><br><span class="line">    x*=f;</span><br><span class="line">&#125;</span><br><span class="line">il void read(int &amp;x)&#123;</span><br><span class="line">    x=0;int f=1;char c=getchar();</span><br><span class="line">    while(c&lt;&apos;0&apos;||c&gt;&apos;9&apos;)&#123;if(c==&apos;-&apos;)f=-f;c=getchar();&#125;</span><br><span class="line">    while(c&gt;=&apos;0&apos;&amp;&amp;c&lt;=&apos;9&apos;)&#123;x=x*10+c-&apos;0&apos;;c=getchar();&#125;</span><br><span class="line">    x*=f;</span><br><span class="line">&#125;</span><br><span class="line">using namespace std;</span><br><span class="line">/*===================Header Template=====================*/</span><br><span class="line">#define N 200010</span><br><span class="line">priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt; q;</span><br><span class="line">priority_queue&lt;int&gt; q1;</span><br><span class="line">int n,m,a[N],b[N];</span><br><span class="line">int main()&#123;</span><br><span class="line">    in2(n,m);</span><br><span class="line">    for(int i=1;i&lt;=n;i++)in1(a[i]);</span><br><span class="line">    for(int i=1;i&lt;=m;i++)in1(b[i]);</span><br><span class="line">    int i=1;</span><br><span class="line">    for(int j=1;j&lt;=m;j++)&#123;</span><br><span class="line">        for(;i&lt;=b[j];i++)&#123;</span><br><span class="line">            q1.push(a[i]);</span><br><span class="line">            if(q1.size()==j)q.push(q1.top()),q1.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,q.top());</span><br><span class="line">        q1.push(q.top());q.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>事实上堆在难度较高的题目方面更多的用于维护一些贪心操作，以降低复杂度，很少会有题目是以堆为正解来出的了，更多的，堆在这些题目中处于“工具”的位置</strong></p>
+<h2 id="3-利用堆来维护可以“反悔的贪心”"><a href="#3-利用堆来维护可以“反悔的贪心”" class="headerlink" title="3.利用堆来维护可以“反悔的贪心”"></a>3.利用堆来维护可以“反悔的贪心”</h2><p>题目：<a href="https://www.luogu.org/problemnew/show/P2949" target="_blank" rel="noopener">Luogu P2949 [USACO09OPEN]工作调度Work Scheduling</a></p>
+<p>这道题的话算是这种类型应用的经典题了</p>
+<p>首先只要有贪心基础就不难想出一个解题思路：因为所有工作的花费时间都一样，我们只要尽量的选获得利润高的工作，以及对于每个所选的工作，我们尽量让它在更靠近它的结束时间的地方再来工作</p>
+<p>但是两种条件我们并不好维护，这种两个限制条件的题目也是有一种挺经典的做法的：对一个限制条件进行排序，对于另一个限制条件使用某些数据结构来维护（如treap，线段树，树状数组之类），但是这并不在我们今天的讨论范畴QAQ</p>
+<p>考虑怎么将这两个条件“有机统一”。</p>
+<p>排序的思路是没有问题的，我们可以对每个工作按照它的结束时间进行排序，从而来维护我们的第二个贪心的想法。</p>
+<p>那么对于这样做所带来的一个冲突：对于一个截止时间在d的工作，我们有可能把0~d秒全都安排满了（可能会有多个任务的截止时间相同）</p>
+<p>怎么解决这种冲突并保证答案的最有性呢？</p>
+<p>一个直观的想法就是把我们目前已选的工作全部都比较一下，然后选出一个创造的利润最低的工作（假设当前正在决策的这个工作价值很高），然后舍弃掉利润最低的工作，把这个工作放进去原来的那个位置。（因为我们已经按照结束时间排序了，所以舍弃的那个任务的截止完成时间一定在当前决策的工作的之前）</p>
+<p>但是对于大小高达$10^6$的n，$O(n^2)$的复杂度显然是无法接受的，结合上面的内容，读者们应该也不难想出，可以使用堆来优化这个操作</p>
+<p>我们可以在选用了这个工作之后，将当前工作放入小根堆中，如果堆内元素大于等于当前工作的截止时间了（因为这道题中，一个工作的执行时间是一个单位时间），我们就可以把当前工作跟堆顶工作的价值比较，如果当前工作的价值较大，就可以将堆顶弹出，然后将新的工作放入堆中，给答案加上当前工作减去堆顶元素的价值（因为堆顶元素在放入堆中的时候价值已经累加进入答案了）。如果堆内元素小于截止时间那么直接放入堆中就好</p>
+<p>至此，我们已经可以以$O(nlogn)$的效率通过本题</p>
+<p>而通过这道题我们也可以发现，只有在优化我们思考出来的贪心操作的时间复杂度时，我们才用到了堆。正如我们先前所说到的，在大部分有一定难度的题目里，堆都是以一个“工具”的身份出现，用于优化算法（大多时候是贪心）的时间复杂度等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line"></span><br><span class="line">using namespace std ;</span><br><span class="line"></span><br><span class="line">#define N 100010</span><br><span class="line">#define int long long</span><br><span class="line"></span><br><span class="line">int n , m ;</span><br><span class="line">struct node &#123;</span><br><span class="line">	int d,p ;</span><br><span class="line">	bool operator &lt; ( const node &amp;x ) const &#123; return p&gt;x.p; &#125;</span><br><span class="line">&#125; a[ N ] ;</span><br><span class="line"></span><br><span class="line">bool cmp( node a , node b ) &#123;</span><br><span class="line">	return a.d==b.d?a.p&gt;b.p:a.d&lt;b.d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">priority_queue&lt; node &gt; q ;</span><br><span class="line"></span><br><span class="line">signed main() &#123;</span><br><span class="line">	scanf( &quot;%lld&quot; , &amp;n ) ;</span><br><span class="line">	for( int i = 1 ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">		scanf( &quot;%lld%lld&quot; , &amp;a[i].d , &amp;a[i].p ) ;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(a+1,a+n+1,cmp);</span><br><span class="line">	int ans = 0 ;</span><br><span class="line">	for( int i = 1 ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">		if( a[i].d&lt;=(int)q.size() ) &#123;</span><br><span class="line">			if( q.top().p&lt;a[i].p ) &#123;</span><br><span class="line">				ans += a[i].p-q.top().p ; </span><br><span class="line">				q.pop() ; </span><br><span class="line">				q.push(a[i]) ;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else q.push(a[i]) , ans += a[ i ].p ;</span><br><span class="line">	&#125;</span><br><span class="line">	printf( &quot;%lld\n&quot; , ans ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>continue…持续更新中</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/2019/04/28/浅析基础数据结构-二叉堆/" data-id="cjv0c1ouv000p4sw5ub61tpxq" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉堆/">二叉堆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/28/点分治小结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          点分治小结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/28/分块入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">分块入门</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">henry_y&#39;s blog</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>8</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/henry-y" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://cnblogs.com/henry-1202" target="_blank" title="henry_y">
+          henry_y
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://zcmimi.tk" target="_blank" title="zcmimi">
+          zcmimi
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2018 - 2019 henry-y<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title class="menuItem">首页</a>
+          
+            <a href="/tags" title class="menuItem">标签</a>
+          
+            <a href="/categories" title class="menuItem">分类</a>
+          
+            <a href="/archives" title class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>
