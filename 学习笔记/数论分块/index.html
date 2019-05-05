@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>欧拉函数的几个性质及证明 | henry_y&#39;s blog</title>
+  <title>数论分块 | henry_y&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Note这篇文章涉及几个欧拉函数的性质 暂时没有证明，大概寒假的时候会补一下证明 完结撒花！我居然在寒假第一天就把这证明补完了… 如果下方的证明有哪里有问题的话，请在下方评论区指出，以提醒作者修改。">
-<meta name="keywords" content="学习笔记,欧拉函数">
+  <meta name="description" content="前言最近在学莫比乌斯反演，然而只看懂了莫比乌斯函数，然后反演看着一脸懵逼，最后只看懂了数论分块里面的一个分支内容（也是莫比乌斯反演的前置姿势），整除分块。于是写一篇博文记录一下整除分块也称数论分块数论分块是莫比乌斯反演一个很重要的的前置知识（基本都要用到这个玩意）已经看完莫反啦，打算写一篇博客来记录一下莫反。">
+<meta name="keywords" content="学习笔记,数论分块">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欧拉函数的几个性质及证明">
-<meta property="og:url" content="http://henry-y.github.io/2019/04/28/学习笔记/欧拉函数的几个性质及证明/index.html">
+<meta property="og:title" content="数论分块">
+<meta property="og:url" content="http://henry-y.github.io/学习笔记/数论分块/index.html">
 <meta property="og:site_name" content="henry_y&#39;s blog">
-<meta property="og:description" content="Note这篇文章涉及几个欧拉函数的性质 暂时没有证明，大概寒假的时候会补一下证明 完结撒花！我居然在寒假第一天就把这证明补完了… 如果下方的证明有哪里有问题的话，请在下方评论区指出，以提醒作者修改。">
+<meta property="og:description" content="前言最近在学莫比乌斯反演，然而只看懂了莫比乌斯函数，然后反演看着一脸懵逼，最后只看懂了数论分块里面的一个分支内容（也是莫比乌斯反演的前置姿势），整除分块。于是写一篇博文记录一下整除分块也称数论分块数论分块是莫比乌斯反演一个很重要的的前置知识（基本都要用到这个玩意）已经看完莫反啦，打算写一篇博客来记录一下莫反。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T04:52:27.834Z">
+<meta property="og:updated_time" content="2019-05-05T04:52:39.004Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="欧拉函数的几个性质及证明">
-<meta name="twitter:description" content="Note这篇文章涉及几个欧拉函数的性质 暂时没有证明，大概寒假的时候会补一下证明 完结撒花！我居然在寒假第一天就把这证明补完了… 如果下方的证明有哪里有问题的话，请在下方评论区指出，以提醒作者修改。">
+<meta name="twitter:title" content="数论分块">
+<meta name="twitter:description" content="前言最近在学莫比乌斯反演，然而只看懂了莫比乌斯函数，然后反演看着一脸懵逼，最后只看懂了数论分块里面的一个分支内容（也是莫比乌斯反演的前置姿势），整除分块。于是写一篇博文记录一下整除分块也称数论分块数论分块是莫比乌斯反演一个很重要的的前置知识（基本都要用到这个玩意）已经看完莫反啦，打算写一篇博客来记录一下莫反。">
   
     <link rel="alternate" href="/atom.xml" title="henry_y&#39;s blog" type="application/atom+xml">
   
@@ -73,9 +73,9 @@
   </div>
 </div>
 
-        <section id="main"><article id="post-学习笔记/欧拉函数的几个性质及证明" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-学习笔记/数论分块" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/04/28/学习笔记/欧拉函数的几个性质及证明/" class="article-date">
+    <a href="/学习笔记/数论分块/" class="article-date">
   <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
     <span class="post-month">4月</span><br>
     <span class="post-day">28</span>
@@ -90,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      欧拉函数的几个性质及证明
+      数论分块
     </h1>
   
 
@@ -104,7 +104,7 @@
               
   &nbsp; | &nbsp;
   <div class="view-box">
-    <span id="/2019/04/28/学习笔记/欧拉函数的几个性质及证明/" class="leancloud_visitors" data-flag-title="欧拉函数的几个性质及证明">
+    <span id="/学习笔记/数论分块/" class="leancloud_visitors" data-flag-title="数论分块">
       &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
     </span>
   </div>
@@ -116,120 +116,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>这篇文章涉及几个欧拉函数的性质</p>
-<p><del>暂时没有证明，大概寒假的时候会补一下证明</del></p>
-<p>完结撒花！我居然在寒假第一天就把这证明补完了…</p>
-<p>如果下方的证明有哪里有问题的话，请在下方评论区指出，以提醒作者修改。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在学莫比乌斯反演，然而只看懂了莫比乌斯函数，然后反演看着一脸懵逼，最后只看懂了数论分块里面的一个分支内容（也是莫比乌斯反演的前置姿势），整除分块。<br>于是写一篇博文记录一下整除分块<br>也称数论分块<br>数论分块是莫比乌斯反演一个很重要的的前置知识（基本都要用到这个玩意）<br>已经看完莫反啦，打算写一篇博客来记录一下莫反。</p>
 <a id="more"></a>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>$\phi(n)$表示在1~n中与n互质的数</p>
-<h2 id="计算式及计算方法"><a href="#计算式及计算方法" class="headerlink" title="计算式及计算方法"></a>计算式及计算方法</h2><script type="math/tex; mode=display">
-\begin{aligned}
-&若n根据算术基本定理分解为n=p_1^{c_1}p_2^{c_2}...p_m^{c_m}\\
-&则\phi(n)=n\prod_{i=1}^{m}\left(1-\frac{1}{p}\right)\\
-&也可以变式为\phi(n)=n\prod_{i=1}^m\left(\frac{p-1}{p}\right)\\
-&本质是一样的
-\end{aligned}</script><h3 id="upd-：-O-frac-sqrt-n-log-n-计算一个数的欧拉函数"><a href="#upd-：-O-frac-sqrt-n-log-n-计算一个数的欧拉函数" class="headerlink" title="$upd$：$O(\frac{\sqrt{n}}{\log n})$计算一个数的欧拉函数"></a>$upd$：$O(\frac{\sqrt{n}}{\log n})$计算一个数的欧拉函数</h3><p>分解质因数，由性质4可以顺便算出每个$\varphi(p^k)$，然后因为$\varphi$是个积性函数，所以直接把每个值相乘即得到该数的$\varphi$。<br>直接分解质因数是$O(\sqrt{n})$的，但是只要预处理出根号内的质数就可以$O(\frac{\sqrt{n}}{\log n})$计算一个数的欧拉函数了。</p>
-<h2 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h2><script type="math/tex; mode=display">
-\begin{aligned}
-&\phi是积性函数，但不是完全积性函数\\
-&当n,m互质时，满足:\\
-&\phi(nm)=\phi(n)*\phi(m)\\
-&那么显然，当n根据算术基本定理分解为n=p_1^{c_1}p_2^{c_2}...p_m^{c_m}时\\
-&\phi(n)=\prod_{i=1}^m{\phi(p_i^{c_i})}
-\end{aligned}</script><h3 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h3><script type="math/tex; mode=display">
-\begin{aligned}
-&若n与m互质，则n与m没有相同的质因子\\
-&设n的质因子个数为cnt_n,m的质因子个数为cnt_m，则\\
-&\phi(n)*\phi(m)\\
-&=n*\prod_{i=1}^{cnt_n}(1-p_i)*m*\prod_{i=1}^{cnt_m}(1-p_i)\\
-&=n*m*\prod_{i=1}^{cnt_n+cnt_m}(1-p_i)\\
-&=\phi(nm)
-\end{aligned}</script><p>证毕。</p>
-<h2 id="性质2"><a href="#性质2" class="headerlink" title="性质2"></a>性质2</h2><p>对于质数$p$，它的欧拉函数值$\phi(p)=p-1$</p>
-<h3 id="证明：-1"><a href="#证明：-1" class="headerlink" title="证明："></a>证明：</h3><p>因为$p$为质数，所以比它小的数都和它互质，即在1~p中共有p-1个数和它互质。<br>证毕。</p>
-<h2 id="性质3"><a href="#性质3" class="headerlink" title="性质3"></a>性质3</h2><script type="math/tex; mode=display">
-当n为奇数时,\phi(2*n)=\phi(n)</script><h3 id="证明：-2"><a href="#证明：-2" class="headerlink" title="证明："></a>证明：</h3><script type="math/tex; mode=display">
-\begin{aligned}
-&当n为奇数时，n与2互质\\
-&由欧拉函数是积性函数可知，n与2互质时，\phi(2n)=\phi(2)*\phi(n)\\
-&又因为\phi(2)=1\\
-&所以\phi(2n)=\phi(n)
-\end{aligned}</script><p>证毕。</p>
-<h2 id="性质4"><a href="#性质4" class="headerlink" title="性质4"></a>性质4</h2><script type="math/tex; mode=display">
-当n=p^k时，\phi(n)=p^k-p^{k-1}</script><h3 id="证明：-3"><a href="#证明：-3" class="headerlink" title="证明："></a>证明：</h3><script type="math/tex; mode=display">
-因为n=p^k，所以n只有p一个质因数，则由欧拉函数的计算式可得\\
-\phi(n)=p^k*(1-\frac{1}{p})=p^k-p^{k-1}</script><h2 id="性质5"><a href="#性质5" class="headerlink" title="性质5"></a>性质5</h2><script type="math/tex; mode=display">
-\begin{aligned}
-&n中与n互质的数的和为\phi(n)/2*n(n>1)\\
-&\phi(n)(n>2)为偶数
-\end{aligned}</script><h3 id="证明：-4"><a href="#证明：-4" class="headerlink" title="证明："></a>证明：</h3><p>需要知道的一个基本事实是$gcd(n,x)=gcd(n,n-x)(n&gt;x)$</p>
-<p>关于这个，可以了解一下<a href="https://baike.baidu.com/item/%E6%9B%B4%E7%9B%B8%E5%87%8F%E6%8D%9F%E6%9C%AF/449183?fr=aladdin" target="_blank" rel="noopener">更相减损术</a></p>
-<p>因为$gcd(n,x)=gcd(n,n-x)(n&gt;x)$，所以<strong>与n互质的数都是成对出现的</strong></p>
-<p>每一对的和都为$n$。所以他们的和为$\phi(n)/2*n$。</p>
-<p>至于$\phi(n)(n&gt;2)$为偶数。因为与n互质的数都是成对出现的，所以显然与n互质的数为偶数，即$\phi(n)$为偶数。<br>证毕。</p>
-<h2 id="性质6"><a href="#性质6" class="headerlink" title="性质6"></a>性质6</h2><script type="math/tex; mode=display">
-\begin{aligned}
-&若p|n且p^2|n，则\phi(n)=\phi(\frac{n}{p})*p\\
-&若p|n且p^2\not|\space\space n,则\phi(n)=\phi(\frac{n}{p})*(p-1)
-\end{aligned}</script><h3 id="证明：-5"><a href="#证明：-5" class="headerlink" title="证明："></a>证明：</h3><p>对于第一点</p>
+<h2 id="整除分块"><a href="#整除分块" class="headerlink" title="整除分块"></a>整除分块</h2><p>整除分块是用于快速处理形似</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-&若p|n且p^2|n，则证明n和\frac{n}{p}有相同的质因子，只是p这一项的指数不同\\
-&那么我们可以将其按照欧拉函数的计算式展开，并相除，可得：\\
-&\frac{n\prod_{i=1}^m(1-\frac{1}{p_i})}{\frac{n}{p}\prod_{i=1}^{m}(1-\frac{1}{p_i})}=\frac{n}{\frac{n}{p}}=p\\
-\end{aligned}</script><p>对于第二点</p>
+\sum_{i=1}^{n}{\lfloor \frac{n}{i} \rfloor}</script><p>的式子的方法<br>很显然，这个可以$O(n)$得到答案。但是，在某些题目中，毒瘤出题人将数据加强到了$10^{10}$以上，这个时候我们就无法通过$O(n)$的解法来得到答案了。我们需要一个$O(\sqrt{n})$的更为优秀的解法<br>首先观察这个式子，找几个特殊值代入<br><code>n=5时，sum=5+2+1+1+1</code><br>可以发现的是：（这里给的例子并不明显，其实应该找一个大的n来代入才直观，读者可以自行尝试）<br>对于单一的$\lfloor \frac{n}{i} \rfloor$，某些地方的值是相同的，并且<strong>呈块状分布</strong><br>通过进一步的探求规律与推理<del>以及打表与瞎猜</del>，我们可以惊喜的发现一个规律，这些<strong>块状分布的值是有规律的</strong><br>对于一个块，<strong>假设它的起始位置的下标为l，那么可以得到的是，它的结束位置的下标为$\lfloor \frac{n}{\lfloor \frac{n}{l}\rfloor} \rfloor$</strong><br>如果实在看的有点懵逼，可以继续采用代入特殊值的方法，验证一下上方的规律，用程序表现出来即为</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//l为块的左端点，r为块的右端点</span></span><br><span class="line">r=n/(n/l)</span><br></pre></td></tr></table></figure>
+<p>在实际应用中，需要注意的就是<strong>除法除0</strong>的问题（一般都需要特判一下n/l）<br>程序实现也十分简单<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">1</span>, r = <span class="number">0</span>; l &lt;= n; l++) &#123;</span><br><span class="line">    r = n / (n / l);</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><h3 id="例题：BZOJ1257-CQOI2007-余数之和"><a href="#例题：BZOJ1257-CQOI2007-余数之和" class="headerlink" title="例题：BZOJ1257: [CQOI2007]余数之和"></a>例题：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1257" target="_blank" rel="noopener">BZOJ1257: [CQOI2007]余数之和</a></h3><p>这题其实就是求</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-&若p|n且p^2\not|\space\space n，则说明p与\frac{n}{p}互质（因为p为素数）\\
-&那么根据欧拉函数为积性函数的这个性质即可证得\phi(n)=\phi(\frac{n}{p})*\phi(p)=\phi(\frac{n}{p})*(p-1)
-\end{aligned}</script><p>证毕。</p>
-<p>这个性质广泛用于递推求欧拉函数</p>
-<h2 id="性质7"><a href="#性质7" class="headerlink" title="性质7"></a>性质7</h2><script type="math/tex; mode=display">
-\sum_{d|n}\phi(d)=n</script><p>证明：</p>
+\sum_{i=1}^{n}{k\space mod\space i}</script><p>这题和整除分块又有什么关系呢？<br>mod没有什么特殊的性质，所以我们将它展开来，就变成了</p>
 <script type="math/tex; mode=display">
-设f(n)=\sum_{d|n}\phi(d)\\</script><p>则f(n)为一个积性函数（当n，m互质时）</p>
-<h3 id="证明：-6"><a href="#证明：-6" class="headerlink" title="证明："></a>证明：</h3><p>（设n,m互质）</p>
+\sum_{i=1}^{n}{k\space-\lfloor \frac{k}{i} \rfloor*i}</script><p>于是我们就看到了一个熟悉的形式，也就是整除分块的一般形式</p>
+<p>再次改一下这个式子</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-&f(n)*f(m)\\
-&=\sum_{i|n}\phi(i)*\sum_{j|m}\phi(m)\\
-&=\sum_{i|n}\sum_{j|m}\phi(i)*\phi(j)\\
-&=\sum_{i|n}\sum_{j|m}\phi(i*j)\\
-&=\sum_{d|nm}\phi(d)\\
-&=f(nm)
-\end{aligned}\\
-\begin{aligned}
-&可以发现的是\sum_{i|n}\sum_{j|m}\phi(i*j)涵盖了所有nm的因数的欧拉函数，即为f(n)*f(m)\\
-&所以f是一个积性函数
-\end{aligned}</script><p>那么则有</p>
+n*k-\sum_{i=1}^{n}{\lfloor \frac{k}{i}\rfloor*i}</script><p>那么$\sum_{i=1}^{n}{\lfloor \frac{k}{i}\rfloor*i}$和普通的整除分块有什么差别呢？</p>
+<p><del>其实就是多了一个i</del></p>
+<p>确实，就是多了一个i而已，只需要简单的化简一下，这个i就对我们的处理没有什么影响了</p>
+<p>因为我们知道，对于一个整除分块$\sum_{i=l}^{r}{\lfloor\frac{k}{i}\rfloor}$，其中的每个值都是相同的，于是我们可以设$T=\lfloor\frac{k}{i}\rfloor$</p>
+<p>式子就化为了</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-&若n根据算数基本定理可以分解为p_1^{c_1}p_2^{c_2}...p_k^{c_k}\\
-&则由f是一个积性函数可知，f(n)=f(p_1^{c_1})*f(p_2^{c_2})*...*f(p_k^{c_k})\\
-&所以f(p^c)=\phi(1)+\phi(p)+\phi(p^2)+...+\phi(p^k)=1+(p-1)+(p^2-p)+...+(p^k-p^{k-1})=p^k\\
-&则f(n)=f(p_1^{c_1})*f(p_2^{c_2})*...*f(p_k^{c_k})=p_1^{c_1}*p_2^{c_2}*...*p_k^{c_k}=n\\
-&即\sum_{d|n}\phi(d)=n
-\end{aligned}</script><p>证毕。</p>
-<h2 id="性质8"><a href="#性质8" class="headerlink" title="性质8"></a>性质8</h2><script type="math/tex; mode=display">
-\phi(n)=\sum_{d|n}\frac{\mu(d)}{d}</script><h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>我们将性质7用狄利克雷卷积形式表示出来</p>
+\sum_{i=l}^{r}T*i \\
+=\sum_{i=l}^{r}{T}*\sum_{i=l}^{r}i</script><p>也就是说，其实这个式子前半段是一个整除分块，后半段是一个首项为l，公差为1的等差数列</p>
+<p>至此，我们就圆满的解决了这个问题，可以在$O(\sqrt{n})$的时间内解决本题</p>
+<p>这是整除分块中最基础的应用，就是单纯的利用整除分块来加速递推的实现，而实际上，整除分块更多的与其他函数结合在一起来使用，优化问题的求解</p>
+<h3 id="整除分块与积性函数"><a href="#整除分块与积性函数" class="headerlink" title="整除分块与积性函数"></a>整除分块与积性函数</h3><p>说到积性函数，就不得不讲到两个广为人知的函数$\phi,\mu$，这是我们最熟悉的积性函数<del>（其实我也只知道这两个）</del><br>积性函数有一个很好用的性质（设$f(i)$为一个积性函数）：</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-&\phi*1=id\\
-&两边卷上\mu\\
-&\phi*1*\mu=id*\mu\\
-&\phi*(1*\mu)=id*\mu\\
-&\phi*e=id*\mu
-\end{aligned}</script><p>最后一个式子写出来就是</p>
+f(i*j)=f(i)*f(j)</script><p>这里的$f(i)$其实是一个完全积性函数。（$\phi$就不是一个完全积性函数：$\phi(i<em>j)=\phi(i)</em>\phi(j)$当且仅当i，j互质才成立）<br>好了，讲完积性函数的这个性质后我们步入正题，整除分块与积性函数的联系<br>很多时候，我们推出来整除分块的式子不是很裸的，常与其他函数结合（通常是积性函数，通常为$\mu$或$\phi$）<br>这个时候如何统计答案呢？<br>比如：</p>
 <script type="math/tex; mode=display">
-\phi(n)=\sum_{d|n}\frac{\mu(d)}{d}</script><p>证毕。</p>
+\sum_{i=1}^{n}{\mu(i)*\lfloor \frac{n}{i}\rfloor}</script><p>积性函数的性质！<br>因为积性函数这个很好用的性质，所以我们可以直接对前半段的莫比乌斯函数维护一个前缀和，再利用整除分块处理式子的后半段，处理答案的时候，把两段相乘即可</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a href="https://www.cnblogs.com/henry-1202/p/10201032.html" target="_blank" rel="noopener">BZOJ2956: 模积和</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/2019/04/28/学习笔记/欧拉函数的几个性质及证明/" data-id="cjvagmyfw000930w5btv8ppit" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/数论分块/" data-id="cjvagpatj0009wcw5blgxjox6" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/欧拉函数/">欧拉函数</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数论分块/">数论分块</a></li></ul>
 
     </footer>
   </div>
@@ -237,17 +161,17 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/04/28/学习笔记/数论分块/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/学习笔记/欧拉函数的几个性质及证明/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          数论分块
+          欧拉函数的几个性质及证明
         
       </div>
     </a>
   
   
-    <a href="/2019/04/28/学习笔记/点分治小结/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/学习笔记/点分治小结/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
       <div class="article-nav-title">点分治小结</div>
     </a>
