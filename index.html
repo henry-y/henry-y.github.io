@@ -41,9 +41,9 @@
     <h2 class="author">henry-y</h2>
     <h3 class="description">喵</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>9</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>11</strong><br>文章</div></a>
       <a href="/categories"><div><strong>3</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>11</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -72,6 +72,230 @@
 </div>
 
         <section id="main">
+  
+    <article id="post-题解/LOJ #6164" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/题解/LOJ #6164/" class="article-date">
+  <time class="post-time" datetime="2019-05-05T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br>
+    <span class="post-day">06</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/题解/LOJ #6164/">LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Solutions/">Solutions</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/题解/LOJ #6164/" class="leancloud_visitors" data-flag-title="LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行，两个正整数 $n , m$。</p>
+<p>第二行，$n$ 个正整数 $a_i$ 描述这个数列。</p>
+<p>接下来 $m$ 行，每行三个正整数 $l_i , r_i , k_i$，描述一次询问。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出 $m$ 行，即每次询问的答案。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">10 5</span><br><span class="line">1 1 1 1 1 2 2 2 2 2</span><br><span class="line">4 7 2</span><br><span class="line">4 7 3</span><br><span class="line">4 8 2</span><br><span class="line">4 8 3</span><br><span class="line">3 8 3</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h2 id="数据范围与提示"><a href="#数据范围与提示" class="headerlink" title="数据范围与提示"></a>数据范围与提示</h2><ul>
+<li>$1\le n,m\le 5\times 10^4$  </li>
+<li>$1\le a_i\le n$  </li>
+<li>$1\le l_i\le r_i\le n​$       </li>
+<li>$1\le k_i\le n​$</li>
+</ul>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>一开始我想了一个按$k $值分类分别排序做莫队的方法，然而是个假做法，“如果$k$全部不同呢”。</p>
+<p>实际上要对$a_i​$ 根号分治。</p>
+<ul>
+<li><p>对于出现次数小于$\sqrt{n}$的$a_i$，我们可以统计每种出现次数的数的个数，那么只需要$\sqrt{n}\log{n}$就能判断出有多少个数与$k$互质了。</p>
+</li>
+<li><p>对于出现次数大于$\sqrt{n}$的$a_i$，易知总个数不会超过$\sqrt{n}$，所以可以在预处理的时候顺便处理出前缀和，就能同样以$\sqrt{n}\log{n}$的效率判断了。（但是这样的话在做莫队的时候需要<strong>特判预处理的这些数不进行处理</strong>，否则会算重。）</p>
+</li>
+</ul>
+<p>总效率是$O(n\log{n}+m\sqrt{n}\log{n})$</p>
+<p>但是这题还卡常，所以需要用到一点特技，在$\log \log{n}$的时间内判断两数是否互质。</p>
+<p>预处理时对每个数分解质因数 ，设$x,y$的质因数个数为$d(x),d(y)$，那么只需要$\max\{d(x), d(y) \}$就可以判断出$x,y$是否互质。（判断是否有相同质因数），$\max\{d(x),d(y) \}$近似于$\log \log n$。</p>
+<p>这样总效率就是$O(n\log n + m\sqrt{n}\log \log n)​$了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 50010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cnt[N], sum, c[N], cnt1[N];</span><br><span class="line"><span class="keyword">int</span> n, m, a[N], ans[N], tot;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> bn[<span class="number">310</span>][N], b[<span class="number">310</span>];</span><br><span class="line"><span class="keyword">int</span> d[N][<span class="number">30</span>];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Qu</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> l, r, k, id;</span><br><span class="line">&#125;q[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> block;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Qu a, Qu b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.l / block == b.l / block ? a.r &lt; b.r : a.l / block &lt; b.l / block;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(cnt1[a[x]] &gt;= block) <span class="keyword">return</span>;</span><br><span class="line">	c[cnt[a[x]]]--;</span><br><span class="line">	cnt[a[x]]++;</span><br><span class="line">	c[cnt[a[x]]]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Del</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(cnt1[a[x]] &gt;= block) <span class="keyword">return</span>;</span><br><span class="line">	c[cnt[a[x]]]--;</span><br><span class="line">	cnt[a[x]]--;</span><br><span class="line">	c[cnt[a[x]]]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i]) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt;= n; j += i) &#123;</span><br><span class="line">				d[j][<span class="number">0</span>]++;</span><br><span class="line">				d[j][d[j][<span class="number">0</span>]] = i;</span><br><span class="line">				vis[j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!x) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= d[x][<span class="number">0</span>]; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span>(vis[d[x][i]]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;q[i].l, &amp;q[i].r, &amp;q[i].k);</span><br><span class="line">		q[i].id = i;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	init();</span><br><span class="line"></span><br><span class="line">	block = <span class="built_in">sqrt</span>(n);</span><br><span class="line">	sort(q + <span class="number">1</span>, q + m + <span class="number">1</span>, cmp);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		cnt1[a[i]]++;</span><br><span class="line">		<span class="keyword">if</span>(cnt1[a[i]] == block) &#123;</span><br><span class="line">			b[++tot] = a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j) &#123;</span><br><span class="line">			bn[i][j] = bn[i][j - <span class="number">1</span>] + (a[j] == b[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> l = q[<span class="number">1</span>].l, r = q[<span class="number">1</span>].l - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> ql = q[i].l, qr = q[i].r;</span><br><span class="line">		<span class="keyword">while</span>(l &gt; ql) add(--l);</span><br><span class="line">		<span class="keyword">while</span>(l &lt; ql) Del(l++);</span><br><span class="line">		<span class="keyword">while</span>(r &lt; qr) add(++r);</span><br><span class="line">		<span class="keyword">while</span>(r &gt; qr) Del(r--);</span><br><span class="line">		</span><br><span class="line">		sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= d[q[i].k][<span class="number">0</span>]; ++j) vis[d[q[i].k][j]] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; block; ++j) &#123;</span><br><span class="line">			<span class="keyword">if</span>(check(j)) sum += c[j]; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; ++j) &#123;</span><br><span class="line">			<span class="keyword">if</span>(check(bn[j][r] - bn[j][l - <span class="number">1</span>])) sum++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		ans[q[i].id] = sum;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= d[q[i].k][<span class="number">0</span>]; ++j) vis[d[q[i].k][j]] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans[i]);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/题解/LOJ #6164/" data-id="cjvbsvv3a000cokw5pfp4qjij" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫队/">莫队</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-学习笔记/hash进阶：使用字符串hash乱搞的姿势" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/学习笔记/hash进阶：使用字符串hash乱搞的姿势/" class="article-date">
+  <time class="post-time" datetime="2019-05-05T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br>
+    <span class="post-day">06</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/学习笔记/hash进阶：使用字符串hash乱搞的姿势/">hash进阶：使用字符串hash乱搞的姿势</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/学习笔记/hash进阶：使用字符串hash乱搞的姿势/" class="leancloud_visitors" data-flag-title="hash进阶：使用字符串hash乱搞的姿势">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>此文主要介绍hash的各种乱搞方法，hash入门请参照我之前<a href="http://www.cnblogs.com/henry-1202/p/8868414.html" target="_blank" rel="noopener">这篇文章</a></p>
+<p><del>不好意思hash真的可以为所欲为</del></p>
+<h2 id="查询子串hash值"><a href="#查询子串hash值" class="headerlink" title="查询子串hash值"></a>查询子串hash值</h2><p>必备的入门操作，因为OI中用到的hash一般都是<strong>进制哈希</strong>，因为它有一些极其方便的性质，比如说，是具有和前缀和差不多的性质的。</p>
+<p>假设一个字符串的前缀hash值记为h[i]，我们hash时使用的进制数为base，那么显然h[i]=h[i-1]*base+s[i]</p>
+<p>记p[i]表示base的i次方，那么我们可以通过这种方式O(1)得到一个子串的hash值（设这个子串为s[l]…s[r])</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="function">ull <span class="title">get_hash</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> h[r] - h[l - <span class="number">1</span>] * p[r - l + <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>可是为什么呢？</strong></p>
+<p>我们知道，进行进制哈希的过程本质上就是把原先得到的哈希值在base进制上强行左移一位，然后放进去当前的这个字符。</p>
+<p>现在的目的是，取出l到r这段子串的hash值，也就是说，h[l-1]这一段是没有用的，我们把在h[r]这一位上，h[l-1]这堆字符串的hash值做的左移运算全部还原给h[l-1]，就可以知道h[l-1]在h[r]中的hash值，那么减去即可。（简单的容斥思想）</p>
+<p>这是基本操作，现在来看一个这个的拓展问题。</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>现在有一个字符串s，每次询问它的一个子串删除其中一个字符后的hash值（删除的字符时给定的）</p>
+<p>要求必须O(1)回答询问</p>
+<h3 id="Sol"><a href="#Sol" class="headerlink" title="Sol"></a>Sol</h3><p>删除操作？那不能像上面那样子简单粗暴的来搞了，但是其实本质上是一样的。</p>
+<p>假设我们现在询问的区间为[l,r]，删除的字符为x（指位置，不是字符）</p>
+<p>类比上面的做法，我们可以先O(1)得到区间[l,x-1]和区间[x+1,r]的hash值，那么现在要做的事情就是把这两段拼起来了，由于我们使用的是进制hash，所以其实很简单，强行将前面的区间强行左移r-x位（这么看可能会好理解一点：r-(x+1)+1）就好。</p>
+<p>代码实现也很简单</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="function">ull <span class="title">get_hash</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> h[r] - h[l - <span class="number">1</span>] * p[r - l + <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ull <span class="title">get_s</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> get_hash(l, x - <span class="number">1</span>) * p[r - x] + get_hash(x + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这题的原题是<a href="https://loj.ac/problem/2823" target="_blank" rel="noopener">LOJ#2823. 「BalticOI 2014 Day 1」三个朋友 </a>，需要分类讨论一下，不过知道上面这个也就不难了</p>
+<h2 id="用hash求最长回文子串-回文子串数"><a href="#用hash求最长回文子串-回文子串数" class="headerlink" title="用hash求最长回文子串/回文子串数"></a>用hash求最长回文子串/回文子串数</h2><p>最长回文子串！我知道！马拉车！可以O(n)！</p>
+<p>可是如果你马拉车写挂了呢？<del>或者像我一样不会马拉车</del></p>
+<p>这时候就得靠hash来水分了</p>
+<p>我们知道，回文子串是具有单调性的</p>
+<p><code>如果字符串s[l...r]为回文子串，那么s[x...y](l&lt;x,y&lt;r)也一定是回文子串</code></p>
+<p>单调性！我们是不是可以二分？</p>
+<p>我们暂时只讨论长度为奇数的回文子串。（事实上，长度为偶数的回文子串与奇数的只是处理上的一些细节不同，仅此而已）</p>
+<p>考虑枚举回文子串的中点，并二分回文子串的长度（不过一般来说，二分回文子串的长度的1/2可能会更好写一点），那么我们使用上文提到的O(1)查询子串hash值的方法，就可以O(1)判断二分得到的这个子串是不是回文子串了。</p>
+<p>对于长度为偶数的回文子串，枚举中点左边/右边的字符即可</p>
+<p>效率是O(nlogn)的，复杂度较马拉车算法比较逊色，不过如果马拉车算法打挂或者是时间复杂度允许的情况下，hash也是一个不错的选择。</p>
+<p>然后还有一种方法，适合像我这种下标总是搞错的，可以直接处理出正串和反串的hash值，然后每次根据二分出来的长度计算整个字符串的起止，判断正串和反串的hash值是否相等即可。（这样就不用研究恶心的下标了…研究下标还得分奇偶讨论…）</p>
+<p><strong>字符串的很多特性是具有单调性的，二分求解是一个常见的思路，配合哈希进行判断操作一般可以做到在O(nlogn)效率内完成问题</strong></p>
+<p>例题：<a href="https://www.luogu.org/problemnew/show/SP7586" target="_blank" rel="noopener">SP7586 NUMOFPAL - Number of Palindromes</a></p>
+<p>练习：<a href="https://www.cnblogs.com/henry-1202/p/10321013.html" target="_blank" rel="noopener">LOJ#2452. 「POI2010」反对称 Antisymmetry</a></p>
+<p>例题代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> base 13131</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line">ull h1[N], p[N], h2[N], ans = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function">ull <span class="title">gh1</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123; <span class="keyword">return</span> h1[r] - h1[l - <span class="number">1</span>] * p[r - l + <span class="number">1</span>]; &#125;</span><br><span class="line"><span class="function">ull <span class="title">gh2</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123; <span class="keyword">return</span> h2[l] - h2[r + <span class="number">1</span>] * p[r - l + <span class="number">1</span>]; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ull <span class="title">query1</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="comment">//奇 </span></span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">1</span>, r = min(x, n - x);</span><br><span class="line">	<span class="keyword">while</span>(l &lt;= r) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(gh1(x - mid, x + mid) == gh2(x - mid, x + mid)) l = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> r = mid - <span class="number">1</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ull <span class="title">query2</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="comment">//偶 </span></span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">1</span>, r = min(x, n - x); </span><br><span class="line">	<span class="keyword">while</span>(l &lt;= r) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(gh1(x - mid + <span class="number">1</span>, x + mid) == gh2(x - mid + <span class="number">1</span>, x + mid)) l = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>); p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    n = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    	h1[i] = h1[i - <span class="number">1</span>] * base + s[i];</span><br><span class="line">    	p[i] = p[i - <span class="number">1</span>] * base;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n; i; i--) h2[i] = h2[i + <span class="number">1</span>] * base + s[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">		ans += query1(i) + query2(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%llu\n"</span>, ans + n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="用hash代替kmp算法"><a href="#用hash代替kmp算法" class="headerlink" title="用hash代替kmp算法"></a>用hash代替kmp算法</h2><p>关于kmp算法，可以看<a href="https://pks-loving.blog.luogu.org/zi-fu-chuan-xue-xi-bi-ji-qian-xi-kmp-xuan-xue-di-dan-mu-shi-chuan-pi-post" target="_blank" rel="noopener">pks大佬的blog</a>，讲的真的很好！</p>
+<p>但是我们这里不讲kmp算法，我们利用hash来代替kmp算法求解单模式串匹配问题。</p>
+<p>但是kmp算法的next数组真的很妙！可以解决很多神奇的东西，强烈推荐去学学！</p>
+<p>好了，步入正题。</p>
+<p><strong>单模式串匹配问题是什么？</strong></p>
+<p>给出两个字符串s1和s2，其中s2为s1的子串，求s2在s1中出现多少次/出现的位置。</p>
+<p>如果有认真看过该篇文章的第一子目的话，应该不难想到这题的hash做法。</p>
+<p>具体做法是预处理出来两个串的hash值，因为求的是s2在s1中出现的次数，所以我们要匹配的长度被压缩到了s2的长度，所以我们只需要枚举s2在s1中的起点，看看后面一段长度为len的区间的hash值和s2的hash值一不一样就好。</p>
+<p>时间复杂度是O(n+m)的！和kmp算法一样！</p>
+<p>例题：<a href="https://loj.ac/problem/103" target="_blank" rel="noopener">LOJ  #103. 子串查找</a> (本来想放洛谷的结果要输出next数组就没办法了23333)</p>
+<p>练习：<a href="https://www.luogu.org/problemnew/show/UVA10298" target="_blank" rel="noopener">UVA10298 Power Strings</a></p>
+<p>例题代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> base 233</span></span><br><span class="line"></span><br><span class="line">ull h[N], p[N], ha;</span><br><span class="line"><span class="keyword">char</span> s1[N], s2[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>, s1 + <span class="number">1</span>, s2 + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> n = <span class="built_in">strlen</span>(s1 + <span class="number">1</span>), m = <span class="built_in">strlen</span>(s2 + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) ha = ha * base + (ull)s2[i];</span><br><span class="line">	p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		h[i] = h[i - <span class="number">1</span>] * base + (ull)s1[i];</span><br><span class="line">		p[i] = p[i - <span class="number">1</span>] * base;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">1</span>, r = m, ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(r &lt;= n) &#123;</span><br><span class="line">		<span class="keyword">if</span>(h[r] - h[l - <span class="number">1</span>] * p[m] == ha) ++ans;</span><br><span class="line">		++l, ++r;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="用hash代替其他一些字符串算法"><a href="#用hash代替其他一些字符串算法" class="headerlink" title="用hash代替其他一些字符串算法"></a>用hash代替其他一些字符串算法</h2><p>因为博主并没有写过，所以并不打算深入讲（没写过不熟悉啊…）</p>
+<p>这一子目会分析一下hash还能代替哪些算法以及使用hash算法代替的复杂度是多少</p>
+<h3 id="manacher算法"><a href="#manacher算法" class="headerlink" title="manacher算法"></a>manacher算法</h3><p>求最长回文串/回文串个数manacher算法是可以做到O(n)的</p>
+<p>使用hash+二分可以做到O(nlogn)，并且实现简单</p>
+<h3 id="kmp算法"><a href="#kmp算法" class="headerlink" title="kmp算法"></a>kmp算法</h3><p>进行单模式串匹配可以使用hash进行</p>
+<p>复杂度O(n+m)，kmp算法复杂度也是O(n+m)。但是kmp的next数组可以做到一些hash做不到的事情。</p>
+<p>上面两个是前面两子目分析过的。</p>
+<h3 id="AC自动机"><a href="#AC自动机" class="headerlink" title="AC自动机"></a>AC自动机</h3><p>多模式串匹配：求文本串中各个模式串出现了多少次。</p>
+<p>设文本串的长度为n，模式串的总长度为len，模式串的个数为m</p>
+<p>hash出文本串中每个子串，并存入一个map中，复杂度是O(n^2logn)的（用map主要是便于查询）。然后hash出每个模式串，复杂度是O(len)的。</p>
+<p>对每个模式串，查询对应的map中文本串的子串的个数即可。复杂度O(mlogn)</p>
+<p>总复杂度是O(n^2logn+len+mlogn)</p>
+<p>这个log可以去掉的（自行写个哈希表）。</p>
+<p>所以并没有什么用…还是用AC自动机实在。</p>
+<p>用AC自动机可以做到O(n+len)</p>
+<h3 id="后缀数组"><a href="#后缀数组" class="headerlink" title="后缀数组"></a>后缀数组</h3><p>求后缀数组中的SA数组。（如果不知道请自行百度）（给定的串为S）</p>
+<p>最暴力的做法是直接对每个后缀进行排序，并逐字符匹配，这样会达到O(n^2logn)</p>
+<p>那么有没有不这么无脑的做法？</p>
+<p>有！有个hash+二分的神仙做法可以做到O(nlognlogn)</p>
+<p>我们处理出整个串S的hash值。</p>
+<p>在排序中对两个子串进行排序的过程中，采用二分找相同的前缀（比较用hash，可以O(1)），那么设我们最后二分到的值为r，则直接比较s[x+r+1]和s[y+r+1]的大小即可（设子串1的起点为x，子串2的起点为y）。这样每次比较的复杂度就是O(logn)了。</p>
+<p>加上排序，总的复杂度为O(nlognlogn)</p>
+<p>并且其实还能求出height数组的，但是我自己对height数组的理解也不大行，所以这里就不讨论这个。</p>
+<p>而后缀数组的复杂度是O(nlogn)（使用倍增法）</p>
+<h2 id="使用hash的几个要注意的地方"><a href="#使用hash的几个要注意的地方" class="headerlink" title="使用hash的几个要注意的地方"></a>使用hash的几个要注意的地方</h2><p>在复杂度允许的情况下，尽量采用多hash（不过一般双hash就够）</p>
+<p>比赛时能不用自然溢出就不要（平时刷题如果用自然溢出被卡可以及时换掉，但是比赛时如果用自然溢出，OI赛制就GG了）</p>
+<p>模数用大质数这个不用说了</p>
+<p>并且进制数不要选太简单的，比如233和13131这样的，尽量大一点，比如13131和233333。太小容易被卡。</p>
+<p>以及要合理应对各种卡hash方法的最好方法就是自己去卡一遍hash，详情请参考BZOJ hash killer系列。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/学习笔记/hash进阶：使用字符串hash乱搞的姿势/" data-id="cjvbsvv3t001aokw5zymgnyb1" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash/">hash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-文化课/历史答题技巧" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -126,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/文化课/历史答题技巧/" data-id="cjvasx80v0003a8w5hws2m6sv" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/文化课/历史答题技巧/" data-id="cjvbsvv360008okw5zdkhklsl" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/历史/">历史</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文化课/">文化课</a></li></ul>
@@ -195,76 +419,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/hdu4507/" data-id="cjvasx80z0004a8w5who6fnt4" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/hdu4507/" data-id="cjvbsvv3e000dokw5aju35cu7" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数位dp/">数位dp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-学习笔记/fhqtreap初探" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/学习笔记/fhqtreap初探/" class="article-date">
-  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br>
-    <span class="post-day">28</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/学习笔记/fhqtreap初探/">fhqtreap初探</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/学习笔记/fhqtreap初探/" class="leancloud_visitors" data-flag-title="fhqtreap初探">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>fhqtreap为利用分裂和合并来满足平衡树的性质，<strong>不需要旋转操作</strong>的一种平衡树。<br>并且利用函数式编程可以极大的简化代码量。</p>
-        
-          <p class="article-more-link">
-            <a href="/学习笔记/fhqtreap初探/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/fhqtreap初探/" data-id="cjvasx81b0007a8w5a6pprtin" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fhqtreap/">fhqtreap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
 
     </footer>
   </div>
@@ -327,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/数论分块/" data-id="cjvasx81d0008a8w5go1yoof3" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/数论分块/" data-id="cjvbsvv370009okw5toysix4d" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数论分块/">数论分块</a></li></ul>
@@ -394,7 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/动态主席树学习理解/" data-id="cjvasx81e0009a8w54d8nfshq" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/动态主席树学习理解/" data-id="cjvbsvv310004okw5bx3r1dnn" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主席树/">主席树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
@@ -463,10 +621,76 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/欧拉函数的几个性质及证明/" data-id="cjvasx81g000ca8w5i38s18tf" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/欧拉函数的几个性质及证明/" data-id="cjvbsvv340007okw5nmjsvjfu" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/欧拉函数/">欧拉函数</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-学习笔记/fhqtreap初探" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/学习笔记/fhqtreap初探/" class="article-date">
+  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/学习笔记/fhqtreap初探/">fhqtreap初探</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/学习笔记/fhqtreap初探/" class="leancloud_visitors" data-flag-title="fhqtreap初探">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>fhqtreap为利用分裂和合并来满足平衡树的性质，<strong>不需要旋转操作</strong>的一种平衡树。<br>并且利用函数式编程可以极大的简化代码量。</p>
+        
+          <p class="article-more-link">
+            <a href="/学习笔记/fhqtreap初探/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/学习笔记/fhqtreap初探/" data-id="cjvbsvv2w0003okw5hazzdzp4" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fhqtreap/">fhqtreap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
 
     </footer>
   </div>
@@ -531,7 +755,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/点分治小结/" data-id="cjvasx8200017a8w5ml18plr3" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/点分治小结/" data-id="cjvbsvv3u001bokw55kpd4tn1" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/点分治/">点分治</a></li></ul>
@@ -599,7 +823,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/浅析基础数据结构-二叉堆/" data-id="cjvasx827001ca8w5l56sm6yy" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/浅析基础数据结构-二叉堆/" data-id="cjvbsvv42001kokw5carxdapq" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉堆/">二叉堆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
@@ -613,75 +837,11 @@
 
 
   
-    <article id="post-学习笔记/分块入门" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/学习笔记/分块入门/" class="article-date">
-  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br>
-    <span class="post-day">28</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/学习笔记/分块入门/">分块入门</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/学习笔记/分块入门/" class="leancloud_visitors" data-flag-title="分块入门">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
 
 
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>分块是一种应用很广的根号算法</p>
-<p>有一个别名为“优雅的暴力”</p>
-<p>这篇文章偏向于介绍分块入门，并且讲解了几种OI中的分块套路<del>（现在看来其实也是很naive了…）</del></p>
-        
-          <p class="article-more-link">
-            <a href="/学习笔记/分块入门/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/分块入门/" data-id="cjvasx828001da8w5fg1o2xnn" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分块/">分块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">next &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -725,9 +885,9 @@
     <h2 class="author">henry-y</h2>
     <h3 class="description">喵</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>9</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>11</strong><br>文章</div></a>
       <a href="/categories"><div><strong>3</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>11</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
     </div>
 
 
