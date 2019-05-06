@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>一些数论的小技巧 | henry_y&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="不定时更新。 杜教筛杜教筛虽然可以用$\text{unordered_map}$，但是还是太慢了，手写哈希表，或者使用一个$\text{trick}$，是个不错的选择 $\text{trick:}​$ 正常使用杜教筛的时候，预处理的大小一般是$n^{\frac{2}{3}}$，这也意味着需要储存的其实只有$n^{\frac{1}{3}}$，所以是完全开的下数组的。主需要记录下预处理的数的大小$m$">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些数论的小技巧">
+<meta property="og:url" content="http://henry-y.github.io/学习笔记/一些数论的小技巧/index.html">
+<meta property="og:site_name" content="henry_y&#39;s blog">
+<meta property="og:description" content="不定时更新。 杜教筛杜教筛虽然可以用$\text{unordered_map}$，但是还是太慢了，手写哈希表，或者使用一个$\text{trick}$，是个不错的选择 $\text{trick:}​$ 正常使用杜教筛的时候，预处理的大小一般是$n^{\frac{2}{3}}$，这也意味着需要储存的其实只有$n^{\frac{1}{3}}$，所以是完全开的下数组的。主需要记录下预处理的数的大小$m$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T04:55:16.118Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一些数论的小技巧">
+<meta name="twitter:description" content="不定时更新。 杜教筛杜教筛虽然可以用$\text{unordered_map}$，但是还是太慢了，手写哈希表，或者使用一个$\text{trick}$，是个不错的选择 $\text{trick:}​$ 正常使用杜教筛的时候，预处理的大小一般是$n^{\frac{2}{3}}$，这也意味着需要储存的其实只有$n^{\frac{1}{3}}$，所以是完全开的下数组的。主需要记录下预处理的数的大小$m$">
+  
+    <link rel="alternate" href="/atom.xml" title="henry_y&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>3</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+          <a href="/About" title="About">
+            <li>关于</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-学习笔记/一些数论的小技巧" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/学习笔记/一些数论的小技巧/" class="article-date">
+  <time class="post-time" datetime="2019-05-05T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br>
+    <span class="post-day">06</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一些数论的小技巧
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/学习笔记/一些数论的小技巧/" class="leancloud_visitors" data-flag-title="一些数论的小技巧">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>不定时更新。</p>
+<h2 id="杜教筛"><a href="#杜教筛" class="headerlink" title="杜教筛"></a>杜教筛</h2><p>杜教筛虽然可以用$\text{unordered_map}$，但是还是太慢了，手写哈希表，或者使用一个$\text{trick}$，是个不错的选择</p>
+<p>$\text{trick:}​$</p>
+<p>正常使用杜教筛的时候，预处理的大小一般是$n^{\frac{2}{3}}$，这也意味着需要储存的其实只有$n^{\frac{1}{3}}$，所以是完全开的下数组的。主需要记录下预处理的数的大小$m$，上界$n$，那么当前数$x$所对应的储存下标就是$\frac{n}{m}$。</p>
+<h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><script type="math/tex; mode=display">
+\sum_{d|n}\mu(d)=[n=1]</script><script type="math/tex; mode=display">
+\sum_{d|n}\varphi(d)=n</script><script type="math/tex; mode=display">
+\text{设d(x)表示数x的约数个数}\\
+d(xy)=\sum_{i|x}\sum_{j|y}[(i,j)=1]</script><script type="math/tex; mode=display">
+\sum_{d|n}\frac{\mu(d)}{d}=\varphi(n)</script><h2 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h2><p>两个积性函数的狄利克雷卷积还是积性函数。</p>
+<p>用狄利克雷卷积表示上面的式子就是$\mu<em>1=e$，$\varphi</em>1=\text{id}$，$\text{id}*\mu=\varphi$</p>
+<p>设$f$为完全积性函数，$g,h$为积性函数，则$(f<em>g)·(f</em>h)=f·(g<em>h)$。如：$(\text{id}</em>\varphi)·(\text{id}<em>\mu)=\text{id}·(\varphi</em>\mu)$。</p>
+<p>积性函数与积性函数的点积是个积性函数。</p>
+<h2 id="组合数"><a href="#组合数" class="headerlink" title="组合数"></a>组合数</h2><script type="math/tex; mode=display">
+\sum_{i=0}^nC^i_n(-1)^i=0</script><h2 id="判断两数互质"><a href="#判断两数互质" class="headerlink" title="判断两数互质"></a>判断两数互质</h2><p>可以$\log\log n$求出。</p>
+<p>对每个数分解质因数 。</p>
+<p>设$x,y$的质因数个数为$d(x),d(y)$，那么只需要$\max\{d(x), d(y) \}$就可以判断出$x,y​$是否互质。（判断是否有相同质因数）</p>
+<p>$\max\{d(x),d(y) \}$近似于$\log \log n$。</p>
+<h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>单个数的欧拉函数可以做到$\frac{\sqrt{n}}{\log n}$</p>
+<p>$\varphi ​$函数一个性质$\varphi(p^k)=p^{k}-p^{k-1}​$。</p>
+<p>所以预处理出质数（到$\sqrt{n}$即可，剩下的那个如果不为$1$肯定也是质数），然后对数$x$分解质因数，利用$\varphi$是个积性函数的性质把每个$\varphi$的值乘起来即可。</p>
+<p>其他性质见<a href="https://henry-y.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E6%80%A7%E8%B4%A8%E5%8F%8A%E8%AF%81%E6%98%8E/">Link</a></p>
+<h2 id="异或前缀和"><a href="#异或前缀和" class="headerlink" title="异或前缀和"></a>异或前缀和</h2><p>对$x \mod 4$讨论。</p>
+<p>为$0$时，$sum=x$。</p>
+<p>为$1$时，$sum=1$。</p>
+<p>为$2$时，$sum=x+1$。</p>
+<p>为$3​$时，$sum=0​$。</p>
+<p><a href="https://www.cnblogs.com/Mychael/p/8633365.html" target="_blank" rel="noopener">严谨证明戳这里 - Mychael</a></p>
+<h2 id="逆元"><a href="#逆元" class="headerlink" title="逆元"></a>逆元</h2><p>离线求乘法逆元，效率$O(n+\log p)$。</p>
+<p>考虑处理出$s_n​$表示$\prod_{i=1}^na_i​$。以及$sinv_n​$表示$\prod_{i=1}^na_i​$的逆元。</p>
+<p>那么对于每次询问，$sinv_i*s_{i-1}​$就是答案。</p>
+<p>$s_i​$显然可以在输入的时候顺便处理出来，$sinv_n=(s_n)^{p-2}​$（如果$p​$不是质数就exgcd一下）。</p>
+<p>对于$sinv_i(i\not = n)$，显然有$sinv_i=sinv_{i+1}*a_{i+1}$。则可以$O(n+\log  p)$求出来$sinv_i$。</p>
+<p>总复杂度是$O(n+\log  p)$的</p>
+<p>LOJ有个板子就是这个做法：<a href="https://loj.ac/problem/152" target="_blank" rel="noopener">LOJ#152</a></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5000010</span></span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n = read();</span><br><span class="line">ll sinv[N], a[N], s[N];</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">power</span><span class="params">(ll a, ll b)</span> </span>&#123; ll ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b) &#123;</span><br><span class="line">		<span class="keyword">if</span>(b &amp; <span class="number">1</span>) ans = ans * a % mod;</span><br><span class="line">		a = a * a % mod; b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123; s[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		a[i] = read(); </span><br><span class="line">		s[i] = s[i - <span class="number">1</span>] * a[i] % mod;</span><br><span class="line">	&#125; ll ans = <span class="number">0</span>;</span><br><span class="line">	sinv[n] = power(s[n], mod - <span class="number">2</span>); sinv[<span class="number">0</span>] = <span class="number">1</span>; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n; i; --i) sinv[i - <span class="number">1</span>] = sinv[i] * a[i] % mod;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		ll inv = sinv[i] * s[i - <span class="number">1</span>] % mod;</span><br><span class="line">		ans = (ans * <span class="number">998244353</span> + inv) % mod;</span><br><span class="line">	&#125;</span><br><span class="line">	outn(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/学习笔记/一些数论的小技巧/" data-id="cjvbw62h60004j4w5o4acr0yd" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/题解/LOJ6164/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质
+        
+      </div>
+    </a>
+  
+  
+    <a href="/学习笔记/hash进阶：使用字符串hash乱搞的姿势/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">hash进阶：使用字符串hash乱搞的姿势</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">henry_y&#39;s blog</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+          <a href="/About" title="About">
+            <li>关于</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>3</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>13</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/henry-y" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://cnblogs.com/henry-1202" target="_blank" title="henry_y">
+          henry_y
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://zcmimi.tk" target="_blank" title="zcmimi">
+          zcmimi
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2018 - 2019 henry-y<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.article-title').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>
