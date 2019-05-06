@@ -5,18 +5,18 @@
   
   <title>LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质 | henry_y&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目描述给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。 输入格式第一行，两个正整数 $n , m$。 第二行，$n$ 个正整数 $a_i$ 描述这个数列。 接下来 $m$ 行，每行三个正整数 $">
+  <meta name="description" content="题目描述给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。">
 <meta name="keywords" content="莫队">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质">
 <meta property="og:url" content="http://henry-y.github.io/题解/LOJ #6164/index.html">
 <meta property="og:site_name" content="henry_y&#39;s blog">
-<meta property="og:description" content="题目描述给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。 输入格式第一行，两个正整数 $n , m$。 第二行，$n$ 个正整数 $a_i$ 描述这个数列。 接下来 $m$ 行，每行三个正整数 $">
+<meta property="og:description" content="题目描述给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-06T03:23:19.803Z">
+<meta property="og:updated_time" content="2019-05-06T03:24:32.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质">
-<meta name="twitter:description" content="题目描述给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。 输入格式第一行，两个正整数 $n , m$。 第二行，$n$ 个正整数 $a_i$ 描述这个数列。 接下来 $m$ 行，每行三个正整数 $">
+<meta name="twitter:description" content="题目描述给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。">
   
     <link rel="alternate" href="/atom.xml" title="henry_y&#39;s blog" type="application/atom+xml">
   
@@ -117,6 +117,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。</p>
+<a id="more"></a>
 <h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行，两个正整数 $n , m$。</p>
 <p>第二行，$n$ 个正整数 $a_i$ 描述这个数列。</p>
 <p>接下来 $m$ 行，每行三个正整数 $l_i , r_i , k_i$，描述一次询问。</p>
@@ -146,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/LOJ #6164/" data-id="cjvbsvv3a000cokw5pfp4qjij" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/LOJ #6164/" data-id="cjvbsyyo30004zow5wtwotftb" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫队/">莫队</a></li></ul>
