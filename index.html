@@ -184,41 +184,11 @@
       
         <p>不定时更新。</p>
 <h2 id="杜教筛"><a href="#杜教筛" class="headerlink" title="杜教筛"></a>杜教筛</h2><p>杜教筛虽然可以用$\text{unordered_map}$，但是还是太慢了，手写哈希表，或者使用一个$\text{trick}$，是个不错的选择</p>
-<p>$\text{trick:}​$</p>
-<p>正常使用杜教筛的时候，预处理的大小一般是$n^{\frac{2}{3}}$，这也意味着需要储存的其实只有$n^{\frac{1}{3}}$，所以是完全开的下数组的。主需要记录下预处理的数的大小$m$，上界$n$，那么当前数$x$所对应的储存下标就是$\frac{n}{m}$。</p>
-<h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><script type="math/tex; mode=display">
-\sum_{d|n}\mu(d)=[n=1]</script><script type="math/tex; mode=display">
-\sum_{d|n}\varphi(d)=n</script><script type="math/tex; mode=display">
-\text{设d(x)表示数x的约数个数}\\
-d(xy)=\sum_{i|x}\sum_{j|y}[(i,j)=1]</script><script type="math/tex; mode=display">
-\sum_{d|n}\frac{\mu(d)}{d}=\varphi(n)</script><h2 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h2><p>两个积性函数的狄利克雷卷积还是积性函数。</p>
-<p>用狄利克雷卷积表示上面的式子就是$\mu<em>1=e$，$\varphi</em>1=\text{id}$，$\text{id}*\mu=\varphi$</p>
-<p>设$f$为完全积性函数，$g,h$为积性函数，则$(f<em>g)·(f</em>h)=f·(g<em>h)$。如：$(\text{id}</em>\varphi)·(\text{id}<em>\mu)=\text{id}·(\varphi</em>\mu)$。</p>
-<p>积性函数与积性函数的点积是个积性函数。</p>
-<h2 id="组合数"><a href="#组合数" class="headerlink" title="组合数"></a>组合数</h2><script type="math/tex; mode=display">
-\sum_{i=0}^nC^i_n(-1)^i=0</script><h2 id="判断两数互质"><a href="#判断两数互质" class="headerlink" title="判断两数互质"></a>判断两数互质</h2><p>可以$\log\log n$求出。</p>
-<p>对每个数分解质因数 。</p>
-<p>设$x,y$的质因数个数为$d(x),d(y)$，那么只需要$\max\{d(x), d(y) \}$就可以判断出$x,y​$是否互质。（判断是否有相同质因数）</p>
-<p>$\max\{d(x),d(y) \}$近似于$\log \log n$。</p>
-<h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>单个数的欧拉函数可以做到$\frac{\sqrt{n}}{\log n}$</p>
-<p>$\varphi ​$函数一个性质$\varphi(p^k)=p^{k}-p^{k-1}​$。</p>
-<p>所以预处理出质数（到$\sqrt{n}$即可，剩下的那个如果不为$1$肯定也是质数），然后对数$x$分解质因数，利用$\varphi$是个积性函数的性质把每个$\varphi$的值乘起来即可。</p>
-<p>其他性质见<a href="https://henry-y.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%A0%E4%B8%AA%E6%80%A7%E8%B4%A8%E5%8F%8A%E8%AF%81%E6%98%8E/">Link</a></p>
-<h2 id="异或前缀和"><a href="#异或前缀和" class="headerlink" title="异或前缀和"></a>异或前缀和</h2><p>对$x \mod 4$讨论。</p>
-<p>为$0$时，$sum=x$。</p>
-<p>为$1$时，$sum=1$。</p>
-<p>为$2$时，$sum=x+1$。</p>
-<p>为$3​$时，$sum=0​$。</p>
-<p><a href="https://www.cnblogs.com/Mychael/p/8633365.html" target="_blank" rel="noopener">严谨证明戳这里 - Mychael</a></p>
-<h2 id="逆元"><a href="#逆元" class="headerlink" title="逆元"></a>逆元</h2><p>离线求乘法逆元，效率$O(n+\log p)$。</p>
-<p>考虑处理出$s_n​$表示$\prod_{i=1}^na_i​$。以及$sinv_n​$表示$\prod_{i=1}^na_i​$的逆元。</p>
-<p>那么对于每次询问，$sinv_i*s_{i-1}​$就是答案。</p>
-<p>$s_i​$显然可以在输入的时候顺便处理出来，$sinv_n=(s_n)^{p-2}​$（如果$p​$不是质数就exgcd一下）。</p>
-<p>对于$sinv_i(i\not = n)$，显然有$sinv_i=sinv_{i+1}*a_{i+1}$。则可以$O(n+\log  p)$求出来$sinv_i$。</p>
-<p>总复杂度是$O(n+\log  p)$的</p>
-<p>LOJ有个板子就是这个做法：<a href="https://loj.ac/problem/152" target="_blank" rel="noopener">LOJ#152</a></p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5000010</span></span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n = read();</span><br><span class="line">ll sinv[N], a[N], s[N];</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">power</span><span class="params">(ll a, ll b)</span> </span>&#123; ll ans = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b) &#123;</span><br><span class="line">		<span class="keyword">if</span>(b &amp; <span class="number">1</span>) ans = ans * a % mod;</span><br><span class="line">		a = a * a % mod; b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125; <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123; s[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		a[i] = read(); </span><br><span class="line">		s[i] = s[i - <span class="number">1</span>] * a[i] % mod;</span><br><span class="line">	&#125; ll ans = <span class="number">0</span>;</span><br><span class="line">	sinv[n] = power(s[n], mod - <span class="number">2</span>); sinv[<span class="number">0</span>] = <span class="number">1</span>; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n; i; --i) sinv[i - <span class="number">1</span>] = sinv[i] * a[i] % mod;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		ll inv = sinv[i] * s[i - <span class="number">1</span>] % mod;</span><br><span class="line">		ans = (ans * <span class="number">998244353</span> + inv) % mod;</span><br><span class="line">	&#125;</span><br><span class="line">	outn(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="/学习笔记/一些数论的小技巧/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
