@@ -118,32 +118,86 @@
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>辣鸡蒟蒻SOL是一个傻逼，他居然觉得数很萌！</p>
 <p>好在在他眼里，并不是所有数都是萌的。只有满足“存在长度至少为2的回文子串”的数是萌的——也就是说，101是萌的，因为101本身就是一个回文数；110是萌的，因为包含回文子串11；但是102不是萌的，1201也不是萌的。</p>
-<p>现在SOL想知道从$ l $到 $ r$ 的所有整数中有多少个萌数。</p>
+<p>现在SOL想知道从$ l $到 $ r​$ 的所有整数中有多少个萌数。</p>
 <p>由于答案可能很大，所以只需要输出答案对$ 1000000007$ （$10^9+7$）的余数。</p>
-<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入包含仅1行，包含两个整数：$ l$ 、$ r ​$。</p>
-<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>输出仅1行，包含一个整数，即为答案。</p>
-<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><h3 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例#1："></a>输入样例#1：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 100</span><br></pre></td></tr></table></figure>
-<h3 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例#1："></a>输出样例#1：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
-<h3 id="输入样例-2："><a href="#输入样例-2：" class="headerlink" title="输入样例#2："></a>输入样例#2：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100 1000</span><br></pre></td></tr></table></figure>
-<h3 id="输出样例-2："><a href="#输出样例-2：" class="headerlink" title="输出样例#2："></a>输出样例#2：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">253</span><br></pre></td></tr></table></figure>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>记$n $为$ r $在$10 ​$进制下的位数。</p>
-<p>对于$10\%$ 的数据，$ n \le 3$。</p>
-<p>对于$30\%$的数据，$n \le 6$。</p>
-<p>对于$60\%$的数据，$n \le 9$。</p>
-<p>对于全部的数据，$n \le 1000,l &lt; r$ 。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><strong>回文串的子串也是回文串</strong>，这意味着只需要判定长度为3和长度为2的回文串。</p>
-<p>这个可以通过记录上一位和上上位来判定，前导零判一下前面两位即可。</p>
-<p>可以通过多传一个参数到底层表示这个数是否为萌数，在$dp$数组里面加上这一维即可。由于判定的时候实际上用不到这个$pre_2$（上上位）的状态，所以$dp$数组可以少这一维否则会$TLE$。</p>
-<p>这是我写过的传的参数最多的数位$dp$…关于参数的含义已经写在代码里面了。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">1010</span>];</span><br><span class="line">ll f[<span class="number">1100</span>][<span class="number">11</span>][<span class="number">11</span>][<span class="number">2</span>][<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> op, <span class="keyword">int</span> pos, <span class="keyword">int</span> num, <span class="keyword">bool</span> done, <span class="keyword">bool</span> lead, <span class="keyword">bool</span> pre_lead, <span class="keyword">int</span> pre_1, <span class="keyword">int</span> pre_2, <span class="keyword">int</span> tot)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// op 是属于r还是属于l , pos 位数, num 当前数, done 上界限制, lead前导零</span></span><br><span class="line">    <span class="comment">//pre_lead上一位的前导零, pre_1上一位, pre_2前一位, tot是否为萌数</span></span><br><span class="line">    <span class="keyword">if</span>(!pos) <span class="keyword">return</span> tot;</span><br><span class="line">    <span class="keyword">if</span>(!done &amp;&amp; f[pos][num][pre_1][tot][lead][pre_lead]) </span><br><span class="line">        <span class="keyword">return</span> f[pos][num][pre_1][tot][lead][pre_lead] % mod;</span><br><span class="line">    </span><br><span class="line">    ll res = <span class="number">0</span>; <span class="keyword">int</span> ed = done ? a[op][pos] : <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= ed; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> now = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(num == i &amp;&amp; !lead) now = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(pre_1 == i &amp;&amp; !pre_lead) now = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        res += dfs(op, pos - <span class="number">1</span>, i, done &amp;&amp; (i == ed), lead &amp;&amp; (!i), lead, num, pre_1, tot | now);</span><br><span class="line">        res %= mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!done) <span class="keyword">return</span> f[pos][num][pre_1][tot][lead][pre_lead] = res % mod;</span><br><span class="line">    <span class="keyword">return</span> res % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">count</span><span class="params">(<span class="keyword">int</span> op, <span class="keyword">int</span> pos, <span class="keyword">int</span> num, <span class="keyword">bool</span> done, <span class="keyword">bool</span> lead, <span class="keyword">bool</span> pre_lead, <span class="keyword">int</span> pre_1, <span class="keyword">int</span> pre_2, <span class="keyword">int</span> tot)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f));</span><br><span class="line">    <span class="keyword">return</span> (dfs(op, pos, num, done, lead, pre_lead, pre_1, pre_2, tot) + mod) % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i) a[<span class="number">0</span>][i] = s[i] - <span class="string">'0'</span>;</span><br><span class="line">    reverse(a[<span class="number">0</span>] + <span class="number">1</span>, a[<span class="number">0</span>] + len + <span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    a[<span class="number">0</span>][<span class="number">1</span>]--;</span><br><span class="line">    <span class="keyword">int</span> now = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(a[<span class="number">0</span>][now] &lt; <span class="number">0</span>) a[<span class="number">0</span>][now] += <span class="number">10</span>, a[<span class="number">0</span>][now + <span class="number">1</span>]--, ++now;</span><br><span class="line">    <span class="keyword">int</span> len1 = len;</span><br><span class="line"><span class="comment">//	for(int i = len; i; --i) printf("%d", a[0][i]); puts("");</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>);</span><br><span class="line">    len = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i) a[<span class="number">1</span>][i] = s[i] - <span class="string">'0'</span>;</span><br><span class="line">    reverse(a[<span class="number">1</span>] + <span class="number">1</span>, a[<span class="number">1</span>] + len + <span class="number">1</span>);</span><br><span class="line"><span class="comment">//	for(int i = len; i; --i) printf("%d", a[1][i]); puts("");</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, (count(<span class="number">1</span>, len, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) - count(<span class="number">0</span>, len1, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) + mod) % mod);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="/题解/LGOJP3413/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/LGOJP3413/" data-id="cjveqnkke000364w57bgrnlev" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/LGOJP3413/" data-id="cjveqqse4000d3kw59dfg3lqw" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数位dp/">数位dp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-题解/LOJ6164" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/题解/LOJ6164/" class="article-date">
+  <time class="post-time" datetime="2019-05-05T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br>
+    <span class="post-day">06</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/题解/LOJ6164/">LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Solutions/">Solutions</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/题解/LOJ6164/" class="leancloud_visitors" data-flag-title="LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。</p>
+        
+          <p class="article-more-link">
+            <a href="/题解/LOJ6164/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/题解/LOJ6164/" data-id="cjveqqse6000e3kw5vkjrthy9" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫队/">莫队</a></li></ul>
 
     </footer>
   </div>
@@ -207,76 +261,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/一些数论的小技巧/" data-id="cjveqnknp000o64w58149byye" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/一些数论的小技巧/" data-id="cjveqqse000083kw5k775n6w4" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-题解/LOJ6164" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/题解/LOJ6164/" class="article-date">
-  <time class="post-time" datetime="2019-05-05T16:00:00.000Z" itemprop="datePublished">
-    <span class="post-month">5月</span><br>
-    <span class="post-day">06</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/题解/LOJ6164/">LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Solutions/">Solutions</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/题解/LOJ6164/" class="leancloud_visitors" data-flag-title="LOJ#6164. 「美团 CodeM 初赛 Round A」数列互质">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个长度为 $n$ 的数列 ${ a_1 , a_2 , a_3 , … , a_n }$，以及 $m$ 组询问 $( l_i , r_i , k_i)$，求区间 $[ l_i , r_i ]$ 中有多少数在该区间中的出现次数与 $k_i$ 互质。</p>
-        
-          <p class="article-more-link">
-            <a href="/题解/LOJ6164/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/LOJ6164/" data-id="cjveqnkm5000464w59pnnkqz5" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫队/">莫队</a></li></ul>
 
     </footer>
   </div>
@@ -340,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/hash进阶：使用字符串hash乱搞的姿势/" data-id="cjveqnko8001g64w5el6nzj24" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/hash进阶：使用字符串hash乱搞的姿势/" data-id="cjveqqser001i3kw5nlw8zzly" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash/">hash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
@@ -407,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/文化课/历史答题技巧/" data-id="cjveqnknf000e64w51ud0iflg" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/文化课/历史答题技巧/" data-id="cjveqqse100093kw5b7hoonn9" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/历史/">历史</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文化课/">文化课</a></li></ul>
@@ -476,76 +464,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/hdu4507/" data-id="cjveqnkne000d64w5b0f8gc5q" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/hdu4507/" data-id="cjveqqsea000i3kw5wgpxeeru" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数位dp/">数位dp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-学习笔记/数论分块" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/学习笔记/数论分块/" class="article-date">
-  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br>
-    <span class="post-day">28</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/学习笔记/数论分块/">数论分块</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/学习笔记/数论分块/" class="leancloud_visitors" data-flag-title="数论分块">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在学莫比乌斯反演，然而只看懂了莫比乌斯函数，然后反演看着一脸懵逼，最后只看懂了数论分块里面的一个分支内容（也是莫比乌斯反演的前置姿势），整除分块。<br>于是写一篇博文记录一下整除分块<br>也称数论分块<br>数论分块是莫比乌斯反演一个很重要的的前置知识（基本都要用到这个玩意）<br>已经看完莫反啦，打算写一篇博客来记录一下莫反。</p>
-        
-          <p class="article-more-link">
-            <a href="/学习笔记/数论分块/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/数论分块/" data-id="cjveqnkno000n64w5ikm0dz3m" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数论分块/">数论分块</a></li></ul>
 
     </footer>
   </div>
@@ -609,10 +531,145 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/动态主席树学习理解/" data-id="cjveqnknt000s64w5cn09qzp5" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/动态主席树学习理解/" data-id="cjveqqsdv00043kw5lscyzvyd" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主席树/">主席树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-学习笔记/数论分块" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/学习笔记/数论分块/" class="article-date">
+  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/学习笔记/数论分块/">数论分块</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/学习笔记/数论分块/" class="leancloud_visitors" data-flag-title="数论分块">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在学莫比乌斯反演，然而只看懂了莫比乌斯函数，然后反演看着一脸懵逼，最后只看懂了数论分块里面的一个分支内容（也是莫比乌斯反演的前置姿势），整除分块。<br>于是写一篇博文记录一下整除分块<br>也称数论分块<br>数论分块是莫比乌斯反演一个很重要的的前置知识（基本都要用到这个玩意）<br>已经看完莫反啦，打算写一篇博客来记录一下莫反。</p>
+        
+          <p class="article-more-link">
+            <a href="/学习笔记/数论分块/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/学习笔记/数论分块/" data-id="cjveqqsdz00073kw53u59qcl9" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数论分块/">数论分块</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-学习笔记/欧拉函数的几个性质及证明" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/学习笔记/欧拉函数的几个性质及证明/" class="article-date">
+  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/学习笔记/欧拉函数的几个性质及证明/">欧拉函数的几个性质及证明</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/学习笔记/欧拉函数的几个性质及证明/" class="leancloud_visitors" data-flag-title="欧拉函数的几个性质及证明">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>这篇文章涉及几个欧拉函数的性质</p>
+<p><del>暂时没有证明，大概寒假的时候会补一下证明</del></p>
+<p>完结撒花！我居然在寒假第一天就把这证明补完了…</p>
+<p>如果下方的证明有哪里有问题的话，请在下方评论区指出，以提醒作者修改。</p>
+        
+          <p class="article-more-link">
+            <a href="/学习笔记/欧拉函数的几个性质及证明/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/学习笔记/欧拉函数的几个性质及证明/" data-id="cjveqqsec000l3kw5rcqs4x3p" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/欧拉函数/">欧拉函数</a></li></ul>
 
     </footer>
   </div>
@@ -675,78 +732,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/fhqtreap初探/" data-id="cjveqnknv000t64w5dre5vws4" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/fhqtreap初探/" data-id="cjveqqsdn00033kw5kpn4rrmt" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fhqtreap/">fhqtreap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-学习笔记/浅析基础数据结构-二叉堆" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/学习笔记/浅析基础数据结构-二叉堆/" class="article-date">
-  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br>
-    <span class="post-day">28</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/学习笔记/浅析基础数据结构-二叉堆/">浅析基础数据结构-二叉堆</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/学习笔记/浅析基础数据结构-二叉堆/" class="leancloud_visitors" data-flag-title="浅析基础数据结构-二叉堆">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>二叉堆是一种基础数据结构，主要应用于求出一组数据中的最大最小值。C++ 的STL中的优先队列就是使用二叉堆。不过初赛经常考二叉堆的原理。</p>
-<p>事实上支持的操作也是挺有限的（相对于其他数据结构而言），也就插入，查询，删除这一类</p>
-<p><strong>对了这篇文章中讲到的堆都是二叉堆，而不是斜堆，左偏树，斐波那契堆什么的<del>我都不会啊</del></strong></p>
-        
-          <p class="article-more-link">
-            <a href="/学习笔记/浅析基础数据结构-二叉堆/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/浅析基础数据结构-二叉堆/" data-id="cjveqnkog001r64w5fy9caxmy" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉堆/">二叉堆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
 
     </footer>
   </div>
