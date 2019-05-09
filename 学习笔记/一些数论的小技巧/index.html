@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="henry_y&#39;s blog">
 <meta property="og:description" content="不定时更新。 杜教筛杜教筛虽然可以用$\text{unordered_map}$，但是还是太慢了，手写哈希表，或者使用一个$\text{trick}$，是个不错的选择">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-09T14:27:09.633Z">
+<meta property="og:updated_time" content="2019-05-09T14:50:53.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些数论的小技巧">
 <meta name="twitter:description" content="不定时更新。 杜教筛杜教筛虽然可以用$\text{unordered_map}$，但是还是太慢了，手写哈希表，或者使用一个$\text{trick}$，是个不错的选择">
@@ -127,8 +127,9 @@
 \text{设d(x)表示数x的约数个数}\\
 d(xy)=\sum_{i|x}\sum_{j|y}[(i,j)=1]</script><script type="math/tex; mode=display">
 \sum_{d|n}\frac{\mu(d)}{d}=\varphi(n)</script><h2 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h2><p>两个积性函数的狄利克雷卷积还是积性函数。</p>
-<p>用狄利克雷卷积表示上面的式子就是$\mu<em>1=e$，$\varphi</em>1=\text{id}$，$\text{id}*\mu=\varphi$</p>
-<p>设$f​$为完全积性函数，$g,h​$为积性函数，则$(f<em>g)·(f</em>h)=f·(g<em>h)​$。如：$(\text{id}</em>\varphi)·(\text{id}<em>\mu)=\text{id}·(\varphi</em>\mu)​$。</p>
+<p>用狄利克雷卷积表示上面的式子就是</p>
+<p>$\mu <em> 1=e, \varphi </em> 1=\text{id},\text{id}*\mu=\varphi$</p>
+<p>设$f$为完全积性函数，$g,h$为积性函数，则$(f <em> g)·(f </em> h)=f·(g <em> h)$。如：$(\text{id}</em>\varphi)·(\text{id}<em>\mu)=\text{id}·(\varphi</em>\mu)​$。</p>
 <p>积性函数与积性函数的点积是个积性函数。</p>
 <h2 id="组合数"><a href="#组合数" class="headerlink" title="组合数"></a>组合数</h2><script type="math/tex; mode=display">
 \sum_{i=0}^nC^i_n(-1)^i=0</script><h2 id="判断两数互质"><a href="#判断两数互质" class="headerlink" title="判断两数互质"></a>判断两数互质</h2><p>可以$\log\log n$求出。</p>
