@@ -1983,7 +1983,7 @@ a.article-title:hover {
   border-style: solid;
   border-color: #ddd;
   border-width: 1px 0;
-  background: #efefef;
+  background: #f2f2f2;
   padding: 15px 20px 15px 0;
 }
 .article-entry .gist .gist-file {
@@ -2009,7 +2009,7 @@ a.article-title:hover {
   border: none;
 }
 .article-entry .gist .gist-file .gist-meta {
-  background: #efefef;
+  background: #f2f2f2;
   color: #000;
   font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;

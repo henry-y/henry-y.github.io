@@ -41,9 +41,9 @@
     <h2 class="author">henry-y</h2>
     <h3 class="description">喵</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>17</strong><br>文章</div></a>
       <a href="/categories"><div><strong>3</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>19</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>22</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -73,12 +73,81 @@
 
         <section id="main">
   
+    <article id="post-题解/CF1153E" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/题解/CF1153E/" class="article-date">
+  <time class="post-time" datetime="2019-05-16T13:31:41.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br>
+    <span class="post-day">16</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/题解/CF1153E/">E.Serval and Snake</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Solutions/">Solutions</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/题解/CF1153E/" class="leancloud_visitors" data-flag-title="E.Serval and Snake">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>在$n\times n$的方格上有一条链，你需要通过查询来找出这条链的两个端点。</p>
+<p>你的查询形如<code>x1 y1 x2 y2</code>，这可以确定一个矩形，查询结果是链在矩形上的边数。</p>
+<p>你最多能进行$2019$次查询。最后请输出<code>x1 y1 x2 y2</code>，表示链两个端点的坐标。</p>
+<p>$n \le 1000$</p>
+        
+          <p class="article-more-link">
+            <a href="/题解/CF1153E/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/题解/CF1153E/" data-id="cjvqpi4lp000dbww53w0rrqyo" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分查找/">二分查找</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/交互/">交互</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
     <article id="post-题解/CF1153C" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/题解/CF1153C/" class="article-date">
-  <time class="post-time" datetime="2019-05-13T14:09:00.000Z" itemprop="datePublished">
+  <time class="post-time" datetime="2019-05-14T13:31:41.000Z" itemprop="datePublished">
     <span class="post-month">5月</span><br>
-    <span class="post-day">13</span>
+    <span class="post-day">14</span>
   </time>
 </a>
    
@@ -122,18 +191,25 @@
 <li>整个串是可匹配的括号序列</li>
 </ul>
 <p>无法构造输出<code>:(</code></p>
-        
-          <p class="article-more-link">
-            <a href="/题解/CF1153C/#more">Read More</a>
-          </p>
-        
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>其实就是构造一个首尾对应的括号序列。</p>
+<p>那么把第一个和最后一个排除了，把中间的那些构造成一个合法的括号序列就行了。</p>
+<p>至于怎么构造，使用贪心：</p>
+<ul>
+<li>首先先将能匹配的<code>&#39;(&#39;和&#39;)&#39;</code>给匹配了，并且尽量相近的匹配。</li>
+<li>然后用<code>&#39;?&#39;</code>位来补<code>&#39;(&#39;和&#39;)&#39;</code>剩下的。</li>
+<li>最后剩余的<code>&#39;?&#39;</code>位自己匹配自己。</li>
+</ul>
+<p>最后判定一下这样构造出来的括号序列合不合法（如果不合法就说明构造不出来）即可。</p>
+<p>好像写复杂了…看了一下别人的构造方法都很简短…</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, top;</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="keyword">int</span> id[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(s[<span class="number">1</span>] == <span class="string">')'</span> || s[n] == <span class="string">'('</span>) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">":("</span>), <span class="number">0</span>;</span><br><span class="line">    s[<span class="number">1</span>] = <span class="string">'('</span>; s[n] = <span class="string">')'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> cur = <span class="number">1</span>, tot = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; ++i) <span class="keyword">if</span>(s[i] == <span class="string">')'</span>) id[++tot] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'('</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cur &lt;= tot) &#123;</span><br><span class="line">                vis[id[cur]] = <span class="number">1</span>;</span><br><span class="line">                vis[i] = <span class="number">1</span>;</span><br><span class="line">                ++cur;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span>(id[cur] == i) ++cur;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cur = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'('</span> &amp;&amp; !vis[i]) &#123;</span><br><span class="line">            <span class="keyword">while</span>(cur &gt; <span class="number">1</span> &amp;&amp; ( s[cur] != <span class="string">'?'</span> || (s[cur] == <span class="string">'?'</span> &amp;&amp; vis[cur]) ) ) </span><br><span class="line">                --cur;</span><br><span class="line">            <span class="keyword">if</span>(s[cur] == <span class="string">'?'</span> &amp;&amp; !vis[cur]) </span><br><span class="line">                vis[cur] = <span class="number">1</span>, s[cur] = <span class="string">')'</span>, vis[i] = <span class="number">1</span>;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    cur = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt; <span class="number">1</span>; --i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">')'</span> &amp;&amp; !vis[i]) &#123;</span><br><span class="line">            <span class="keyword">while</span>(cur &lt; n &amp;&amp; ( s[cur] != <span class="string">'?'</span> || (s[cur] == <span class="string">'?'</span> &amp;&amp; vis[cur] ) ) ) ++cur;</span><br><span class="line">            <span class="keyword">if</span>(s[cur] == <span class="string">'?'</span> &amp;&amp; !vis[cur]) vis[cur] = <span class="number">1</span>, s[cur] = <span class="string">'('</span>, vis[i] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">bool</span> flag = <span class="number">0</span>;</span><br><span class="line">    top = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'?'</span> &amp;&amp; !vis[i]) &#123;</span><br><span class="line">            s[i] = flag ? <span class="string">')'</span> : <span class="string">'('</span>;</span><br><span class="line">            flag ^= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'('</span>) ++top;</span><br><span class="line">        <span class="keyword">else</span> --top;</span><br><span class="line">        <span class="keyword">if</span>(top &lt;= <span class="number">0</span> &amp;&amp; i != n) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">":("</span>), <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(top != <span class="number">0</span>) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">":("</span>), <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">puts</span>(s + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/CF1153C/" data-id="cjvqk4ts7000hqww5j8mjzvol" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/CF1153C/" data-id="cjvqpi4ll0009bww5h52nc8ex" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心/">贪心</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构造/">构造</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心/">贪心</a></li></ul>
 
     </footer>
   </div>
@@ -199,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/BZOJ4551/" data-id="cjvqk4ts4000dqww5jktx9o5e" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/BZOJ4551/" data-id="cjvqpi4mn001lbww5872yogzy" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并查集/">并查集</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树链剖分/">树链剖分</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线段树/">线段树</a></li></ul>
@@ -268,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/BZOJ2006/" data-id="cjvqk4ts1000cqww5rfnk6gg9" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/BZOJ2006/" data-id="cjvqpi4mp001nbww5ydubk30w" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ST表/">ST表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/堆/">堆</a></li></ul>
@@ -337,7 +413,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/LGOJP3413/" data-id="cjvqk4ts8000kqww5yv4onr6v" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/LGOJP3413/" data-id="cjvqpi4lr000ebww5cg9rzey9" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数位dp/">数位dp</a></li></ul>
@@ -404,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/一些数论的小技巧/" data-id="cjvqk4trm0004qww5dby8qywr" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/一些数论的小技巧/" data-id="cjvqpi4k50003bww5i9emlypv" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
@@ -470,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/LOJ6164/" data-id="cjvqk4tsb000pqww53f2nktsa" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/LOJ6164/" data-id="cjvqpi4mr001obww5dkta5h9f" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫队/">莫队</a></li></ul>
@@ -537,7 +613,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/hash进阶：使用字符串hash乱搞的姿势/" data-id="cjvqk4tsw001vqww5gtfl3df5" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/hash进阶：使用字符串hash乱搞的姿势/" data-id="cjvqpi4mt001qbww5njcb72dn" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash/">hash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
@@ -604,7 +680,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/文化课/历史答题技巧/" data-id="cjvqk4tsv001uqww5ljbdwi8w" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/文化课/历史答题技巧/" data-id="cjvqpi4lj0007bww55kd9rbhx" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/历史/">历史</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文化课/">文化课</a></li></ul>
@@ -673,76 +749,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/题解/hdu4507/" data-id="cjvqk4tsc000sqww5h0lpfsv6" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/题解/hdu4507/" data-id="cjvqpi4ly000ibww59kfsxjd3" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数位dp/">数位dp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-学习笔记/fhqtreap初探" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/学习笔记/fhqtreap初探/" class="article-date">
-  <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br>
-    <span class="post-day">28</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/学习笔记/fhqtreap初探/">fhqtreap初探</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/学习笔记/fhqtreap初探/" class="leancloud_visitors" data-flag-title="fhqtreap初探">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>fhqtreap为利用分裂和合并来满足平衡树的性质，<strong>不需要旋转操作</strong>的一种平衡树。<br>并且利用函数式编程可以极大的简化代码量。</p>
-        
-          <p class="article-more-link">
-            <a href="/学习笔记/fhqtreap初探/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/fhqtreap初探/" data-id="cjvqk4tri0003qww5efek76gg" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fhqtreap/">fhqtreap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
 
     </footer>
   </div>
@@ -801,9 +811,9 @@
     <h2 class="author">henry-y</h2>
     <h3 class="description">喵</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>17</strong><br>文章</div></a>
       <a href="/categories"><div><strong>3</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>19</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>22</strong><br>标签</div></a>
     </div>
 
 
