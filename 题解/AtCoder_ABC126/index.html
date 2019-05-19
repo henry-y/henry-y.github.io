@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>AtCoder Beginner Contest 126 解题报告 | henry_y&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="abc改版后的第一场。貌似人很多啊… 最后10min交上了F。就是到结束他还没测完… 改完后质量明显提高了。相当于abc和arc的合场？（不过EF题没有之前的arc题那么难） 比赛地址">
+<meta name="keywords" content="构造,模拟,最小生成树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AtCoder Beginner Contest 126 解题报告">
+<meta property="og:url" content="http://henry-y.github.io/题解/AtCoder_ABC126/index.html">
+<meta property="og:site_name" content="henry_y&#39;s blog">
+<meta property="og:description" content="abc改版后的第一场。貌似人很多啊… 最后10min交上了F。就是到结束他还没测完… 改完后质量明显提高了。相当于abc和arc的合场？（不过EF题没有之前的arc题那么难） 比赛地址">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-19T14:28:41.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AtCoder Beginner Contest 126 解题报告">
+<meta name="twitter:description" content="abc改版后的第一场。貌似人很多啊… 最后10min交上了F。就是到结束他还没测完… 改完后质量明显提高了。相当于abc和arc的合场？（不过EF题没有之前的arc题那么难） 比赛地址">
+  
+    <link rel="alternate" href="/atom.xml" title="henry_y&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>3</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>27</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+          <a href="/About" title="About">
+            <li>关于</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-题解/AtCoder_ABC126" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/题解/AtCoder_ABC126/" class="article-date">
+  <time class="post-time" datetime="2019-05-18T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br>
+    <span class="post-day">19</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AtCoder Beginner Contest 126 解题报告
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Solutions/">Solutions</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/题解/AtCoder_ABC126/" class="leancloud_visitors" data-flag-title="AtCoder Beginner Contest 126 解题报告">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>abc改版后的第一场。貌似人很多啊…</p>
+<p>最后10min交上了F。就是到结束他还没测完…</p>
+<p>改完后质量明显提高了。相当于abc和arc的合场？（不过EF题没有之前的arc题那么难）</p>
+<p><a href="https://atcoder.jp/contests/abc126" target="_blank" rel="noopener">比赛地址</a></p>
+<a id="more"></a>
+<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>按题意模拟即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">1000</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>);</span><br><span class="line">	s[k] = s[k] - <span class="string">'A'</span> + <span class="string">'a'</span>;</span><br><span class="line">	<span class="built_in">puts</span>(s + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p>按题意模拟即可。</p>
+<p>然而有点奇奇怪怪的坑点（我也不知道为什么我写挂了2发）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i) s[i] -= <span class="string">'0'</span>;</span><br><span class="line">	<span class="keyword">int</span> a = s[<span class="number">0</span>] * <span class="number">10</span> + s[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">int</span> b = s[<span class="number">2</span>] * <span class="number">10</span> + s[<span class="number">3</span>];</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1</span> &lt;= a &amp;&amp; a &lt;= <span class="number">12</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="number">1</span> &lt;= b &amp;&amp; b &lt;= <span class="number">12</span>) <span class="built_in">puts</span>(<span class="string">"AMBIGUOUS"</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"MMYY"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="number">1</span> &lt;= b &amp;&amp; b &lt;= <span class="number">12</span>) <span class="built_in">puts</span>(<span class="string">"YYMM"</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"NA"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p>一开始一直没看懂题意…写完E再来写的C。而且精度好像有点卡…</p>
+<p>发现$n$不大，可以枚举初始的数字。分析一下<del>（并仔细研究题意）</del>每个数的概率其实就是$\frac{1}{n}\times (\frac{1}{2})^{\log_2 (\frac{k}{i})}$</p>
+<p>累加即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">double</span> ans = <span class="number">0</span>, power[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">double</span> tmp = <span class="number">0.5</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100000</span>; ++i) &#123;</span><br><span class="line">		power[i] = tmp;</span><br><span class="line">		tmp /= <span class="number">2.0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> cnt = <span class="number">0</span>, now = i;</span><br><span class="line">		<span class="keyword">while</span>(now &lt; m) now *= <span class="number">2</span>, ++cnt;</span><br><span class="line">		<span class="keyword">if</span>(!cnt) ans += <span class="number">1.0</span> / n;</span><br><span class="line">		<span class="keyword">else</span> ans += <span class="number">1.0</span> / n * power[cnt];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.12lf\n"</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p>答案显然一定存在。那么我们只需要挨个涂色就好了…</p>
+<p>只要连接的边是奇数就是异色，是偶数就是同色。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> to, nxt;</span><br><span class="line">	ll v;</span><br><span class="line">&#125;e[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> head[N], cnt, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, ll w)</span> </span>&#123;</span><br><span class="line">	e[++cnt] = (edge) &#123;v, head[u], w&#125;;</span><br><span class="line">	head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = head[u]; i; i = e[i].nxt) &#123;</span><br><span class="line">		<span class="keyword">int</span> v = e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(v == fa) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(e[i].v % <span class="number">2</span>) ans[v] = ans[u] ^ <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> ans[v] = ans[u];</span><br><span class="line">		dfs(v, u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> u, v; ll w;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%lld"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">		ins(u, v, w); ins(v, u, w);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p>因为$a_i$只有$0$和$1$，所以题目给的关系相当于只要你知道一个就可以知道另外一个。</p>
+<p>所以给题目中的$u$和$v$连一条边权为$0$的边，然后建个虚点，向每个点连$1$的边，跑最小生成树就能得到答案了。</p>
+<p>赛后发现别人写的并查集贼短…</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, f[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> u, v, w;</span><br><span class="line">&#125;e[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(f[x] == x) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">return</span> f[x] = find(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(edge a, edge b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.w &lt; b.w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> a, b, c;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">		e[++cnt] = (edge) &#123;a, b, <span class="number">0</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		e[++cnt] = (edge) &#123;n + <span class="number">1</span>, i, <span class="number">1</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	++n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) f[i] = i;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	sort(e + <span class="number">1</span>, e + cnt + <span class="number">1</span>, cmp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = find(e[i].u), y = find(e[i].v);</span><br><span class="line">		<span class="keyword">if</span>(x != y) &#123;</span><br><span class="line">			ans += e[i].w;</span><br><span class="line">			f[y] = x;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><p>挺好玩的构造题…</p>
+<p>因为是两个相同的数之间的数的$xor$和，那么其实只要第一个放$k$，然后顺序放$0$到$2^{m-1}$，再放个$k$，倒序放$2^{m-1}$到$0$即可。（这样每一段都可以抵消掉就剩下一个$k$）</p>
+<p>影响存在性的就是除了$k$以外的所有数$xor$和是否为$0$.（因为第一个$k$和第二个之间是没有另外的$k$的）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> m, k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; m &gt;&gt; k;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="number">1</span> &lt;&lt; m); ++i) <span class="keyword">if</span>(i != k) sum ^= i;</span><br><span class="line">	<span class="keyword">if</span>(!k) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="number">1</span> &lt;&lt; m); ++i) <span class="built_in">printf</span>(<span class="string">"%d %d "</span>, i, i);</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(m == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(k &gt;= <span class="number">1</span>) <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"0 0 1 1"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>((<span class="number">1</span> &lt;&lt; m) &lt;= k) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">"-1"</span>), <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="number">1</span> &lt;&lt; m); ++i) <span class="keyword">if</span>(i != k) <span class="built_in">printf</span>(<span class="string">"%d "</span>, i);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = (<span class="number">1</span> &lt;&lt; m) - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) <span class="keyword">if</span>(i != k) <span class="built_in">printf</span>(<span class="string">"%d "</span>, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://henry-y.github.io/题解/AtCoder_ABC126/" data-id="cjvv1fas10000rww5acg9gi9n" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构造/">构造</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模拟/">模拟</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/题解/LOJ3104/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          LOJ#3104「TJOI2019」甲苯先生的字符串
+        
+      </div>
+    </a>
+  
+  
+    <a href="/题解/CF1167E/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">CF1167E. Range Deleting</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">henry_y&#39;s blog</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+          <a href="/About" title="About">
+            <li>关于</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://i.loli.net/2019/04/28/5cc5051025caa.jpg">
+    <h2 class="author">henry-y</h2>
+    <h3 class="description">喵</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>3</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>27</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/henry-y" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://cnblogs.com/henry-1202" target="_blank" title="henry_y">
+          henry_y
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://zcmimi.tk" target="_blank" title="zcmimi">
+          zcmimi
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2018 - 2019 henry-y<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.article-title').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+</html>
