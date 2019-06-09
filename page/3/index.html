@@ -73,9 +73,9 @@
 
         <section id="main">
   
-    <article id="post-学习笔记/动态主席树学习理解" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-学习笔记/浅析基础数据结构-二叉堆" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/学习笔记/动态主席树学习理解/" class="article-date">
+    <a href="/学习笔记/浅析基础数据结构-二叉堆/" class="article-date">
   <time class="post-time" datetime="2019-04-27T16:00:00.000Z" itemprop="datePublished">
     <span class="post-month">4月</span><br>
     <span class="post-day">28</span>
@@ -90,7 +90,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/学习笔记/动态主席树学习理解/">动态主席树学习理解</a>
+      <a class="article-title" href="/学习笔记/浅析基础数据结构-二叉堆/">浅析基础数据结构-二叉堆</a>
     </h1>
   
 
@@ -104,7 +104,7 @@
               
   &nbsp; | &nbsp;
   <div class="view-box">
-    <span id="/学习笔记/动态主席树学习理解/" class="leancloud_visitors" data-flag-title="动态主席树学习理解">
+    <span id="/学习笔记/浅析基础数据结构-二叉堆/" class="leancloud_visitors" data-flag-title="浅析基础数据结构-二叉堆">
       &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
     </span>
   </div>
@@ -116,20 +116,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="题目地址"><a href="#题目地址" class="headerlink" title="题目地址"></a>题目地址</h2><p><a href="https://www.luogu.org/problemnew/show/P2617" target="_blank" rel="noopener">题目链接</a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态主席树的板子题。动态主席树其实和静态的有很大差别，虽然同样是n个根，但是节点并不能共用，每个根节点表示bit上的一段区间。<br>所以其实是个树套树的东西来着，外层是bit，内层是主席树。</p>
+        <p>二叉堆是一种基础数据结构，主要应用于求出一组数据中的最大最小值。C++ 的STL中的优先队列就是使用二叉堆。不过初赛经常考二叉堆的原理。</p>
+<p>事实上支持的操作也是挺有限的（相对于其他数据结构而言），也就插入，查询，删除这一类</p>
+<p><strong>对了这篇文章中讲到的堆都是二叉堆，而不是斜堆，左偏树，斐波那契堆什么的<del>我都不会啊</del></strong></p>
         
           <p class="article-more-link">
-            <a href="/学习笔记/动态主席树学习理解/#more">Read More</a>
+            <a href="/学习笔记/浅析基础数据结构-二叉堆/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://henry-y.github.io/学习笔记/动态主席树学习理解/" data-id="cjwhwsmn8001g9ww5m7cc6rm4" class="article-share-link">分享</a>
+      <a data-url="http://henry-y.github.io/学习笔记/浅析基础数据结构-二叉堆/" data-id="cjwouksu400348ow5zz2ldsmi" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主席树/">主席树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉堆/">二叉堆</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
 
     </footer>
   </div>
@@ -373,25 +374,5 @@ new WOW().init();
 
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
 </body>
 </html>
