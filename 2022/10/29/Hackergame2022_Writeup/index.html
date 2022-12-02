@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://henry-y.github.io">
-  <title>Tag: 密码学 | henry_y的小窝</title>
+  <title>hackergame2022 Writeup | henry_y的小窝</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="henry_y的小窝">
-<meta property="og:url" content="http://henry-y.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/index.html">
+  <meta name="description" content="萌新的第一次hackergame记录！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hackergame2022 Writeup">
+<meta property="og:url" content="http://henry-y.github.io/2022/10/29/Hackergame2022_Writeup/index.html">
 <meta property="og:site_name" content="henry_y的小窝">
+<meta property="og:description" content="萌新的第一次hackergame记录！">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/10/29/gXIP5KmrnMfeOCo.png">
+<meta property="article:published_time" content="2022-10-29T05:01:00.000Z">
+<meta property="article:modified_time" content="2022-12-02T14:19:34.550Z">
 <meta property="article:author" content="henry_y">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/10/29/gXIP5KmrnMfeOCo.png">
   
     <link rel="alternative" href="/atom.xml" title="henry_y的小窝" type="application/atom+xml">
   
@@ -178,65 +185,279 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Hackergame2022_Writeup" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2022/12/02/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/" class="archive-article-date">
-        <time datetime="2022-12-02T13:26:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-02</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2022/12/02/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/" target="_blank">非对称加密与RSA算法初探</a>
   
+    <h1 class="article-title" itemprop="name">
+      hackergame2022 Writeup
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+<a href="/2022/10/29/Hackergame2022_Writeup/" class="archive-article-date">
+        <time datetime="2022-10-29T05:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-29</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">4.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">16分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>萌新的第一次hackergame记录！</p>
+<span id="more"></span>
+
+<p>本writeup根据思路顺序呈现，<del>所以可能有点啰嗦</del></p>
+<h1 id="赛中解决的题目"><a href="#赛中解决的题目" class="headerlink" title="赛中解决的题目"></a>赛中解决的题目</h1><h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><p>还不太适应模式，刚进去的时候玩了好久的画图，然后F12打开network-&gt;result把代码copy到vscode里面盯了十几二十分钟试图篡改时间戳，结果失败</p>
+<p>然后回去再看了一下网址栏发现直接把4个问号改成2022就好了</p>
+<h2 id="猫咪问答easy-version"><a href="#猫咪问答easy-version" class="headerlink" title="猫咪问答easy-version"></a>猫咪问答easy-version</h2><p>前三道题，第一道直接百度战队名就可以在新闻里面找到成立时间了，第二道题可以在中科大的LUC协会官网找到对应的那场会议的录屏（点进去评论区全是猫咪问答就知道找对了233），然后再搜了一下kde是什么上官网找了找发现了这个应用的名字，第三题的话上Wikipedia半分钟就能找到了</p>
+<p>第六题的话，找到了2011&#x2F;01&#x2F;01但是好像不是这个时间..并没有告诉我更早的时间，4应该是直接上github找对应的仓库就可以了，然而网址的解密至今没有想法喵，所以就弃置了打算等如果写出来网址解密就继续扒一扒这两题。</p>
+<h2 id="旅行照片2-0"><a href="#旅行照片2-0" class="headerlink" title="旅行照片2.0"></a>旅行照片2.0</h2><p>第一题查了一下exif是什么东西，惊为天人（下次回家就扒我爸照片看看他那些照片的iso和光圈还有快门速度都是怎么调了，直接开学！）然后把这张照片扔到一个在线的exif解析平台就能看到第一题要求的所有信息了</p>
+<p>第二题的话，一开始查exif是什么东西的时候得知照片种可能有GPS信息，于是查了查怎么写扒照片里的GPS信息的代码，但是搞完后发现并不带这个信息，于是只能稍微裁了一下照片然后去google识图发现是日本千叶海洋球场（带夕阳直接找出来一堆奇怪的地方x），于是邮编get，手机型号的话上淘宝找了小米的手机哪个后置摄像头跟反光照出来的一样，至于找飞机还是太过魔幻，感觉应该是降落在成田国际机场的，但是试了几个方向正确的飞机，现在还没成功…也暂且弃疗了</p>
+<h2 id="家目录里面的秘密"><a href="#家目录里面的秘密" class="headerlink" title="家目录里面的秘密"></a>家目录里面的秘密</h2><p>vscode部分，我是所有有代码的翻出来然后ctrl+F找flag关键词的，不过出于习惯的找文件路径很快在某个文件夹下的user&#x2F;history的文件中找到了，rclone就没有啥思路了（查了一下是个什么东西，但是不知道从何下手…等writeup出来再看看）</p>
+<h2 id="企鹅拼盘（4bit）"><a href="#企鹅拼盘（4bit）" class="headerlink" title="企鹅拼盘（4bit）"></a>企鹅拼盘（4bit）</h2><p>16种情况，一个个试就行了</p>
+<h2 id="HeiLang"><a href="#HeiLang" class="headerlink" title="HeiLang"></a>HeiLang</h2><p>怎么还嘲讽赛博丁真（乐</p>
+<p>把每个|替换成“]&#x3D;a[”让它能够运行就行了，不是很会用正则表达式所以干脆写了个cpp替换了一下</p>
+<h2 id="Xcaptcha"><a href="#Xcaptcha" class="headerlink" title="Xcaptcha"></a>Xcaptcha</h2><p>一个让我学到许多也破防许多的题目，写了大概两天半，以下是曲折的心路历程</p>
+<p>一开始检查元素查了一下，发现需要发送post请求，看过了很多人本以为是静态的于是靠手速截图ocr了一下把算式搞出来然后用urllib写了个post交了一下结果连进都没进去…</p>
+<p>然后再试了一次发现每次刷新cookie都会变，而且验证所需的算式也是动态的（这时候才发现有个Preserve Log的按键而不用靠手速来点（捂脸），并且这时候发现点进去有一个get请求，并且发现同次的post的cookie以及get的set-cookie是相同的，这时候就觉得应该可以先进行get请求然后通过它获取cookie还有算式的数据然后再来发送一个post完成提交。</p>
+<p>思路有了，但是具体实现完全没有想法。（这对于只学过一点点python语法还有c#语法的小白还是有点困难了）决定面向搜索引擎编程，首先查了一下怎么获取动态cookie，了解到了原来有selenium这个库，跟着教程捣鼓安装然后敲了个get的代码获取了一个cookie，然后就思考如何获取算式，因为之前学爬虫学到xpath就因为军训歇下来了没有继续了，于是打开了尚硅谷继续从爬虫视频里面学习xpath的语法:)然后分别尝试了在线和离线两种的解析方式，在线的报错没有看懂，于是干脆把get获取的page_source放到本地，然后用etree离线搞一下，结果发现！meta nmd不是完全对称的没法用xpath…破防…于是干脆使用暴力一点的做法，看了一下page是str类型的，那我大力split！一个个遍历定位！然后再转int累加（这时代码就逐渐oi向了起来）</p>
+<p>可以了，那综合一下再用urllib发个post，“验证失败”，经过一番思考并做无用功的捣鼓，把selenium的get_cookies也改成从headers里面用相同的方法暴力获取set-cookies..但是还是不行（成果是让代码几乎完全oi风格化了x）</p>
+<p>一小时后终于发现应该是这个urllib+selenium的实现和我的需求不对应，应该是等价变成打开两次网页，或者说打开网页的想法就是错误的，于是决定干脆学了一个半爬虫库了干脆再学一个request…</p>
+<p>第三天：request堂堂速通！思路是一样的，所以问题应该就是我上面写的缝合怪的问题了…实现方法都是完全一样的（代码量还是上面的$\frac{1}{3}$）</p>
+<p>干脆把两份代码都放一下吧</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span> :</span><br><span class="line">    hd = &#123;</span><br><span class="line">        <span class="string">&quot;Cookie&quot;</span> : <span class="string">&quot;session=.eJwdkMtOAmEMhd9ltk5i73_rjiiR0ZgwIsRxKxgRIvcAGt_d6qJJc9rznabf1X522ldXFZqZOzkUL6KkKl4zCwcUcY-ioG451QgmFkAtqVApFjUpCVpoCLJzYUMT8uLKCCKhRRGCtEZRcyGDwMIFXEAQU0kYiAOFcFJKjUbABOCEUXLTc5yx6VR1BMpMFKmR0FHDJMjdAhgTy3_UKOxq5JTFNRnbfxoAslkekUlgaURktWwgzKiqq_1qMfvMZ6Rbrh763XXT3szb-Wj-1a6PH9vp8XJ_PkpzQbulL7rFYNgO-xMadxNf6GrXNu-9Zr25fRuOX_pPMtPB_e7w2G7Pp52dJ8vNc3PXpDId9Q7yOu2qn1-2QV2j.Y1qc9w.EypWQ93Hpc-evjQJf-dRU21WFKM&quot;</span>,</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    url = <span class="string">&quot;http://202.38.93.111:10047/xcaptcha&quot;</span></span><br><span class="line">    <span class="comment"># url = &quot;http://baidu.com&quot;</span></span><br><span class="line">    <span class="comment">#req = requests.get(url=url,headers=hd)</span></span><br><span class="line">    req = requests.get(url=url,headers=hd)</span><br><span class="line">    hd[<span class="string">&quot;Cookie&quot;</span>] = req.headers[<span class="string">&#x27;Set-Cookie&#x27;</span>]</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;captcha1&quot;</span> : <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;captcha2&quot;</span> : <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;captcha3&quot;</span> : <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    content = req.text</span><br><span class="line">    string_list = content.split()</span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    checklist = [<span class="number">0</span>] * <span class="number">3</span></span><br><span class="line">    <span class="keyword">for</span> i, S <span class="keyword">in</span> <span class="built_in">enumerate</span>(string_list) :</span><br><span class="line">        <span class="keyword">if</span> S == <span class="string">&quot;的结果是？&lt;/label&gt;&quot;</span> :</span><br><span class="line">            checklist[ans] = <span class="built_in">str</span>(string_list[i-<span class="number">1</span>])</span><br><span class="line">            ans = ans + <span class="number">1</span></span><br><span class="line">    Ans = [<span class="number">0</span>] * <span class="number">3</span></span><br><span class="line">    <span class="keyword">for</span> i, S <span class="keyword">in</span> <span class="built_in">enumerate</span>(checklist) :</span><br><span class="line">        <span class="type">List</span> = S.split(<span class="string">&#x27;&gt;&#x27;</span>)</span><br><span class="line">        List1 = <span class="built_in">str</span>(<span class="type">List</span>[<span class="number">1</span>]).split(<span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">        Ans[i] = <span class="built_in">int</span>(List1[<span class="number">0</span>]) + <span class="built_in">int</span>(List1[<span class="number">1</span>])</span><br><span class="line">    data[<span class="string">&quot;captcha1&quot;</span>]=<span class="built_in">str</span>(Ans[<span class="number">0</span>])</span><br><span class="line">    data[<span class="string">&quot;captcha2&quot;</span>]=<span class="built_in">str</span>(Ans[<span class="number">1</span>])</span><br><span class="line">    data[<span class="string">&quot;captcha3&quot;</span>]=<span class="built_in">str</span>(Ans[<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line">    req1 = requests.post(url=url,headers=hd,data=data)</span><br><span class="line">    <span class="built_in">print</span>(req1.text)</span><br></pre></td></tr></table></figure>
+
+<p>下面是我失败的缝合怪代码…</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.service <span class="keyword">import</span> Service</span><br><span class="line"><span class="keyword">from</span> seleniumwire <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span> :</span><br><span class="line">    option = webdriver.ChromeOptions()</span><br><span class="line">    option.add_experimental_option(<span class="string">&#x27;useAutomationExtension&#x27;</span>,<span class="literal">False</span>)</span><br><span class="line">    option.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>, [<span class="string">&#x27;enable-automation&#x27;</span>])</span><br><span class="line">    Cookie1 = <span class="built_in">dict</span>(</span><br><span class="line">        name = <span class="string">&quot;session&quot;</span>, </span><br><span class="line">        value = <span class="string">&quot;.eJwdkMtOAmEMhd9ltk5i73_rjiiR0ZgwIsRxKxgRIvcAGt_d6qJJc9rznabf1X522ldXFZqZOzkUL6KkKl4zCwcUcY-ioG451QgmFkAtqVApFjUpCVpoCLJzYUMT8uLKCCKhRRGCtEZRcyGDwMIFXEAQU0kYiAOFcFJKjUbABOCEUXLTc5yx6VR1BMpMFKmR0FHDJMjdAhgTy3_UKOxq5JTFNRnbfxoAslkekUlgaURktWwgzKiqq_1qMfvMZ6Rbrh763XXT3szb-Wj-1a6PH9vp8XJ_PkpzQbulL7rFYNgO-xMadxNf6GrXNu-9Zr25fRuOX_pPMtPB_e7w2G7Pp52dJ8vNc3PXpDId9Q7yOu2qn1-2QV2j.Y1qc9w.EypWQ93Hpc-evjQJf-dRU21WFKM&quot;</span></span><br><span class="line">        )</span><br><span class="line">    url = <span class="string">&quot;http://202.38.93.111:10047/xcaptcha&quot;</span></span><br><span class="line">    urll = <span class="string">&quot;http://baidu.com&quot;</span></span><br><span class="line">    s = Service(<span class="string">&quot;C:\Program Files\Google\Chrome\Application\chromedriver.exe&quot;</span>)</span><br><span class="line">    driver = webdriver.Chrome(service=s,options=option)</span><br><span class="line">    driver.get(url)</span><br><span class="line">    <span class="comment">#print(driver.page_source)</span></span><br><span class="line">    driver.add_cookie(Cookie1)</span><br><span class="line">    driver.get(url)</span><br><span class="line">    <span class="comment">#print(driver.page_source)</span></span><br><span class="line">    <span class="comment">#time.sleep(20)</span></span><br><span class="line">    strr = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取response-headers 的 cookie</span></span><br><span class="line">    <span class="keyword">for</span> request <span class="keyword">in</span> driver.requests :</span><br><span class="line">        txt = <span class="built_in">str</span>(request.response.headers)</span><br><span class="line">        <span class="comment">#print(txt)</span></span><br><span class="line">        List2 = txt.split()</span><br><span class="line">        <span class="keyword">for</span> i, S <span class="keyword">in</span> <span class="built_in">enumerate</span>(List2):</span><br><span class="line">            <span class="keyword">if</span> S == <span class="string">&#x27;Set-Cookie:&#x27;</span> :</span><br><span class="line">                strr += List2[i+<span class="number">1</span>]</span><br><span class="line">                strr += List2[i+<span class="number">2</span>]</span><br><span class="line">                strr += List2[i+<span class="number">3</span>]</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    strrr = <span class="string">&quot;&quot;</span></span><br><span class="line">    LList = strr.split(<span class="string">&#x27;;&#x27;</span>)</span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> LList :</span><br><span class="line">        index = index + <span class="number">1</span></span><br><span class="line">        strrr += i</span><br><span class="line">        <span class="keyword">if</span> index != <span class="number">3</span> :</span><br><span class="line">            strrr += <span class="string">&#x27;; &#x27;</span></span><br><span class="line">    strr = strrr</span><br><span class="line">    <span class="comment">#print(strr)</span></span><br><span class="line">    <span class="comment"># 获取request-headers 的 cookie</span></span><br><span class="line">    <span class="comment"># for request in driver.requests :</span></span><br><span class="line">    <span class="comment">#     txt = str(request.headers)</span></span><br><span class="line">    <span class="comment">#     List2 = txt.split()</span></span><br><span class="line">    <span class="comment">#     print(List2)</span></span><br><span class="line">    <span class="comment">#     for i, S in enumerate(List2):</span></span><br><span class="line">    <span class="comment">#         if S == &#x27;Cookie:&#x27; :</span></span><br><span class="line">    <span class="comment">#             strr += List2[i+1]</span></span><br><span class="line">    <span class="comment">#             break</span></span><br><span class="line">    </span><br><span class="line">    text = driver.page_source</span><br><span class="line">    string_list = text.split()</span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    checklist = [<span class="number">0</span>] * <span class="number">3</span></span><br><span class="line">    <span class="keyword">for</span> i, S <span class="keyword">in</span> <span class="built_in">enumerate</span>(string_list) :</span><br><span class="line">        <span class="keyword">if</span> S == <span class="string">&quot;的结果是？&lt;/label&gt;&quot;</span> :</span><br><span class="line">            checklist[ans] = <span class="built_in">str</span>(string_list[i-<span class="number">1</span>])</span><br><span class="line">            ans = ans + <span class="number">1</span></span><br><span class="line">    Ans = [<span class="number">0</span>] * <span class="number">3</span></span><br><span class="line">    <span class="keyword">for</span> i, S <span class="keyword">in</span> <span class="built_in">enumerate</span>(checklist) :</span><br><span class="line">        <span class="type">List</span> = S.split(<span class="string">&#x27;&gt;&#x27;</span>)</span><br><span class="line">        List1 = <span class="built_in">str</span>(<span class="type">List</span>[<span class="number">1</span>]).split(<span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">        Ans[i] = <span class="built_in">int</span>(List1[<span class="number">0</span>]) + <span class="built_in">int</span>(List1[<span class="number">1</span>])</span><br><span class="line">    <span class="comment">#    print(List1[0], List1[1], Ans[i])</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># # captcha1 = driver.find_element(&quot;xpath&quot;, &#x27;//label[for=&quot;captcha1&quot;]/text()&#x27;)</span></span><br><span class="line">    <span class="comment"># # # 搞不懂搞不懂</span></span><br><span class="line">    <span class="comment"># # print(captcha1)</span></span><br><span class="line"></span><br><span class="line">    hd = &#123;</span><br><span class="line">        <span class="string">&quot;Cache-Control&quot;</span>: <span class="string">&quot;max-age=0&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Content-Length&quot;</span>: <span class="string">&quot;29&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Cookie&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Host&quot;</span>: <span class="string">&quot;202.38.93.111:10047&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Origin&quot;</span>: <span class="string">&quot;http://202.38.93.111:10047&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Proxy-Connection&quot;</span>: <span class="string">&quot;keep-alive&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Referer&quot;</span>: <span class="string">&quot;http://202.38.93.111:10047/&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Upgrade-Insecure-Requests&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    hd[<span class="string">&quot;Cookie&quot;</span>] = strr</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;captcha1&quot;</span>:<span class="string">&quot;337605126759167072227735090115749459132&quot;</span>, </span><br><span class="line">        <span class="string">&quot;captcha2&quot;</span>:<span class="string">&quot;275363884278949671003218244434521978720&quot;</span>,</span><br><span class="line">        <span class="string">&quot;captcha3&quot;</span>:<span class="string">&quot;449082777171456801985478338295611554214&quot;</span> </span><br><span class="line">    &#125;</span><br><span class="line">    data[<span class="string">&quot;captcha1&quot;</span>]=<span class="built_in">str</span>(Ans[<span class="number">0</span>])</span><br><span class="line">    data[<span class="string">&quot;captcha2&quot;</span>]=<span class="built_in">str</span>(Ans[<span class="number">1</span>])</span><br><span class="line">    data[<span class="string">&quot;captcha3&quot;</span>]=<span class="built_in">str</span>(Ans[<span class="number">2</span>])</span><br><span class="line">    data = urllib.parse.urlencode(data).encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    R = urllib.request.Request(url=url, data=data,headers=hd)</span><br><span class="line">    response = urllib.request.urlopen(R)</span><br><span class="line">    content = response.read().decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(content)</span><br></pre></td></tr></table></figure>
+
+<h2 id="LaTeX-机器人"><a href="#LaTeX-机器人" class="headerlink" title="LaTeX 机器人"></a>LaTeX 机器人</h2><ul>
+<li>没有特殊字符的part</li>
+</ul>
+<p>本来看到这题以为是sql注入的，都已经打开sql注入的语句列表准备突击速成了，不过在此之前还是打算先了解一下如何通过这个latex的实现流程或者照片的生成进行攻击，于是google查找了一下“pdflatex漏洞”，结果找到了<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/security-management/308191.html">一篇非常有启发性的文章</a>，在其中发现了latex有\input和\write18等实现，并在知乎找到了<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465718748">另一个与图片有关的sql注入</a>，这时候大概脑子里有了一点模糊的方向。然后点开了他的压缩包仔细读了一下（现在居然也能读懂没学过的语言大概是在干啥了），发现实现规则实际上是将</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[preview]&#123;standalone&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>这两段分别插入你写的数学公式的前后，而flag1又保证了只有普通字符，那我只需要对上下的两个$$分别再匹配一次然后\input flag1就行了</p>
+<p>最终实现是</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qaq<span class="built_in">$</span><span class="built_in">$</span> <span class="keyword">\input</span>&#123;/flag1&#125; <span class="built_in">$</span><span class="built_in">$</span>qwq</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>有特殊字符的part</li>
+</ul>
+<p>把&#x2F;flag1换成&#x2F;flag2后发现无法编译，接着去上了节体育课，在体育课时有了几个想法</p>
+<ol>
+<li><p>首先一开始根据查到的信息脑补了一个获取信息然后插入到生成图片的exif上面的方法，但是觉得实现难度太高了就完全没去想怎么写了。然后在写flag1之前查了一下input的实现，发现是直接把文本copy过来到这个tex里面，那我只需要这个copy过来的文本没有特殊字符就行了——刚才又了解到write18方法可以直接打开shell，那么我只要写一个shell里面的命令把flag2里面的特殊字符替换一下就行了！</p>
+<p>结果晚上写了一下发现不行…觉得可能是服务器没有给改文件的权限，于是放弃了这条路，代码如下</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">qwq<span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line"><span class="keyword">\immediate</span><span class="keyword">\write</span>18&#123;</span><br><span class="line">sed -i &#x27;s/<span class="params">#</span>/bar/g&#x27; &#x27;s/<span class="built_in">_</span>/Bar/g&#x27; flag2</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">\input</span>&#123;/flag2&#125;</span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span>qaq</span><br></pre></td></tr></table></figure></li>
+<li><p>另一种朴素的想法是，那我换成\text{}直接强转为文本输出，但是也会转义，那另一种思路应该就是找个不转义内容但能在最终生成的pdf中呈现内容的method。我唯一想到的是要么使用\url方法将这个flag2作为url输出要么这个作为latex中的代码块输出..但是因为它们都要用到特定的宏包但我又不能额外使用宏包而寄了…在接下来的三个小时高强度尝试了我所知的各种不需要用到usepackage的latex命令，并在过程中发现了一个tex论坛，后来逐渐从google转到了tex论坛中高强度检索，然后找到了\verbatim这个命令，接着往下找，发现了\VerbatimInput并在一个五年前的帖子中找到了和我同样需求的人<a target="_blank" rel="noopener" href="https://tex.stackexchange.com/questions/351186/how-to-include-contents-of-file-as-verbatim">（帖子）</a></p>
+<p> 但我尝试这个后bot解析不了..这个东西也需要宏包…变成了狂暴翻帖组长，继续想了想，想到\def和\newcommand这种类似#define的命令如果可以传入参数的话可能就会先将语句执行出来后再进行语块组合，那么newcommand又可以自定义参数，于是定义了这么一个命令传了三个参数也寄了，此时已经接近凌晨两点了，于是摆烂睡觉。</p>
+<p> 第二天起床不是很甘心，继续研究了一下发现一个帖子里面说newcommand不能包含\end{}命令会报语法错误，于是把昨晚那个传3个参数改成传2个参数然后\end{verbatim}独立出来，就解决了…（所以其实昨晚熬到两点也是可以解决问题的，雾）</p>
+<p> 最终的命令很简洁：</p>
+ <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">qwq<span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line"><span class="keyword">\newcommand</span><span class="keyword">\qwq</span>[2]&#123;<span class="params">#1</span> <span class="params">#2</span>&#125;</span><br><span class="line"><span class="keyword">\qwq</span>&#123;<span class="keyword">\begin</span>&#123;verbatim&#125;<span class="string">&#125;&#123;\input&#123;/flag2&#125;&#125;</span></span><br><span class="line"><span class="string"></span><span class="keyword">\end</span>&#123;verbatim&#125;</span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span>qaq</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>写完latex-bot这题也就剩一两个小时比赛结束了，最终结果是1050分，给我的感觉就是hackergame真好玩但是我已经要变成狂暴补作业组长了…因为在比赛开始三天我才在GZTime等学长在群里复读“来打hackergame谢谢喵”才发现原来hackergame开始了:)，所以时间其实不是很充足，不过还好因为是大一大部分课可以摸鱼想题勉强还行，可能多个一两天时间能再突击学习一点多混个两三百分吧，不过现在这个分数我也很满意了，毕竟只是刚接触这玩意的萌新一枚，每道题都花了大量时间学相关概念…</p>
+<p>四天半的突击hackergame也确实让我受益匪浅，了解并实践了HTTP的get和post请求，掌握了一些开盒技巧，对漏洞利用有了一点粗浅的认知，了解了大量的latex语法（相比以前），突击学习了三个爬虫库，掌握了不少使用搜索引擎的实用技巧，发现了一个很有用的tex论坛（环境非常和谐）…不过了解到了很多接下来可以学习的方向感觉是最大的收获（果然任务驱动式学东西更加适合我，就是累死个人）</p>
+<p>明年还打！</p>
+<p><img src="https://s2.loli.net/2022/10/29/gXIP5KmrnMfeOCo.png" alt="rank.png"></p>
+<p>赛后一周，终于把前面沉迷hackergame而欠下的作业补完，趁现在还没进入高强度icpc备赛，决定继续补一下题，就在这里记录一下补题记录。</p>
+<h1 id="补题"><a href="#补题" class="headerlink" title="补题"></a>补题</h1><h2 id="微积分计算小练习"><a href="#微积分计算小练习" class="headerlink" title="微积分计算小练习"></a>微积分计算小练习</h2><p>赛时看到这道题的时候就觉得应该是个漏洞注入的题目，不过当时不知道怎么下手，赛后看了一下别人的writeup发现是个xss注入，于是去学习了一下xss注入的姿势。</p>
+<p>在搜索的时候发现了美团技术平台的<a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/09/27/fe-security.html">一篇文章</a>，翻了翻受益颇多，了解到了xss注入的基本概念和对应的一些操作，这时候回去看一眼题目，随便提交了个12345看了一下源码，发现greeting的代码是直接拼接了username上去的，那么这应该就是xss注入的注入点了，打开bot.py看了看，发现了代码<code>driver.execute_script(f&#39;document.cookie=&quot;flag=&#123;FLAG&#125;&quot;&#39;)</code> 逻辑大概是flag被放在了document.cookie里面（不由感慨写xctptha的时候高强度突击爬虫库现在居然基本看得懂selenium了），又没有任何敏感词过滤，那应该直接注入将cookie放到greeting上面就可以了。不过读取图片失败就执行js脚本这个trick在没有看writeup之前确实没能想到。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">a</span> <span class="attr">onerror</span>= <span class="string">&#x27;var a=document.cookie;document.querySelector(&quot;#score&quot;).textContent=a;&#x27;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>于是就输出了<code>flag&#123;xS5_1OI_is_N0t_SOHARD_23e903464f&#125;</code>，xss注入真是太奇妙辣</p>
+<p>同时在美团技术平台上面那篇文章给了点xss注入小练习的链接，于是决定顺便去玩一下，把链接放在这里</p>
+<p><a target="_blank" rel="noopener" href="https://alf.nu/alert1?world=alert&level=alert1">alert(1) to win</a> </p>
+<p><a target="_blank" rel="noopener" href="http://prompt.ml/0">prompt(1) to win</a></p>
+<p><a target="_blank" rel="noopener" href="https://xss-game.appspot.com/">XSS game</a></p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          henry_y
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://henry-y.github.io/2022/10/29/Hackergame2022_Writeup/" title="hackergame2022 Writeup" target="_blank">http://henry-y.github.io/2022/10/29/Hackergame2022_Writeup/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">密码学</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://henry-y.github.io/2022/10/29/Hackergame2022_Writeup/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2022/11/23/%E5%B0%81%E6%A0%A1%E5%B0%8F%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          封校小记
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%9B%E4%B8%AD%E8%A7%A3%E5%86%B3%E7%9A%84%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">赛中解决的题目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0"><span class="toc-number">1.1.</span> <span class="toc-text">签到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8C%AB%E5%92%AA%E9%97%AE%E7%AD%94easy-version"><span class="toc-number">1.2.</span> <span class="toc-text">猫咪问答easy-version</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%85%E8%A1%8C%E7%85%A7%E7%89%872-0"><span class="toc-number">1.3.</span> <span class="toc-text">旅行照片2.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B6%E7%9B%AE%E5%BD%95%E9%87%8C%E9%9D%A2%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-number">1.4.</span> <span class="toc-text">家目录里面的秘密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%81%E9%B9%85%E6%8B%BC%E7%9B%98%EF%BC%884bit%EF%BC%89"><span class="toc-number">1.5.</span> <span class="toc-text">企鹅拼盘（4bit）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HeiLang"><span class="toc-number">1.6.</span> <span class="toc-text">HeiLang</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xcaptcha"><span class="toc-number">1.7.</span> <span class="toc-text">Xcaptcha</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LaTeX-%E6%9C%BA%E5%99%A8%E4%BA%BA"><span class="toc-number">1.8.</span> <span class="toc-text">LaTeX 机器人</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A5%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">补题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AE%A1%E7%AE%97%E5%B0%8F%E7%BB%83%E4%B9%A0"><span class="toc-number">2.1.</span> <span class="toc-text">微积分计算小练习</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -265,9 +486,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: false,
