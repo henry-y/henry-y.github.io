@@ -216,79 +216,9 @@
     
     <p>学期中没怎么学明白，还是得自己啃一下。</p>
 <p>课程地址：<a target="_blank" rel="noopener" href="https://www.cs.cmu.edu/~213/schedule.html">https://www.cs.cmu.edu/~213&#x2F;schedule.html</a></p>
-<p>前面data lab和bomb lab做的还算行，attack lab开始就有点懵逼了，该补还是要补。</p>
-<h2 id="Lecture-11-The-Memory-Hierarchy"><a href="#Lecture-11-The-Memory-Hierarchy" class="headerlink" title="Lecture 11 : The Memory Hierarchy"></a>Lecture 11 : The Memory Hierarchy</h2><p>前面部分讲的是硬盘，数电课有学，故略</p>
-<h3 id="SSD-Solid-State-Disks"><a href="#SSD-Solid-State-Disks" class="headerlink" title="SSD(Solid State Disks)"></a>SSD(Solid State Disks)</h3><p><img src="/img/image-20230805213732266.png" alt="image-20230805213732266"></p>
-<p>数据操作以Page为单位(512kb~4kb)，数据读写以页为单位，<strong>页仅能在整页被擦除后才能写入</strong></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><img src="/img/image-20230805215559490.png" alt="image-20230805215559490"></h3><p><img src="/img/image-20230805220011535.png" alt="image-20230805220011535"></p>
-<p>不同的Cache miss类型：</p>
-<p><img src="/img/image-20230805220434721.png" alt="image-20230805220434721"></p>
-<h2 id="Lecture-12-Cache-Memories"><a href="#Lecture-12-Cache-Memories" class="headerlink" title="Lecture 12 : Cache Memories"></a>Lecture 12 : Cache Memories</h2><p>Cache完全由硬件管理，所以硬件要知道的事情：如何查找缓存中的块，并确定是否包含特定的块</p>
-<h3 id="Cache-Architecture"><a href="#Cache-Architecture" class="headerlink" title="Cache Architecture:"></a>Cache Architecture:</h3><p><img src="/img/image-20230805225727338.png" alt="image-20230805225727338"></p>
-<p>相当于一个立体的三维结构，具体到每个小块，v是判断这个缓存是否储存东西，tag用于进行查找，后面B byte是储存的实际内容，所以最终的cache_size是$s\times b\times e$</p>
-<p>注意名词<strong>set</strong>，以及每个SEB对应的都是$2^n$的形式，<strong>都在指数上</strong>，后面举了一个例子来说明在E&#x3D;1的简单结构中cache是如何解读一个地址的。</p>
-<blockquote>
-<ul>
-<li>E&#x3D;1的简单情况下：</li>
-</ul>
-<p>被称为直接映射（Direct mapped），每个set只有一行<img src="img/image-20230805225930252.png" alt="image-20230805225930252" style="zoom:25%;" /></p>
-<p>然后它的访问方式是这样的：<strong>先看所属set，然后看是否valid，再看tag对不对应(如果这里满足了就是hit)，最后看偏移量取值</strong></p>
-<p><img src="/img/image-20230805230546086.png" alt="image-20230805230546086"></p>
-<p>一个很好的模拟过程：通过中间的两位确定所属set，tag是第一位，然后剩下的1位就是对应的offset，<strong>同时因为是$2^b$所以可以offset两个位置！</strong></p>
-<p>所以0被归类到set 0，并miss且放入（v&#x3D;0）</p>
-<p>1 hit</p>
-<p>7被归类到set 3并miss，放入</p>
-<p>8是1000，所以属于set 0，并在比对tag的时候miss，擦除且放入</p>
-<p>0属于set 0，在比对tag的时候miss</p>
-</blockquote>
-<p>这个模拟很好的展现了cache如何通过地址对数据进行分类存放。并且指出了E&#x3D;1的直接映射的弊端：无法充分利用局部性。会相互挤占cache空间。</p>
-<p><strong>更大的E保证了Cache的关联性，增加了hit的次数</strong></p>
-<blockquote>
-<p><img src="/img/image-20230805231228456.png"></p>
-<p>这种情况下，在确定set后会比对两次tag才进行miss和hit的断言</p>
-<p>然后在miss的情况下的替换策略：<strong>随机，least recently used(LRU)…</strong></p>
-</blockquote>
-<p>这里的E-way set associate是指明了cache中的寻址策略，根据地址中的set来进行寻址，这种寻址方式下要提高hit的概率，就只能提高e的量级，但是提高e的量级意味着更昂贵的硬件。也存在完全关联高速缓存，这种方式下的开销主要在如何寻址上，这种情况下e&#x3D;1，所以电路特别便宜。（应用于LLC或者软件级cache上，如虚拟内存，因为比较好实现复杂的搜索算法，15213的老师也提到了dram上应用了这种方法）</p>
-<blockquote>
-<p>全关联高速缓存（Fully Associative Cache）是计算机系统中一种特殊类型的缓存存储方法。全关联高速缓存中的每个缓存行（cache line）可以存储任何内存地址的数据，所以任何内存地址都可以映射到缓存中的任何位置。这样的设计使得全关联高速缓存的灵活性很高，但实现起来相对复杂。</p>
-<p>全关联高速缓存的主要优势在于减少了缓存冲突，因为任何内存地址都可以被放置到缓存中的任何位置。但是，这种灵活性的代价是需要更复杂的标记和搜索机制来确定数据是否在缓存中，并找到它的位置。</p>
-<p>在全关联高速缓存中，当CPU需要从缓存中读取数据时，它必须搜索缓存中的所有行以找到所需的数据。这通常使用内容可寻址存储器（Content-Addressable Memory，CAM）来实现，并且相对于其他类型的缓存，如直接映射缓存（Direct-Mapped Cache）或组相联缓存（Set-Associative Cache），可能会导致更高的延迟。</p>
-<p>因此，全关联高速缓存在某些特定应用场景下可能非常有用，尤其是当缓存冲突问题成为性能瓶颈时。但是，由于其实现的复杂性和成本，它通常只用于较小的缓存或特定的缓存层级，例如最后一级缓存（Last-Level Cache，LLC）。</p>
-</blockquote>
-<p>在这样的寻址策略下，cache的block length也是根据处理器而被定死的。<strong>block和cache的大小和设计都是基于要更多的利用空间局部性，均摊摊薄每次获取数据的成本。</strong></p>
-<h3 id="What-about-writes"><a href="#What-about-writes" class="headerlink" title="What about writes?"></a>What about writes?</h3><p>有写回 (Write-back, <strong>need dirty bit</strong>) 和写覆盖 (Write-through) 两种方式。</p>
-<p><img src="/img/image-20230805233924573.png" alt="image-20230805233924573"></p>
-<h3 id="How-to-evaluate-a-cache"><a href="#How-to-evaluate-a-cache" class="headerlink" title="How to evaluate a cache?"></a>How to evaluate a cache?</h3><p><img src="/img/image-20230805234308928.png" alt="image-20230805234308928"></p>
-<p><strong>99%hit 比 97%hit 优越两倍！！</strong> </p>
-<p>因为hit time和miss penalty的差距是很大的（可以接近100倍）</p>
-<p><img src="/img/image-20230805234605793.png"></p>
-<h3 id="Cache-Friendly-Code"><a href="#Cache-Friendly-Code" class="headerlink" title="Cache Friendly Code:"></a>Cache Friendly Code:</h3><p>优化最常用的部分，忽略不怎么常用的部分。</p>
-<p>可以的话，多使用局部变量，因为可能会被放到寄存器中（引用堆栈中的变量是好的），但引用全局变量相对不好，因为不会被放进cache</p>
-<p>连续访存是好的，因为会被放进Cache，增加hit率。</p>
-<p><img src="/img/image-20230805235639242.png" alt="image-20230805235639242"></p>
-<p>   根据这个图，程序员应判断自己要做什么（时间局部性优化？空间局部性优化？往不同的轴走是不同的优化策略）</p>
-<h2 id="Matrix-Multiplication"><a href="#Matrix-Multiplication" class="headerlink" title="Matrix Multiplication"></a>Matrix Multiplication</h2><p><img src="/img/image-20230806000339689.png" alt="image-20230806000339689"></p>
-<p>最缓存友好的写法：优化到了每个地方的访存！kij和ikj都是最缓存友好的</p>
-<ul>
-<li>方法二：矩阵分块</li>
-</ul>
-<p><img src="/img/image-20230806000957376.png" alt="image-20230806000957376"></p>
-<p>关键是<strong>3B^2&lt;C</strong>，意味着参与运算的都会在cache里面！</p>
-<p>只要我们把一个矩阵放进去，那我们就一直在利用它，这就是利用了<strong>时间局部性</strong></p>
-<h2 id="Bootcamp-2-Debugging-amp-GDB"><a href="#Bootcamp-2-Debugging-amp-GDB" class="headerlink" title="Bootcamp 2: Debugging &amp; GDB"></a><strong>Bootcamp 2: Debugging &amp; GDB</strong></h2><p>介绍了三种经典调试方式：1是<code>printf</code>输出调试</p>
-<p>2是内存调试，使用<code>valgrind</code></p>
-<p>ppt里面推荐使用的参数（tldr也有几个推荐的参数）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ valgrind -–leak-resolution=high –-leak-check=full</span><br><span class="line">–-show-reachable=yes –-track-fds=yes ./myProgram arg1 arg2</span><br></pre></td></tr></table></figure>
-
-<p>拿了个malloc不free和use after free的代码试了一下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1   │ #include&lt;iostream&gt;</span><br><span class="line">2   │ using namespace std;</span><br><span class="line">3   │</span><br><span class="line">4   │ int main() &#123;</span><br><span class="line">5   │     int *a = (int*)malloc(5*sizeof(int)), *b = (int*)malloc(5*sizeof(int));</span><br><span class="line">6   │     free(a);</span><br><span class="line">7   │     printf(&quot;%d&quot;,*a);</span><br><span class="line">8   │     return 0;</span><br><span class="line">9   │ &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>测试的log如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> henry_y@henryy  ~/csapp  valgrind --leak-resolution=high --leak-check=full --show-reachable=yes --track-fds=yes ./a</span><br><span class="line">==589== Memcheck, a memory error detector</span><br><span class="line">==589== Copyright (C) 2002-2017, and GNU GPL&#x27;d, by Julian Seward et al.</span><br><span class="line">==589== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info</span><br><span class="line">==589== Command: ./a</span><br><span class="line">==589==</span><br><span class="line">==589== Invalid read of size 4</span><br><span class="line">==589==    at 0x109201: main (in /home/henry_y/csapp/a)</span><br><span class="line">==589==  Address 0x4dd5c80 is 0 bytes inside a block of size 20 free&#x27;d</span><br><span class="line">==589==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)</span><br><span class="line">==589==    by 0x1091FC: main (in /home/henry_y/csapp/a)</span><br><span class="line">==589==  Block was alloc&#x27;d at</span><br><span class="line">==589==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)</span><br><span class="line">==589==    by 0x1091DE: main (in /home/henry_y/csapp/a)</span><br><span class="line">==589==</span><br><span class="line">0==589==</span><br><span class="line">==589== FILE DESCRIPTORS: 3 open (3 std) at exit.</span><br><span class="line">==589==</span><br><span class="line">==589== HEAP SUMMARY:</span><br><span class="line">==589==     in use at exit: 20 bytes in 1 blocks</span><br><span class="line">==589==   total heap usage: 4 allocs, 3 frees, 73,768 bytes allocated</span><br><span class="line">==589==</span><br><span class="line">==589== 20 bytes in 1 blocks are definitely lost in loss record 1 of 1</span><br><span class="line">==589==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)</span><br><span class="line">==589==    by 0x1091EC: main (in /home/henry_y/csapp/a)</span><br><span class="line">==589==</span><br><span class="line">==589== LEAK SUMMARY:</span><br><span class="line">==589==    definitely lost: 20 bytes in 1 blocks</span><br><span class="line">==589==    indirectly lost: 0 bytes in 0 blocks</span><br><span class="line">==589==      possibly lost: 0 bytes in 0 blocks</span><br><span class="line">==589==    still reachable: 0 bytes in 0 blocks</span><br><span class="line">==589==         suppressed: 0 bytes in 0 blocks</span><br><span class="line">==589==</span><br><span class="line">==589== For lists of detected and suppressed errors, rerun with: -s</span><br><span class="line">==589== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)</span><br></pre></td></tr></table></figure>
-
-
+    
+    <a class="article-more-a" href="/2023/07/18/CSAPP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">more >></a>
+    
     
 
     
