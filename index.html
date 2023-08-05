@@ -265,6 +265,16 @@
 <h3 id="Cache-Friendly-Code"><a href="#Cache-Friendly-Code" class="headerlink" title="Cache Friendly Code:"></a>Cache Friendly Code:</h3><p>优化最常用的部分，忽略不怎么常用的部分。</p>
 <p>可以的话，多使用局部变量，因为可能会被放到寄存器中（引用堆栈中的变量是好的），但引用全局变量相对不好，因为不会被放进cache</p>
 <p>连续访存是好的，因为会被放进Cache，增加hit率。</p>
+<p><img src="/img/image-20230805235639242.png" alt="image-20230805235639242"></p>
+<p>   根据这个图，程序员应判断自己要做什么（时间局部性优化？空间局部性优化？往不同的轴走是不同的优化策略）</p>
+<h2 id="Matrix-Multiplication"><a href="#Matrix-Multiplication" class="headerlink" title="Matrix Multiplication"></a>Matrix Multiplication</h2><p><img src="/img/image-20230806000339689.png" alt="image-20230806000339689"></p>
+<p>最缓存友好的写法：优化到了每个地方的访存！kij和ikj都是最缓存友好的</p>
+<ul>
+<li>方法二：矩阵分块</li>
+</ul>
+<p><img src="/img/image-20230806000957376.png" alt="image-20230806000957376"></p>
+<p>关键是<strong>3B^2&lt;C</strong>，意味着参与运算的都会在cache里面！</p>
+<p>只要我们把一个矩阵放进去，那我们就一直在利用它，这就是利用了<strong>时间局部性</strong></p>
 <h2 id="Bootcamp-2-Debugging-amp-GDB"><a href="#Bootcamp-2-Debugging-amp-GDB" class="headerlink" title="Bootcamp 2: Debugging &amp; GDB"></a><strong>Bootcamp 2: Debugging &amp; GDB</strong></h2><p>介绍了三种经典调试方式：1是<code>printf</code>输出调试</p>
 <p>2是内存调试，使用<code>valgrind</code></p>
 <p>ppt里面推荐使用的参数（tldr也有几个推荐的参数）</p>
@@ -891,11 +901,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CTF</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color4">CTF</a>
               </li>
              
               <li class="article-tag-list-item">
