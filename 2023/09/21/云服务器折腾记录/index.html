@@ -16,22 +16,21 @@
   <meta name="author" content="henry_y">
   <meta name="keywords" content="">
   
-    <meta name="description" content="其实高中就大概了解过这是个什么原理，奈何一年半的高考备考让脑子退化严重，最近都在重新学以前学过的东西，在打算自己重新把 hexoblog 搭起来之后就去复习了一下Git的命令怎么用，上传ssh的时候就顺便把非对称加密的东西重新学了一下，于是出现了这篇笔记。">
+    <meta name="description" content="前情提要是丰老师在内培布置了个作业，让我们自己搞个服务器折腾一下，自己搭个博客。 而我正好前段时间又想申请github的学生认证，于是决定先认证一下接着用白嫖的服务器把原本放在github page的博客迁移过去。 github学生认证申请申请地址在这里 第一步是证明自己是个学生。按着流程填一下学生邮箱，学校名称就行了，那个plan to use github随便按自己的想法填一下就好啦 选择co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="非对称加密与RSA算法初探">
-<meta property="og:url" content="http://henry-y.github.io/2022/12/02/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/index.html">
+<meta property="og:title" content="henry_y的小窝">
+<meta property="og:url" content="http://henry-y.github.io/2023/09/21/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="henry_y的小窝">
-<meta property="og:description" content="其实高中就大概了解过这是个什么原理，奈何一年半的高考备考让脑子退化严重，最近都在重新学以前学过的东西，在打算自己重新把 hexoblog 搭起来之后就去复习了一下Git的命令怎么用，上传ssh的时候就顺便把非对称加密的东西重新学了一下，于是出现了这篇笔记。">
+<meta property="og:description" content="前情提要是丰老师在内培布置了个作业，让我们自己搞个服务器折腾一下，自己搭个博客。 而我正好前段时间又想申请github的学生认证，于是决定先认证一下接着用白嫖的服务器把原本放在github page的博客迁移过去。 github学生认证申请申请地址在这里 第一步是证明自己是个学生。按着流程填一下学生邮箱，学校名称就行了，那个plan to use github随便按自己的想法填一下就好啦 选择co">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-12-02T13:26:20.000Z">
-<meta property="article:modified_time" content="2022-12-02T14:02:41.505Z">
+<meta property="article:published_time" content="2023-09-21T05:26:24.887Z">
+<meta property="article:modified_time" content="2023-09-21T05:37:00.331Z">
 <meta property="article:author" content="henry_y">
-<meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>非对称加密与RSA算法初探 - henry_y的小窝</title>
+  <title>henry_y的小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="非对称加密与RSA算法初探"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -208,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-02 21:26" pubdate>
-          2022年12月2日 晚上
+        <time datetime="2023-09-21 13:26" pubdate>
+          2023年9月21日 下午
         </time>
       </span>
     
@@ -220,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4k vortoj
+          527 vortoj
         
       </span>
     
@@ -231,7 +230,7 @@
         
         
         
-          34 minutoj
+          5 minutoj
         
       </span>
     
@@ -268,48 +267,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">非对称加密与RSA算法初探</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>其实高中就大概了解过这是个什么原理，奈何一年半的高考备考让脑子退化严重，最近都在重新学以前学过的东西，在打算自己重新把 hexoblog 搭起来之后就去复习了一下Git的命令怎么用，上传ssh的时候就顺便把非对称加密的东西重新学了一下，于是出现了这篇笔记。</p>
-<span id="more"></span>
-
-<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><p>​	一开始的间谍加密传输使用的是对称加密算法，即传输方和接收方都有一本密码本，也即双方持有共同一套密钥，这也就出现了电视剧上密码本泄露后一切GG的情节。而在上世纪七十年代出现了最早的非对称加密算法，算法使用的是私钥-公钥分发方式，顾名思义，前者是需要持有者保密的密钥，而后者是可以公开的，一系列的数论知识保证了只要私钥不被公开，那么信息就没有办法在<strong>可接受</strong>的时间内被破解。</p>
-<p>​	假设现在我们有博弈论老常客Alice和Bob进行信息交换，Alice通过Bob公开的公钥对传输的信息进行加密，然后发送密文，Bob通过私钥对密文进行解密，由于“只要私钥不被公开，那么信息就没有办法在<strong>可接受</strong>的时间内被破解”这个前提的保证，就能够保证只有Bob才能接收到这个信息。</p>
-<p>​	但同时，这套加密方式也存在第三方攻击的问题，比如henry_y拦截了Alice发出的信息并想要对Alice发出的信息进行篡改，虽然他不知道Alice发出的信息是什么，但是他可以通过Bob的公钥加密一系列谣言并附在信息后面重新发送给Bob。</p>
-<p>​	这时候我们就需要引入电子签名这种东西，同样由于“只要私钥不被公开，那么信息就没有办法在<strong>可接受</strong>的时间内被破解。”，那么Alice可以将这份信息用Bob的公钥进行加密，然后对加密后的密文进行一次哈希，再对哈希函数利用自己的私钥进行第二次加密，将这一二次加密过后的密文放在一次加密（即实际传输内容）的后面，就完成了<strong>“电子签名”</strong>这一操作。此时Bob只需要对签名利用Alice的公钥对密文进行一次解码，再将解码后的哈希值和原文本哈希后的值进行比对即可得知该文本没有经过篡改。这样henry_y进行的第三方攻击就会被识别出来了。（因为henry_y没有Alice的私钥，所以没有办法伪造签名，而只能利用自己的私钥进行加密，最终的文本比对就会失败）这一性质同时也决定了电子签名可以有和纸质签名一样的法律效用。</p>
-<p>​	matrix67的博客对一系列密码学问题举出了各种有意思的实例，强烈推荐食用。这里附一篇使用RSA算法的实例：<a target="_blank" rel="noopener" href="http://www.matrix67.com/blog/archives/1362">密码学协议举例（四）：秘密数字的比较</a></p>
-<p>​	当然，实际上由于全部信息均使用非对称加密做法耗费算力过大，现在的实际应用方案中一般使用对称加密和非对称加密混合使用的方式（一般利用非对称加密在不安全的通信通道中传递对称加密的密钥，随后使用对称加密算法）</p>
-<h2 id="RSA算法"><a href="#RSA算法" class="headerlink" title="RSA算法"></a>RSA算法</h2><p>​	那么，非对称加密可以实现的数学基础是什么呢？</p>
-<p>​	首先目前是对大整数n因式分解没有很好的做法，所以只要这个大整数够大，我们就没办法在可接受的时间内对它进行因式分解，RSA算法的可行性便基于这点。</p>
-<p>（下面的内容需要关于欧拉函数的前置知识）</p>
-<p>​	RSA算法的流程是，我首先选取两个足够大的质数p和q，然后计算出n&#x3D;p*q，根据欧拉函数的性质，有$\varphi(n) &#x3D; \varphi(p) *\varphi(q) &#x3D; (p-1)\times (q-1)$ ，此时我们再选择一个数e满足$1&lt;e&lt;\varphi(n)$，且e和$\varphi(n)$互质，根据我们已知的乘法逆元的性质，此时e必定存在逆元$d&#x3D;e^{-1}$，满足$d\times e \equiv 1\mod \varphi(n)$。</p>
-<p>​	那么我们将 n 和 e 作为公钥公布出去，并在自己处留存私钥 n 和 d 。任何人都可以利用函数$F(x)&#x3D;x^e \mod n$获得密文，并将其发送给私钥持有者，私钥持有者可以通过函数$G(x)&#x3D;x^d\mod n$从密文重新获得原文。由于外人不知道私钥的函数对应的d，也就无从对该信息进行可接受时间复杂度内的破译。（p和q则要在进行公私钥生成后进行销毁）</p>
-<p>​	可是为什么这可行呢？如果关心其背后的数学原理，不妨往下看：</p>
-<p>​	因为RSA是逐字符加密的，我们可以只研究单一字符，我们假设它是m（原文），密文为c，那么则有$F(m)&#x3D;m^e\mod n$，$G(c)&#x3D;c^d&#x3D; m^{ed}&#x3D; m^{k\varphi(n)+1}\mod n$，那么我们只需要证明$G(c)&#x3D;m$，也即$m^{k\varphi(n)}\equiv 1\mod n$。</p>
-<p>​	我们分两种情况讨论:</p>
-<ol>
-<li><p>n和m互质</p>
-<p>此时我们通过费马小定理得知上述事实显然成立</p>
-</li>
-<li><p>n和m不互质</p>
-</li>
-</ol>
-<p>​		<strong>我们在做RSA时还要确保选取的n大于所有的被加密字符m</strong>，在这一前提下，m只能是p和q之一的倍数，不妨设为$m&#x3D;\lambda p$，则有$\lambda&lt;q$且 $\lambda$ 与 q 互质，那么由费马小定理有$m^{\varphi(q)}\equiv 1\mod q$，那我们只要把这个凑成n有关的形式就好了，$m^{k\varphi(p)\varphi(q)}\equiv1^{k\varphi(p)}\mod q$，即$m^{k\varphi(n)}\equiv 1\mod q$。</p>
-<p>​	那么存在整数x满足，$m^{k\varphi(n)}\equiv 1+xq$，又有$m&#x3D;\lambda p$，两边相乘即$m^{k\varphi(n)+1}\equiv m + xn$，即$m^{k\varphi(n)}\equiv m \mod n$。</p>
-<p>​	所以无论n，m是否互质上述函数关系均成立。我们也就证明了 RSA 算法的数学基础。</p>
-<h2 id="盲签名"><a href="#盲签名" class="headerlink" title="盲签名"></a>盲签名</h2><p>​	但是非对称加密真正精彩的地方在于它的应用， RSA 等加密算法只是它的基石。（基于它的各种构造才是最妙的）这里介绍其中和 RSA 的推导有关的一例。</p>
-<p>​	假设我们现在要实现这么一个需求，我们想要让人对一份文件签名，但不想让人知道文件的内容，这在过去可以让人对一张白纸先签名再写上文件内容实现，但是我们会发现这种方式在电子签名上行不通（电子签名基于使用私人密钥对文本内容进行再加密），但是我们可以通过特殊的构造方法使得盲签名在电子签名中也可行。</p>
-<p>​	考虑rsa的加密函数$F(x)&#x3D;x^e\mod n$和解码函数$G(x)&#x3D;x^d \mod n$，我们要让解密出来的内容是错误的，但再次加密得到的结果又是正确的，这提示我们要构造基于取模的冲突。</p>
-<p>​	不妨在加密函数时取一大随机数k，令 $x_1 &#x3D; xk^e$，将 x1 作为要签名的文件交给签名人，签名人用自己的私钥 d 对其进行签名，则$x_1^d&#x3D;x^dk^{ed}\mod m\equiv x^d$，但是同时签名因为不知道k是什么，所以他也不知道真实的密文是什么（他只能知道密文的通式），这样我们就成功实现了盲签名。</p>
-<p>​	而这一构造方法的一个可能应用场景就是电子的不记名投票。下面的内容转载自<a target="_blank" rel="noopener" href="http://www.matrix67.com/blog/archives/1136">身份验证、中间人攻击和数字签名：浅谈密码学（中）</a></p>
-<blockquote>
-<p>  盲签名协议并不是只有特工才可能用到的东西，它的应用范围其实相当广。在生活中，我们每个人都可能用到过盲签名。一个最常用的例子就是投票协议——中央机构需要确定每张选票都来自合格的选举人，并且每个人最多投了一次票；但同时选举人又不希望在投票过程中泄露自己的选票内容。但是，为了检查选票的来源是否可靠，中央机构必然要鉴别每张选票所属的投票人。怎么办呢？此时，盲签名协议就派上用场了。每个选举人在自己的选票前面加上一个随机字符串作为前缀（防止以后被暴力破解），然后乘上随机数k的e次方，再连同一份（未被干扰的）身份证明，一同递交给中央机构。中央机构检查身份证明，确认这张（被干扰过的）选票来自合格的选举人。然后中央机构给这张选票签名，回传给选举人。选举人将签名结果除以k，用中央机构的公钥检查看签名是否有效，随机字符串是否和自己当初设定的一样。接着投票人匿名提交这份由中央机构签过名的（且不带干扰因子的）选票。中央机构收到选票，用公钥解密看签名是否有效。这样，中央机构既可以确信每张选票都来自合格的投票人，严格实行一人一票制度，又不能追查出任何一个投票者的选票内容。</p>
-<p>  更复杂的盲签名协议来源于这样一种特殊情况：恐怖分子答应供出炸弹的位置，前提条件是需要得到一系列保证无罪逃脱的签名文件，包括新身份、新护照，以及总统亲自签署的免起诉书和安全离境的通行证。同时，恐怖分子又需要确信政府不能知道他的新身份和潜逃地。这需要政府在不知道文件内容的情况下签署协议。这与刚才所谈的盲签名有什么区别呢？一个巨大的区别就是，要求盲签名的不是特工，而是坏蛋，政府在没有看到文件之前不能随意签名。万一恐怖分子要求盲签名的文件实际上是一份要求政府保护全体恐怖分子的安全，保证所有人永不被通缉永不被起诉，并无偿提供恐怖组织基地和巨额资助等不平等条约该咋办？因此，这里需要一种比盲签名要求更高的协议：签名者不能看到文件内容，但要相信文件的内容是什么。</p>
-<p>  看起来这似乎是办不到的，但事实上这是有可能的。我们有一个非常简单的办法，它是一个基于概率的协议。恐怖分子可以起草十份文件，每份文件里都包含了一个不同的新身份和潜逃地。然后恐怖分子用十个不同的随机数对这十份文件进行干扰，传给政府。政府选取其中的九份文件，向恐怖分子索要干扰因子。恐怖分子把对应的那九个k值传过去，政府对其进行解密，从而看到这九份文件都是符合要求的文件（只是文件中具体的身份名字和潜逃地点不一样）。政府对最后一个文件进行签名，并把签名结果回递给恐怖分子。恐怖分子除去干扰因子，得到他需要的签名文件。这样，恐怖分子可以保证政府不知道他的新身份和潜逃地，同时政府也能保证恐怖分子不会耍诈。恐怖分子只有1&#x2F;10的概率可以骗到政府，显然不值得恐怖分子去冒这个险。为安全起见，“10”这个数字还可以任意加大。</p>
-</blockquote>
+                <p>前情提要是丰老师在内培布置了个作业，让我们自己搞个服务器折腾一下，自己搭个博客。</p>
+<p>而我正好前段时间又想申请github的学生认证，于是决定先认证一下接着用白嫖的服务器把原本放在github page的博客迁移过去。</p>
+<h2 id="github学生认证申请"><a href="#github学生认证申请" class="headerlink" title="github学生认证申请"></a>github学生认证申请</h2><p>申请地址在<a target="_blank" rel="noopener" href="https://education.github.com/">这里</a></p>
+<p>第一步是证明自己是个学生。按着流程填一下学生邮箱，学校名称就行了，那个<code>plan to use github</code>随便按自己的想法填一下就好啦</p>
+<p>选择continue的时候它会check你是否在自己的学校里面，所以需要关掉梯子进行，而我关掉梯子后按continue一直没有反应，解决方法是f12，然后在more setting选项中的sensor选项更改经纬度为自己所在的位置。（这个百度随便找个查找当前位置经纬度的网站就好了）</p>
+<p>接着要上传在读证明。我校的学生卡并没有毕业日期和入学日期，于是下载了学信网的在读报告，使用deepl翻译成英文（因为要求填的学校名字和证明上的学校名字一样），但是deepl的pdf不让打印，我的解决方法非常暴力，直接截图然后打印图片..）</p>
+<p>我的第一次申请被机器人拒了，原因是我自己的github profile没写名字，要和申请的名字一样。</p>
+<p>改完后再申请他在几分钟内就给我过了。现在就等人工审核就ok了~</p>
 
                 
               </div>
@@ -319,13 +289,6 @@
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="print-no-link">#密码学</a>
-      
-    </div>
-  
 </div>
 
 
@@ -334,8 +297,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>非对称加密与RSA算法初探</div>
-      <div>http://henry-y.github.io/2022/12/02/非对称加密/</div>
+      <div></div>
+      <div>http://henry-y.github.io/2023/09/21/云服务器折腾记录/</div>
     </div>
     <div class="license-meta">
       
@@ -347,7 +310,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Postigita</div>
-          <div>2022年12月2日</div>
+          <div>2023年9月21日</div>
         </div>
       
       
@@ -379,18 +342,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/02/start/" title="Hello World!">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hello World!</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/23/%E5%B0%81%E6%A0%A1%E5%B0%8F%E8%AE%B0/" title="封校小记">
-                        <span class="hidden-mobile">封校小记</span>
+                      <a href="/2023/07/15/2023%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E5%B0%8F%E7%BB%93/" title="2023春季学期小结">
+                        <span class="hidden-mobile">2023春季学期小结</span>
                         <span class="visible-mobile">Sekva afiŝo</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
