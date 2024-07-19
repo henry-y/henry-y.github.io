@@ -215,8 +215,8 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>今天VSCode连服务器的时候一直连不上，报错是XHR failed. 问了问有访问权限的朋友他们都能正常访问，所以仔细看了一下自己的log尝试研究问题是什么。</p>
-<p><img src="/img/image-20240318170800457-17107531642781.png" alt="image-20240318170800457"></p>
-<p><img src="/img/image-20240318170915108.png"></p>
+<p><img src="/img/vsc_xhr_error/image-20240318170800457-17107531642781.png" alt="image-20240318170800457"></p>
+<p><img src="/img/vsc_xhr_error/image-20240318170915108.png"></p>
 <p>可以看到它尝试在服务器上下载一个更新但是由于服务器在内网的原因而无法下载，然后试图在本地下载然后上传也失败了，虽然没想到为什么在本地下载失败了（尝试设置了命令行代理后也还是不行），但是另一个简单直接的解决方法就是在服务器上面把这个commit下载下来。（内网有个服务器的统一proxy出口）</p>
 <p>在StackOverflow上找到了下面这个脚本：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">&#x27;What commit of vscode server do you wish to install? &#x27;</span> commit</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$HOME</span>/.vscode-server/bin/<span class="variable">$commit</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">&quot;<span class="variable">$HOME</span>/.vscode-server/bin/<span class="variable">$commit</span>&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">mkdir</span> -p install-vscode-server</span><br><span class="line">    <span class="built_in">cd</span> install-vscode-server</span><br><span class="line">    wget -q https://update.code.visualstudio.com/commit:<span class="variable">$commit</span>/server-linux-x64/stable</span><br><span class="line">    tar -xf stable</span><br><span class="line">    <span class="built_in">mkdir</span> -p ~/.vscode-server/bin</span><br><span class="line">    <span class="built_in">mv</span> vscode-server-linux-x64 ~/.vscode-server/bin/<span class="variable">$commit</span></span><br><span class="line">    <span class="built_in">cd</span> ..</span><br><span class="line">    <span class="built_in">rm</span> -rf install-vscode-server</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;vscode server commit:<span class="variable">$commit</span> installed&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Commit already installed&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
@@ -225,6 +225,11 @@
 
 
 
+<p>另外，还有两个注意的点</p>
+<ol>
+<li>如果服务器上有下载一半的commit，具体表现为<code>~/.vscode-server/bin/</code> 下面有对应的文件夹，可以直接进去rm掉它用脚本下载</li>
+<li>VSCode设置中有<code>remote.SSH.useExecServer</code>选项，可以把它关了。</li>
+</ol>
 <p>问题解决！</p>
 
     
@@ -282,7 +287,7 @@
 
 
   
-    <article id="post-硬拉注意事项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-硬拉注意事项/硬拉注意事项" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -290,7 +295,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" target="_blank">硬拉注意事项</a>
+	  <a class="article-title" href="/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" target="_blank">硬拉注意事项</a>
   
     </h1>
   
@@ -298,7 +303,7 @@
 
   
   
-<a href="/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="archive-article-date">
+<a href="/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="archive-article-date">
         <time datetime="2024-02-23T08:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-23</time>
 </a>
 
@@ -313,7 +318,7 @@
     
     <p>硬拉五大支柱学习记录。</p>
     
-    <a class="article-more-a" href="/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/#more">more >></a>
+    <a class="article-more-a" href="/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/#more">more >></a>
     
     
 
@@ -340,7 +345,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">展开全文 >></a>
+      <a class="article-more-a" href="/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">展开全文 >></a>
     </p>
     
 
@@ -1188,7 +1193,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">健身</a>
+                <a href="javascript:void(0)" class="js-tag color4">密码学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1196,7 +1201,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">密码学</a>
+                <a href="javascript:void(0)" class="js-tag color3">健身</a>
               </li>
             
             <div class="clearfix"></div>
