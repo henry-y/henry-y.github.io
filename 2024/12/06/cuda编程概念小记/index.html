@@ -6,29 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://henry-y.github.io">
-  <title>硬拉注意事项 | henry_y的小窝</title>
+  <title>CUDA编程概念小记 | henry_y的小窝</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="硬拉五大支柱学习记录。">
+  <meta name="description" content="很久没有更新博客了，最近打算快速过一下GPU-MODE这个课程，重新系统性地学习一下一些CUDA的概念，所以可能会断断续续更新一些博客来记录一些我个人认为值得记录的概念。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="硬拉注意事项">
-<meta property="og:url" content="http://henry-y.github.io/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/index.html">
+<meta property="og:title" content="CUDA编程概念小记">
+<meta property="og:url" content="http://henry-y.github.io/2024/12/06/cuda%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5%E5%B0%8F%E8%AE%B0/index.html">
 <meta property="og:site_name" content="henry_y的小窝">
-<meta property="og:description" content="硬拉五大支柱学习记录。">
+<meta property="og:description" content="很久没有更新博客了，最近打算快速过一下GPU-MODE这个课程，重新系统性地学习一下一些CUDA的概念，所以可能会断断续续更新一些博客来记录一些我个人认为值得记录的概念。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://henry-y.github.io/img/%E7%A1%AC%E6%8B%89/1708675306353.jpg">
-<meta property="og:image" content="http://henry-y.github.io/img/%E7%A1%AC%E6%8B%89/1708675430381.jpg">
-<meta property="og:image" content="http://henry-y.github.io/img/%E7%A1%AC%E6%8B%89/1708675430363.jpg">
-<meta property="og:image" content="http://henry-y.github.io/img/%E7%A1%AC%E6%8B%89/1708675430372.jpg">
-<meta property="og:image" content="http://henry-y.github.io/img/%E7%A1%AC%E6%8B%89/1708675430353.jpg">
-<meta property="og:image" content="http://henry-y.github.io/img/%E7%A1%AC%E6%8B%89/1708675430343.jpg">
-<meta property="article:published_time" content="2024-02-23T08:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-19T18:10:49.777Z">
+<meta property="article:published_time" content="2024-12-06T07:40:00.000Z">
+<meta property="article:modified_time" content="2024-12-06T08:12:47.170Z">
 <meta property="article:author" content="henry_y">
-<meta property="article:tag" content="健身">
+<meta property="article:tag" content="CUDA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://henry-y.github.io/img/%E7%A1%AC%E6%8B%89/1708675306353.jpg">
   
     <link rel="alternative" href="/atom.xml" title="henry_y的小窝" type="application/atom+xml">
   
@@ -190,22 +183,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-硬拉注意事项/硬拉注意事项" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-cuda编程概念小记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      硬拉注意事项
+      CUDA编程概念小记
     </h1>
   
 
 
   
   
-<a href="/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="archive-article-date">
-        <time datetime="2024-02-23T08:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-23</time>
+<a href="/2024/12/06/cuda%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5%E5%B0%8F%E8%AE%B0/" class="archive-article-date">
+        <time datetime="2024-12-06T07:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-12-06</time>
 </a>
 
   
@@ -218,7 +211,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">645字</span>
+      <span class="post-count">1.4k字</span>
     </span>
   </span>
 
@@ -227,7 +220,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -238,18 +231,40 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>硬拉五大支柱学习记录。</p>
+    <p>很久没有更新博客了，最近打算快速过一下GPU-MODE这个课程，重新系统性地学习一下一些CUDA的概念，所以可能会断断续续更新一些博客来记录一些我个人认为值得记录的概念。</p>
 <span id="more"></span>
 
-<h2 id="chapt1-髋铰链"><a href="#chapt1-髋铰链" class="headerlink" title="chapt1 髋铰链"></a>chapt1 髋铰链</h2><p>站距应该在髋下方，如果启动困难（目前有这种感觉），可以在这个基础上稍微外八一点，但是整体站距是这个站距<br>启动做完后小腿应该是笔直的，鞋带正好被杠铃挡住（绑结的地方）<br>髋铰链：应该是髋向后坐，小腿把杠铃往前推的话就是错的！<br><img src="/img/%E7%A1%AC%E6%8B%89/1708675306353.jpg" alt="1708675306353.jpg"><br>这个姿势下腘绳肌有张力（找到最佳的臀位让张力最大)<br>小技巧：固定小腿，想象把头埋到膝盖里，这样就只能动髋关节<br>训练髋铰链：触墙反弹，从近处放松膝盖小腿不动，动髋关节碰墙，然后往前走重复，再往前走重复，直到稳不住</p>
-<h2 id="chapt2-背阔肌募集"><a href="#chapt2-背阔肌募集" class="headerlink" title="chapt2 背阔肌募集"></a>chapt2 背阔肌募集</h2><p>握距：尽可能靠近胫骨，恰在膝盖两侧（不能挡到膝盖）<br><img src="/img/%E7%A1%AC%E6%8B%89/1708675430381.jpg" alt="1708675430381.jpg"><br>手臂和杠铃形成一个窗户，膝盖顶出来（但是小腿还是直的）但是最好杠铃要顺着胫骨上来（有距离的话容易腰发力过多）<br>脚掌均匀受力，直接不穿鞋或者深蹲鞋（或许我需要放松足弓让抓地力更强一点？）<br>启动时上背紧绷！不能圆背不然发力都在腰了<br>怎么紧绷？<strong>三头向背阔缩紧（阻止别人挠你痒痒！)</strong></p>
-<h2 id="chapt3-呼吸"><a href="#chapt3-呼吸" class="headerlink" title="chapt3 呼吸"></a>chapt3 呼吸</h2><p>呼吸有几种方法：顶部呼吸（站立），底部呼吸（拉杠的时候），还有在这两个地方都呼吸</p>
-<p>训练：双90度呼吸法<br><img src="/img/%E7%A1%AC%E6%8B%89/1708675430363.jpg" alt="1708675430363.jpg"><br><img src="/img/%E7%A1%AC%E6%8B%89/1708675430372.jpg" alt="1708675430372.jpg"><br>尾骨不触地</p>
-<p>原理性的东西：我们要支撑的是中立位的脊柱，想象用力压一个易拉罐，如果是直的没办法压扁，但是如果瘪了一块就容易被压垮！这个易拉罐和我们的脊柱是一样的！</p>
-<p>硬拉站立时呼吸：吐一口气，让肋骨下沉，然后尽可能吸气，然后拉杠，拉杠的时候保持中立！<br>保持腹内压，腹里一定要有空气</p>
-<h2 id="chapt4-启动"><a href="#chapt4-启动" class="headerlink" title="chapt4 启动"></a>chapt4 启动</h2><p>启动的时候脚掌要受力均匀<br>头部姿势没有非常具体的标准，不要死命低头和抬头就行</p>
-<h2 id="chapt5-锁定"><a href="#chapt5-锁定" class="headerlink" title="chapt5 锁定"></a>chapt5 锁定</h2><p>好的锁定起始于启动时<br>完美的锁定应该在杠铃到达膝盖下方时髋关节就开始用力然后慢慢向前准备锁定<br><img src="/img/%E7%A1%AC%E6%8B%89/1708675430353.jpg" alt="1708675430353.jpg"><br>完成锁定时，臀肌 股四头肌都应该绷紧，同时人是笔直的</p>
-<p>动作：感受臀肌发力<br><img src="/img/%E7%A1%AC%E6%8B%89/1708675430343.jpg" alt="1708675430343.jpg"><br>10～15次作为热身感受发力</p>
+<h2 id="语言层"><a href="#语言层" class="headerlink" title="语言层"></a>语言层</h2><p>众所周知，CUDA编程模型中有 grid - block -thread 三层概念，而启动的时候却只要两个<code>&lt;&lt;&lt;GridDim,BlockDim&gt;&gt;&gt;</code>这样子的参数就可以了，这件事情一度比较困扰我：Grid是做什么用的？</p>
+<p>现在看来Grid可能是设计来用于多kernel launch或者在多GPU上launch的东西？就现在的编程实践来看都是只有一个Grid的。</p>
+<p>所以这个GridDim其实是有多少个<strong>Block</strong>的意思，BlockDim其实是每一个Block里面有多少个<strong>Thread</strong>的意思。从这个角度来理解对我个人而言就会通畅很多。</p>
+<p>而这两个接受的都是<code>dim3</code>类型的变量，其实我认为也把他统一理解为offset，这样子会更利于编程理解。其实就是一个(x,y,z)的坐标，可以把它展开成<code>z*Dim_y*Dim_x+y*Dim_x+x</code>的一维的形式。本质上是编程语言层给你设计了一些等价的多维的表示方式，在处理矩阵&#x2F;张量数据的时候可能编程上更易读一点。但对于我这个常年写c的人来说其实按照offset的方式理解会更加舒服。</p>
+<p>那么如何理解kernel函数内的执行逻辑呢？让我们通过一个简单的向量加法示例来理解：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 向量加法的kernel函数</span><br><span class="line">__global__ void vectorAdd(float* a, float* b, float* c, int n) &#123;</span><br><span class="line">    // 计算当前线程的全局索引</span><br><span class="line">    int idx = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    </span><br><span class="line">    // 确保不会访问越界</span><br><span class="line">    if (idx &lt; n) &#123;</span><br><span class="line">        c[idx] = a[idx] + b[idx];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    // 设置kernel启动参数</span><br><span class="line">    int threadsPerBlock = 256;</span><br><span class="line">    int blocksPerGrid = (n + threadsPerBlock - 1) / threadsPerBlock;</span><br><span class="line">    </span><br><span class="line">    // 启动kernel</span><br><span class="line">    vectorAdd&lt;&lt;&lt;blocksPerGrid, threadsPerBlock&gt;&gt;&gt;(d_a, d_b, d_c, n);</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们可以看到几个重要的概念：</p>
+<ol>
+<li>kernel函数中通过<code>blockIdx.x</code>和<code>threadIdx.x</code>来获取当前线程的位置信息</li>
+<li>通过<code>blockDim.x</code>（每个block中的线程数）来计算全局索引</li>
+<li>启动参数<code>&lt;&lt;&lt;blocksPerGrid, threadsPerBlock&gt;&gt;&gt;</code>决定了并行的规模</li>
+<li>需要考虑数组边界检查，因为线程数可能会超过数组大小</li>
+</ol>
+<p>可能对于初学者不太好理解CUDA编程的kernel执行逻辑，但在当前这个简单的场景下，一个我认为比较好的理解方式是（如果你学习过OpenMP）的话：其实就是一个没有for的OpenMP，然后利用kernel函数固定给你传入的线程索引（blockIdx和threadIdx）来实现下标计算，然后每个线程在自己所需要对应的那个下标执行相同的操作。</p>
+<h2 id="硬件层"><a href="#硬件层" class="headerlink" title="硬件层"></a>硬件层</h2><p>另外一个伴随cuda编程经常提到的一个概念是：不要轻易在kernel函数里面使用if语句，会把并行执行变成串行执行。但究竟是为什么会这样子，就要从GPU的硬件结构上来理解了。</p>
+<p>GPU的基本计算单元是流式多处理器（Streaming Multiprocessors, SMs），而SM的基本计算单元是warp。warp是SM中一个非常重要的概念，它是GPU执行并行计算的基本单位。一个warp包含32个并行执行的线程，这些线程在SIMT（Single Instruction, Multiple Threads）模式下执行相同的指令。</p>
+<p>特别需要注意的点是<strong>warp</strong>是一个<strong>硬件概念</strong>，而不是编程概念。</p>
+<p>一个warp中的线程会做同一件事，但是if条件意味着你会让一个warp中的线程执行不同的指令，这和硬件的实际情况不符合，但它仍然能执行，代价就是串行执行true部分的指令，再串行执行false部分的指令。（插个题外话，在帕斯卡架构前是这样的，伏特架构后每个线程有自己的PC，可以交替执行掩盖延迟，比如一些有数据依赖的load-then-compute的，就可以先load然后掩盖一下延迟，这种情况会好一点）</p>
+<p>所以其实不是一定不能写if，如果你的if条件对于一个warp内的所有线程都是一样的，那么这个if语句就不会有什么问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">condition = ...;</span><br><span class="line">if(condition is true) &#123;</span><br><span class="line">    A;  </span><br><span class="line">    B;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    C;</span><br><span class="line">    D;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面这个伪代码里面的A,B和C,D就会被分开执行，没办法并行执行（如果一个warp内的condition又有true又有false的话）</p>
+<p>而前面提到的延迟掩盖，可以这么理解：比如A是从global memory载入到shm，然后B再对shm的数据读取进行计算，那你交替执行A和C就可以让不同的硬件先忙起来，通过一点小流水线掩盖掉load的延迟。（这个和CPU的流水线的概念其实是类似的）</p>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>CUDA的同步其实分为很多层，给了你很细粒度的同步控制。</p>
+<ol>
+<li>同一个block内的线程同步：<code>__syncthreads()</code></li>
+<li>同一个warp内的线程同步：<code>shfl_sync()</code></li>
+</ol>
+<p>然后还有一个不同kernel之间（以及host和device之间）的同步：<code>cudaDeviceSynchronize()</code></p>
+<p>所以其实可以在不同粒度上进行同步，以满足不同的需求，尽可能地减少不被重叠的时间。</p>
 
     
 
@@ -264,7 +279,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://henry-y.github.io/2024/02/23/硬拉注意事项/硬拉注意事项/" title="硬拉注意事项" target="_blank">http://henry-y.github.io/2024/02/23/硬拉注意事项/硬拉注意事项/</a>
+          <a href="http://henry-y.github.io/2024/12/06/cuda编程概念小记/" title="CUDA编程概念小记" target="_blank">http://henry-y.github.io/2024/12/06/cuda编程概念小记/</a>
         </li>
         
         <li>
@@ -286,7 +301,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">健身</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CUDA</a>
         		</li>
       		
 		</ul>
@@ -342,7 +357,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://henry-y.github.io/2024/02/23/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/%E7%A1%AC%E6%8B%89%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://henry-y.github.io/2024/12/06/cuda%E7%BC%96%E7%A8%8B%E6%A6%82%E5%BF%B5%E5%B0%8F%E8%AE%B0/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -357,18 +372,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2024/03/18/vsc_xhr_error/VSCode%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8A%A5xhr_error%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          VSCode连接远程服务器报xhr_error解决方法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2024/02/05/fitness-plan/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">fitness-plan</div>
+    <a href="/2024/03/18/vsc_xhr_error/VSCode%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8A%A5xhr_error%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VSCode连接远程服务器报xhr_error解决方法</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -395,7 +401,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#chapt1-%E9%AB%8B%E9%93%B0%E9%93%BE"><span class="toc-number">1.</span> <span class="toc-text">chapt1 髋铰链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapt2-%E8%83%8C%E9%98%94%E8%82%8C%E5%8B%9F%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">chapt2 背阔肌募集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapt3-%E5%91%BC%E5%90%B8"><span class="toc-number">3.</span> <span class="toc-text">chapt3 呼吸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapt4-%E5%90%AF%E5%8A%A8"><span class="toc-number">4.</span> <span class="toc-text">chapt4 启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chapt5-%E9%94%81%E5%AE%9A"><span class="toc-number">5.</span> <span class="toc-text">chapt5 锁定</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E5%B1%82"><span class="toc-number">1.</span> <span class="toc-text">语言层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%B1%82"><span class="toc-number">2.</span> <span class="toc-text">硬件层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5"><span class="toc-number">3.</span> <span class="toc-text">同步</span></a></li></ol>
                     </div>
                 </span>
             </div>
